@@ -1,0 +1,29 @@
+<div class="mb-3 card main-card m-auto p-3">
+    <div class="overflow-auto table-responsive">
+        <table class="table table-bordered text-center">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">اسم المستخدم</th>
+                    <th scope="col">شاشه العمليه</th>
+                    <th scope="col">نوع العمليه</th>
+                    <th scope="col">  تاريخ العمليه</th>
+                    <th scope="col">  وقت العمليه</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let p of Logs; let i = index">
+                    <th scope="row">{{i + 1}}</th>
+                    <td>{{p.UserName}}</td>
+                    <td>{{p.PageName}}</td>
+                     <td>{{p.OperationName}}</td>
+                     <td>{{p.OperationDate}}</td>
+                     <td>{{p.time}}</td>
+                   
+                   
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

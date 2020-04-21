@@ -1,0 +1,213 @@
+<!-- Start : portfolio Modal -->
+<div class="modal fade overflow-hidden" id="portfolioModal" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"> {{ 'ResultOfPortPage.lblrstsearch' | translate }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body overflow-auto">
+                <table class="table text-right table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">{{ 'ResultOfPortPage.lblcode' | translate }}</th>
+                            <th scope="col">{{ 'ResultOfPortPage.lblname' | translate }}</th>
+                            <th scope="col">{{ 'ResultOfPortPage.lbllatinName' | translate }}</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let port of portfolios; index as i"
+                            (click)="onSelectPortfolio(port,'accountModal');" data-dismiss="modal">
+                            <th scope="row">{{i + 1}}</th>
+                            <td>{{port.Code}}</td>
+                            <td>{{port.NameAR}}</td>
+                            <td>{{port.NameEN}}</td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End : portfolio Modal -->
+
+
+
+<div class="app-main__inner pt-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb background-none d-flex align-items-center">
+            <li class="breadcrumb-item active">
+                <a href="#">
+                    <i class="fa fa-home">
+                    </i>
+                </a>
+            </li>
+            <li class="breadcrumb-item active">
+                <span>التحليل الشهرى للحسابات</span>
+            </li>
+        </ol>
+    </nav>
+    <div class="form__page mt-4 p-5">
+        <form class="" #frmRef="ngForm" (ngSubmit)="frmRef.form.valid && Submit(frmRef);">
+            <div class="row">
+                <div class="col-12 col-lg-6 d-flex align-items-center">
+                    <div class="row flex-column flex-lg-row w-100 mb-3">
+                        <div class="col-lg-4 col-12 d-flex align-items-center justify-content-start">
+                            <label for="account" class="mb-lg-0 mt-lg-0 mb-2 mt-3">
+                                قاعدة البيانات
+                            </label>
+                        </div>
+                        <div class="col-lg-8 col-12">
+                            <div class="d-flex flex-column">
+                                <div class="d-flex align-items-center w-100 search position-relative">
+                                    <!--   <input name="PortfolioNameARtxt" #PortfolioNameAR="ngModel"  [(ngModel)]="PortfolioNameARtxt" id="account" type="search" class="form-control w-100 pr-2" placeholder="   {{ 'ResultOfPortPage.lblChPort' | translate }}"
+                                [ngClass]="{ 'is-invalid': frmRef.submitted && PortfolioNameAR.invalid || PortfolioNameAR.invalid && PortfolioNameAR.touched}" required>
+                                <button class="search-button" type="button" (click)="SelectPortfolio()"  data-toggle="modal" data-target="#portfolioModal">
+                                    <i class="fa fa-search"></i>
+                                </button> -->
+                                    <!-- <ejs-combobox required  #Port='ngModel' [dataSource]='portfolios' [allowFiltering]='true' [autofill]='true' 
+                                [placeholder]='iconWaterMarkPort' [fields]='iconFieldsPort'  [(ngModel)]= 'PortfolioID' name='PortfolioID' 
+                                class="form-control" [(value)]="PortfolioID">
+                                 
+                                   </ejs-combobox> -->
+                                    <select name="DatabaseNameId" [(ngModel)]='DbObj.DatabaseNameId'
+                                        (change)="pick($event.target.value)" id="DatabaseNameId" class="form-control">
+                                        <option value="null"> {{ 'PartnerPage.slctCountry' | translate }} </option>
+                                        <option [value]="obj.DatabaseNameId" *ngFor="let obj of DbNames">{{obj.DbName}}
+                                        </option>
+
+                                    </select>
+                                </div>
+                                <!--  <div *ngIf="frmRef.submitted && PortfolioNameAR.invalid  || PortfolioNameAR.invalid && PortfolioNameAR.touched " class="text-right invalid-feedback">
+                                <div *ngIf="PortfolioNameAR.errors.required">   {{ 'ResultOfPortPage.ValidChPort' | translate }}</div>
+                            </div> -->
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-12 d-flex align-items-center">
+                    <div class="row flex-column flex-lg-row w-100 mb-3">
+                        <div class="col-lg-4 col-12 d-flex align-items-center justify-content-start">
+                            <label class="mb-lg-0 mt-lg-0 mb-2 mt-3">
+                                الفرع:
+                            </label>
+                        </div>
+                        <div class="col-lg-8 col-12">
+                            <div class="d-flex flex-column">
+                                <div class="d-flex align-items-center w-100 search position-relative">
+                                    <!--   <input name="PortfolioNameARtxt" #PortfolioNameAR="ngModel"  [(ngModel)]="PortfolioNameARtxt" id="account" type="search" class="form-control w-100 pr-2" placeholder="   {{ 'ResultOfPortPage.lblChPort' | translate }}"
+                                [ngClass]="{ 'is-invalid': frmRef.submitted && PortfolioNameAR.invalid || PortfolioNameAR.invalid && PortfolioNameAR.touched}" required>
+                                <button class="search-button" type="button" (click)="SelectPortfolio()"  data-toggle="modal" data-target="#portfolioModal">
+                                    <i class="fa fa-search"></i>
+                                </button> -->
+                                    <!-- <ejs-combobox required  #Port='ngModel' [dataSource]='portfolios' [allowFiltering]='true' [autofill]='true' 
+                                [placeholder]='iconWaterMarkPort' [fields]='iconFieldsPort'  [(ngModel)]= 'PortfolioID' name='PortfolioID' 
+                                class="form-control" [(value)]="PortfolioID">
+                                 
+                                   </ejs-combobox> -->
+                                    <select name="COM_BRN_CODE" [(ngModel)]='CBObj.COM_BRN_CODE' id="COM_BRN_CODE"
+                                        class="form-control">
+                                        <option value="null"> </option>
+                                        <option [value]="obj.COM_BRN_CODE" *ngFor="let obj of Branches">
+                                            {{obj.COM_BRN_AR_NAME}}</option>
+
+                                    </select>
+                                </div>
+                                <!--  <div *ngIf="frmRef.submitted && PortfolioNameAR.invalid  || PortfolioNameAR.invalid && PortfolioNameAR.touched " class="text-right invalid-feedback">
+                                <div *ngIf="PortfolioNameAR.errors.required">   {{ 'ResultOfPortPage.ValidChPort' | translate }}</div>
+                            </div> -->
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-12 d-flex align-items-center">
+                    <div class="row flex-column flex-lg-row w-100 mb-3">
+                        <div class="col-lg-4 col-12 d-flex align-items-center justify-content-start">
+                            <label class="mb-lg-0 mt-lg-0 mb-2 mt-3">
+                                الحساب:
+                            </label>
+                        </div>
+                        <div class="col-lg-8 col-12">
+                            <div class="d-flex flex-column">
+                                <div class="d-flex align-items-center w-100 search position-relative">
+                                    <!--   <input name="PortfolioNameARtxt" #PortfolioNameAR="ngModel"  [(ngModel)]="PortfolioNameARtxt" id="account" type="search" class="form-control w-100 pr-2" placeholder="   {{ 'ResultOfPortPage.lblChPort' | translate }}"
+                                [ngClass]="{ 'is-invalid': frmRef.submitted && PortfolioNameAR.invalid || PortfolioNameAR.invalid && PortfolioNameAR.touched}" required>
+                                <button class="search-button" type="button" (click)="SelectPortfolio()"  data-toggle="modal" data-target="#portfolioModal">
+                                    <i class="fa fa-search"></i>
+                                </button> -->
+                                    <!-- <ejs-combobox required  #Port='ngModel' [dataSource]='portfolios' [allowFiltering]='true' [autofill]='true' 
+                                [placeholder]='iconWaterMarkPort' [fields]='iconFieldsPort'  [(ngModel)]= 'PortfolioID' name='PortfolioID' 
+                                class="form-control" [(value)]="PortfolioID">
+                                 
+                                   </ejs-combobox> -->
+                                    <select name="ACC_ID" [(ngModel)]='AccObj.ACC_ID' id="ACC_ID" class="form-control">
+                                        <option value="null"> </option>
+                                        <option [value]="obj.ACC_ID" *ngFor="let obj of Accounts">
+                                            {{obj.ACC_AR_NAME}}</option>
+
+                                    </select>
+                                </div>
+                                <!--  <div *ngIf="frmRef.submitted && PortfolioNameAR.invalid  || PortfolioNameAR.invalid && PortfolioNameAR.touched " class="text-right invalid-feedback">
+                                <div *ngIf="PortfolioNameAR.errors.required">   {{ 'ResultOfPortPage.ValidChPort' | translate }}</div>
+                            </div> -->
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-12 d-flex align-items-center">
+                    <div class="row flex-column flex-lg-row w-100 mb-3">
+                        <div class="col-lg-4 col-12 d-flex align-items-center justify-content-start">
+                            <label class="mb-lg-0 mt-lg-0 mb-2 mt-3">
+                                سنة:
+                            </label>
+                        </div>
+                        <div class="col-lg-8 col-12">
+                            <div class="d-flex align-items-center w-100 position-relative">
+                                <div class="form-group date_hijiri w-100" style="display: none;">
+                                    <div class="input-group">
+                                        <input type="text" id="hijrDate" name="DateHijri" [(ngModel)]='DateHijri'
+                                            class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group date_melady w-100">
+                                    <div class="input-group">
+                                        <input name="ToDate" [(ngModel)]="ToDate" id="gregDate" type="text"
+                                            class="form-control pr-0 pl-2 w-100 ad_Input">
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 view-report">
+                    <button class="nav-link text-right mr-0" type="submit">
+                        <i class="fas fa-eye"></i>
+                        <span class="mr-2">{{ 'ResultOfPortPage.lblShowReport' | translate }}</span>
+                    </button>
+                    <!-- <button class="nav-link text-right mr-0" type="button"  (click)="EditReport()">
+                <i class="fas fa-eye"></i>
+                <span class="mr-2">{{ 'ResultOfPortPage.lblEditReport' | translate }}</span>
+            </button> -->
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="designer" dir="ltr">
+
+</div>
