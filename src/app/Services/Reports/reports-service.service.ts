@@ -35,6 +35,15 @@ export class ReportsServiceService {
    return this.http.post(this.common.rooturl+'/ReportViewer/ResultOfPortofolio/',{'todate':todate,'portofolioid':portofolioid});
 
   }
+  MonthlyAnalisisForEntriesModel(startDate: string, companyBranchCode: string, entryID: string, databaseID:string ){
+    return this.http.post(this.common.rooturl+'/ReportViewer/MonthlyAnalisisForEntriesModel/',{'startDate':startDate,'companyBranchCode':companyBranchCode,'entryID': entryID,'databaseID':databaseID});
+  }
+  MonthlyAnalisisForAccounts(startDate: string, companyBranchCode: string, AccountID: string, databaseID:string ){
+    return this.http.post(this.common.rooturl+'/ReportViewer/MonthlyAnalisisForAccounts/',{'startDate':startDate,'companyBranchCode':companyBranchCode,'AccountID': AccountID,'databaseID':databaseID});
+  }
+  OpeningEntries(startDate: string, companyBranchCode: string, databaseID:string ){
+    return this.http.post(this.common.rooturl+'/ReportViewer/OpeningEntries/',{'startDate':startDate,'companyBranchCode':companyBranchCode,'databaseID':databaseID});
+  }
 
    savereport(report:any){
     debugger;

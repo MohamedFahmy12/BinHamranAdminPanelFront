@@ -27,8 +27,8 @@ import { ViewReportsComponent } from './Component/Reports/view-reports/view-repo
 import { NgSelectModule } from '@ng-select/ng-select';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import {MultiSelectModule} from 'primeng/multiselect';
-import {AccordionModule} from 'primeng/accordion';     //accordion and accordion tab
-import {MenuItem} from 'primeng/api';   
+import {AccordionModule} from 'primeng/accordion';
+import { OpiningEntryComponent } from './Component/Reports/opining-entry/opining-entry.component';     //accordion and accordion tab
 
 
 // import { NgSelect2Module } from 'select2';
@@ -55,7 +55,8 @@ import {MenuItem} from 'primeng/api';
     MustMatchDirective,
     MonthlyAnalisisForEntriesModelComponent,
     MonthlyAnalisisForAccountsComponent,
-    ViewReportsComponent
+    ViewReportsComponent,
+    OpiningEntryComponent
   ],
   imports: [
     BrowserModule,

@@ -1301,3 +1301,22 @@ button[disabled] i:hover {
 }
 
 /*# sourceMappingURL=main-rtl.css.map */
+
+/* New additions */
+li.ui-multiselect-item.ui-corner-all {
+  text-align: right;
+}
+body .ui-multiselect-panel .ui-multiselect-header .ui-chkbox {
+  margin: 0 .5rem;
+}
+li.ui-multiselect-item.ui-corner-all span {
+  margin: 0 0.5rem;
+}
+body .ui-multiselect{
+  width: 100%;
+
+}
+.ui-multiselect .ui-multiselect-trigger{
+  left: 0;
+  right: auto;
+}

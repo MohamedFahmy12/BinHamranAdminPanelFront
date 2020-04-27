@@ -38,6 +38,7 @@ export class ViewReportsComponent implements OnInit {
       
      this.report.loadDocument(this.route.snapshot.paramMap.get('Reportview'));
      this.viewer.report = this.report;
+     console.log("reeee", this.report);
      this.viewer.renderHtml('viewer');
     
   }

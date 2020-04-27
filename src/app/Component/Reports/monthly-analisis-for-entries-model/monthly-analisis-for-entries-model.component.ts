@@ -21,13 +21,14 @@ export class MonthlyAnalisisForEntriesModelComponent implements OnInit {
 
   result: any;
   ToDate: any;
-  DateHijri: any;
+  Date: any;
   PortfolioID: number;
   DatabaseID:number;
   CompanyBranchID:number;
   EntryID:number;
   dbIds: string;
   ComIDS: string;
+  EntIDS: string;
   dropdownSettings = {};
   DbObj: DatabaseModule = new DatabaseModule();
   CBObj: BranchModule = new BranchModule();
@@ -53,30 +54,36 @@ export class MonthlyAnalisisForEntriesModelComponent implements OnInit {
 
   ngOnInit() {
     this.toastr.warning(this.ToastrMsgTranslate("ToastrMsg.Reporttoster"), this.PageName);
-    this.ToDate = this.datehelp.GetCurrentDate();
+    this.ToDate = 2019;
     this.BreadCrumTranslate();
     this.SelectDatabase();
-    
-   
-
   }
   PickCom(event){
     debugger;
     this.ComIDS = event[0].COM_BRN_CODE;
     for(var i = 1; i< event.length ; i++)
     {
-      var did= event[i].COM_BRN_CODE;
-      this.ComIDS += ','+ did;
+      var id= event[i].COM_BRN_CODE;
+      this.ComIDS += ','+ id;
     }
 
+  }
+  PickEnt(event){
+    debugger;
+    this.EntIDS = event[0].Setting_ID;
+    for(var i = 1; i< event.length ; i++)
+    {
+      var id= event[i].Setting_ID;
+      this.EntIDS += ','+ id;
+    }
   }
   pick(event){
     debugger;
     this.dbIds = event[0].DatabaseNameId;
     for(var i = 1; i< event.length ; i++)
     {
-      var did= event[i].DatabaseNameId;
-      this.dbIds += ','+ did;
+      var id= event[i].DatabaseNameId;
+      this.dbIds += ','+ id;
     }
 
     this.SelectBranches();
@@ -102,18 +109,14 @@ export class MonthlyAnalisisForEntriesModelComponent implements OnInit {
     debugger;
     this.ViewReport();
   }
-  onItemSelect(item: any) {
-    console.log(item);
-  }
-  onSelectAll(items: any) {
-    console.log(items);
-  }
+  
 
   ViewReport() {
     debugger;
     this.ToDate = (<HTMLInputElement>document.getElementById("gregDate"))
       .value ? (<HTMLInputElement>document.getElementById("gregDate")).value : null;
-    this.ReportSer.ViewResultOfPortofolioWork(this.ToDate, this.PortfolioID).subscribe(
+
+    this.ReportSer.MonthlyAnalisisForEntriesModel(this.ToDate, this.ComIDS,this.EntIDS, this.dbIds).subscribe(
       (data: Response) => {
         debugger;
         this.result = data;
@@ -126,7 +129,7 @@ export class MonthlyAnalisisForEntriesModelComponent implements OnInit {
   }
   EditReport() {
 
-    this.router.navigate(['/editreports', { 'ReportEdit': 'RPTResultOfPortofolioWork.mrt' }]);
+    this.router.navigate(['/editreports', { 'ReportEdit': 'MonthlyAnalisisForEntriesModel.mrt' }]);
     debugger;
     // this.ToDate = (<HTMLInputElement>document.getElementById("gregDate")).value?(<HTMLInputElement>document.getElementById("gregDate")).value:null;
     // this.ReportSer.EditResultOfPortofolioWork(this.ToDate,this.PortfolioID).subscribe(

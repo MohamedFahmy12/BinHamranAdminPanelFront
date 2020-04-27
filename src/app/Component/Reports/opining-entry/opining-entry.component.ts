@@ -1,22 +1,21 @@
 import { Component, OnInit } from '@angular/core';
+import { BranchModule } from 'src/app/Models/DataModels/branch/branch.module';
+import { AccountModule } from 'src/app/Models/DataModels/account/account.module';
+import { DatabaseModule } from 'src/app/Models/DataModels/database/database.module';
+import { NgForm } from '@angular/forms';
+import { DateHelperService } from 'src/app/Helper/date-helper.service';
 import { ReportsServiceService } from 'src/app/Services/Reports/reports-service.service';
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
-import { DateHelperService } from 'src/app/Helper/date-helper.service';
 import { Router } from '@angular/router';
-import { NgForm } from '@angular/forms';
-import { DatabaseModule } from 'src/app/Models/DataModels/database/database.module';
-import { AccountModule } from 'src/app/Models/DataModels/account/account.module';
 import { EntryModule } from 'src/app/Models/DataModels/entry/entry.module';
-import { BranchModule } from 'src/app/Models/DataModels/branch/branch.module';
-
 
 @Component({
-  selector: 'app-monthly-analisis-for-accounts',
-  templateUrl: './monthly-analisis-for-accounts.component.html',
-  styleUrls: ['./monthly-analisis-for-accounts.component.css']
+  selector: 'app-opining-entry',
+  templateUrl: './opining-entry.component.html',
+  styleUrls: ['./opining-entry.component.css']
 })
-export class MonthlyAnalisisForAccountsComponent implements OnInit {
+export class OpiningEntryComponent implements OnInit {
 
   result: any;
   ToDate: any;
@@ -78,26 +77,12 @@ export class MonthlyAnalisisForAccountsComponent implements OnInit {
     this.dbIds = event[0].DatabaseNameId;
     for(var i = 1; i< event.length ; i++)
     {
-      debugger;
       var id= event[i].DatabaseNameId;
       this.dbIds += ','+ id;
     }
 
     this.SelectBranches();
-    this.SelectAccounts();
   }
-  // pick1(event){
-  //   debugger;
-  //   this.dbIds = event[0].DatabaseNameId;
-  //   for(var i = 1; i< event.length ; i++)
-  //   {
-  //     var id= event[i].DatabaseNameId;
-  //     this.dbIds += ','+ id;
-  //   }
-
-  //   this.SelectBranches();
-  //   this.SelectEntries();
-  // }
   BreadCrumTranslate() {
     debugger;
     this.translate.get(["ResultOfPortPage.breadcrumb"])
@@ -123,7 +108,7 @@ export class MonthlyAnalisisForAccountsComponent implements OnInit {
     debugger;
     this.ToDate = (<HTMLInputElement>document.getElementById("gregDate"))
       .value ? (<HTMLInputElement>document.getElementById("gregDate")).value : null;
-    this.ReportSer.MonthlyAnalisisForAccounts(this.ToDate, this.ComIDS,this.AccIDs, this.dbIds).subscribe(
+    this.ReportSer.OpeningEntries(this.ToDate, this.ComIDS, this.dbIds).subscribe(
       (data: Response) => {
         debugger;
         this.result = data;
@@ -136,7 +121,7 @@ export class MonthlyAnalisisForAccountsComponent implements OnInit {
   }
   EditReport() {
 
-    this.router.navigate(['/editreports', { 'ReportEdit': 'RPTResultOfPortofolioWork.mrt' }]);
+    this.router.navigate(['/editreports', { 'ReportEdit': 'OpeningEntries.mrt' }]);
     debugger;
     // this.ToDate = (<HTMLInputElement>document.getElementById("gregDate")).value?(<HTMLInputElement>document.getElementById("gregDate")).value:null;
     // this.ReportSer.EditResultOfPortofolioWork(this.ToDate,this.PortfolioID).subscribe(
@@ -181,23 +166,7 @@ export class MonthlyAnalisisForAccountsComponent implements OnInit {
       }
     );
   }
-  SelectAccounts() {
-    debugger;
-
-    this.ReportSer.GetAccounts(this.dbIds).subscribe(
-      res => {
-        // this.portfolios=res as Portfolio[] ;
-
-        this.Accounts = res as AccountModule[];
-
-
-      },
-      err => {
-        this.toastr.error(this.ToastrMsgTranslate("ToastrMsg.UnExpError"), this.PageName);
-
-      }
-    );
-  }
+  
   SelectBranches() {
     debugger;
 
@@ -215,6 +184,7 @@ export class MonthlyAnalisisForAccountsComponent implements OnInit {
       }
     );
   }
+
 
 
 }

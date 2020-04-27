@@ -7,6 +7,8 @@ import { AuthGuard } from './Helper/auth.guard';
 import { ForbiddenComponent } from './Component/Autentication/forbidden/forbidden.component';
 import { MonthlyAnalisisForAccountsComponent } from './Component/Reports/monthly-analisis-for-accounts/monthly-analisis-for-accounts.component';
 import { MonthlyAnalisisForEntriesModelComponent } from './Component/Reports/monthly-analisis-for-entries-model/monthly-analisis-for-entries-model.component';
+import { ViewReportsComponent } from './Component/Reports/view-reports/view-reports.component';
+import { OpiningEntryComponent } from './Component/Reports/opining-entry/opining-entry.component';
 
 const routes: Routes = [
   //no layout routes
@@ -23,6 +25,8 @@ const routes: Routes = [
     {path:'forbidden', component:ForbiddenComponent},
     {path:'MonthlyAnalisisForAccounts', component:MonthlyAnalisisForAccountsComponent},
     {path:'MonthlyAnalisisForEntriesModel', component:MonthlyAnalisisForEntriesModelComponent},
+    {path:'OpiningEntries', component:OpiningEntryComponent},
+    {path:'ViewReport',component:ViewReportsComponent,data:{permittedRoles:['SuperAdmin','Admin']}},
     { path: '**', redirectTo: '' }
 
 
