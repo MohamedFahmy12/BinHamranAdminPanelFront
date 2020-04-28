@@ -28,7 +28,9 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import {MultiSelectModule} from 'primeng/multiselect';
 import {AccordionModule} from 'primeng/accordion';
-import { OpiningEntryComponent } from './Component/Reports/opining-entry/opining-entry.component';     //accordion and accordion tab
+import { OpiningEntryComponent } from './Component/Reports/opining-entry/opining-entry.component';
+import { AccountTotalBalanceComponent } from './Component/Reports/account-total-balance/account-total-balance.component';
+import { GeneralDailyComponent } from './Component/Reports/general-daily/general-daily.component';     //accordion and accordion tab
 
 
 // import { NgSelect2Module } from 'select2';
@@ -56,7 +58,9 @@ import { OpiningEntryComponent } from './Component/Reports/opining-entry/opining
     MonthlyAnalisisForEntriesModelComponent,
     MonthlyAnalisisForAccountsComponent,
     ViewReportsComponent,
-    OpiningEntryComponent
+    OpiningEntryComponent,
+    AccountTotalBalanceComponent,
+    GeneralDailyComponent
   ],
   imports: [
     BrowserModule,

@@ -9,6 +9,8 @@ import { MonthlyAnalisisForAccountsComponent } from './Component/Reports/monthly
 import { MonthlyAnalisisForEntriesModelComponent } from './Component/Reports/monthly-analisis-for-entries-model/monthly-analisis-for-entries-model.component';
 import { ViewReportsComponent } from './Component/Reports/view-reports/view-reports.component';
 import { OpiningEntryComponent } from './Component/Reports/opining-entry/opining-entry.component';
+import { AccountTotalBalanceComponent } from './Component/Reports/account-total-balance/account-total-balance.component';
+import { GeneralDailyComponent } from './Component/Reports/general-daily/general-daily.component';
 
 const routes: Routes = [
   //no layout routes
@@ -26,6 +28,8 @@ const routes: Routes = [
     {path:'MonthlyAnalisisForAccounts', component:MonthlyAnalisisForAccountsComponent},
     {path:'MonthlyAnalisisForEntriesModel', component:MonthlyAnalisisForEntriesModelComponent},
     {path:'OpiningEntries', component:OpiningEntryComponent},
+    {path:'AccountTotalBalance', component:AccountTotalBalanceComponent},
+    {path:'GeneralDaily', component:GeneralDailyComponent},
     {path:'ViewReport',component:ViewReportsComponent,data:{permittedRoles:['SuperAdmin','Admin']}},
     { path: '**', redirectTo: '' }
 

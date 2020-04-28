@@ -23,6 +23,8 @@
         "lblMonthlyAccount":"Monthly Analysis For Accounts",
         "lblMonthlyEntries":"Monthly Analysis For Entries",
         "lbOpeningEntries":"Opening Entries",
+        "lbAccountTotalBalance":"Account Total Balance",
+        "lbGeneralDaily":"General Daily",
         "lblReports":"Reports",
         "lblResultofport":"Result Of Portofolio",
         "lblEvalport":"Portofolio Evaluation",

@@ -18,6 +18,8 @@
         "lblMonthlyAccount":"التحليل الشهرى للحسابات",
         "lblMonthlyEntries":"التحليل الشهرى لانواع السندات",
         "lbOpeningEntries":"القيد الافتتاحى",
+        "lbAccountTotalBalance":"رصيد الحساب المجمع",
+        "lbGeneralDaily":"اليومية العامة",
         "lblNDebit":"إشعار مدين",
         "lblRiyalExchange":"سند قبض ريال",
         "lblCheckExchange":"سند قيد يومية",

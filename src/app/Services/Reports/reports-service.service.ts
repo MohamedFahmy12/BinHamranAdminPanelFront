@@ -44,6 +44,16 @@ export class ReportsServiceService {
   OpeningEntries(startDate: string, companyBranchCode: string, databaseID:string ){
     return this.http.post(this.common.rooturl+'/ReportViewer/OpeningEntries/',{'startDate':startDate,'companyBranchCode':companyBranchCode,'databaseID':databaseID});
   }
+  AccountTotalBalance(startDate: string, companyBranchCode: string, AccountID: string, databaseID:string )
+  {
+    return this.http.post(this.common.rooturl+'/ReportViewer/AccountTotalBalance/',
+    {'startDate':startDate,'companyBranchCode':companyBranchCode,'AccountID': AccountID,'databaseID':databaseID});
+  }
+  GeneralDaily(startDate: string,endDate: string, companyBranchCode: string,  databaseID:string)
+  {
+    return this.http.post(this.common.rooturl+'/ReportViewer/GeneralDaily/',
+    {'startDate':startDate,'endDate': endDate,'companyBranchCode':companyBranchCode,'databaseID':databaseID});
+  }
 
    savereport(report:any){
     debugger;
