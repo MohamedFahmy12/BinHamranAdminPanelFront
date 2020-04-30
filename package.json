@@ -36,7 +36,7 @@
     "angular-font-awesome": "^3.1.2",
     "font-awesome": "^4.7.0",
     "hijri-date": "^0.2.2",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "ng-multiselect-dropdown": "^0.2.10",
     "ngx-toaster": "^1.0.1",
     "ngx-toastr": "^11.3.3",
