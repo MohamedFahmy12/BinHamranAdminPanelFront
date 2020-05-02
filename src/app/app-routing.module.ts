@@ -11,6 +11,9 @@ import { ViewReportsComponent } from './Component/Reports/view-reports/view-repo
 import { OpiningEntryComponent } from './Component/Reports/opining-entry/opining-entry.component';
 import { AccountTotalBalanceComponent } from './Component/Reports/account-total-balance/account-total-balance.component';
 import { GeneralDailyComponent } from './Component/Reports/general-daily/general-daily.component';
+import { InstitutionfeesComponent } from './Component/Reports/institutionfees/institutionfees.component';
+import { InstitutionTrialBalanceComponent } from './Component/Reports/institution-trial-balance/institution-trial-balance.component';
+import { BranchesTrialBalanceComponent } from './Component/Reports/branches-trial-balance/branches-trial-balance.component';
 
 const routes: Routes = [
   //no layout routes
@@ -30,6 +33,9 @@ const routes: Routes = [
     {path:'OpiningEntries', component:OpiningEntryComponent},
     {path:'AccountTotalBalance', component:AccountTotalBalanceComponent},
     {path:'GeneralDaily', component:GeneralDailyComponent},
+    {path:'Institutionfees', component:InstitutionfeesComponent},
+    {path:'InstitutionTrialBalance', component:InstitutionTrialBalanceComponent},
+    {path:'BranchesTrialBalance', component:BranchesTrialBalanceComponent},
     {path:'ViewReport',component:ViewReportsComponent,data:{permittedRoles:['SuperAdmin','Admin']}},
     { path: '**', redirectTo: '' }
 

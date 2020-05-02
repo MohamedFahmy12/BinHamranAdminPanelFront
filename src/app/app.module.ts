@@ -30,7 +30,10 @@ import {MultiSelectModule} from 'primeng/multiselect';
 import {AccordionModule} from 'primeng/accordion';
 import { OpiningEntryComponent } from './Component/Reports/opining-entry/opining-entry.component';
 import { AccountTotalBalanceComponent } from './Component/Reports/account-total-balance/account-total-balance.component';
-import { GeneralDailyComponent } from './Component/Reports/general-daily/general-daily.component';     //accordion and accordion tab
+import { GeneralDailyComponent } from './Component/Reports/general-daily/general-daily.component';
+import { InstitutionfeesComponent } from './Component/Reports/institutionfees/institutionfees.component';
+import { InstitutionTrialBalanceComponent } from './Component/Reports/institution-trial-balance/institution-trial-balance.component';
+import { BranchesTrialBalanceComponent } from './Component/Reports/branches-trial-balance/branches-trial-balance.component';     //accordion and accordion tab
 
 
 // import { NgSelect2Module } from 'select2';
@@ -60,7 +63,10 @@ import { GeneralDailyComponent } from './Component/Reports/general-daily/general
     ViewReportsComponent,
     OpiningEntryComponent,
     AccountTotalBalanceComponent,
-    GeneralDailyComponent
+    GeneralDailyComponent,
+    InstitutionfeesComponent,
+    InstitutionTrialBalanceComponent,
+    BranchesTrialBalanceComponent
   ],
   imports: [
     BrowserModule,

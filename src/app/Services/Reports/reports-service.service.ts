@@ -54,6 +54,21 @@ export class ReportsServiceService {
     return this.http.post(this.common.rooturl+'/ReportViewer/GeneralDaily/',
     {'startDate':startDate,'endDate': endDate,'companyBranchCode':companyBranchCode,'databaseID':databaseID});
   }
+  Institutionfees(startDate: string,endDate: string, companyBranchCode: string,  databaseID:string,type:string)
+  {
+    return this.http.post(this.common.rooturl+'/ReportViewer/Institutionfees/',
+    {'startDate':startDate,'endDate': endDate,'companyBranchCode':companyBranchCode,'databaseID':databaseID,'type':type});
+  }
+  InstitutionTrialBalance(startDate: string,   databaseID:string)
+  {
+    return this.http.post(this.common.rooturl+'/ReportViewer/InstitutionTrialBalance/',
+    {'startDate':startDate,'databaseID':databaseID});
+  }
+  BranchesTrialBalance(startDate: string, companyBranchCode: string, databaseID:string)
+  {
+    return this.http.post(this.common.rooturl+'/ReportViewer/BranchesTrialBalance/',
+    {'startDate':startDate,'companyBranchCode':companyBranchCode,'databaseID':databaseID});
+  }
 
    savereport(report:any){
     debugger;
