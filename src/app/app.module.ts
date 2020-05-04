@@ -33,7 +33,11 @@ import { AccountTotalBalanceComponent } from './Component/Reports/account-total-
 import { GeneralDailyComponent } from './Component/Reports/general-daily/general-daily.component';
 import { InstitutionfeesComponent } from './Component/Reports/institutionfees/institutionfees.component';
 import { InstitutionTrialBalanceComponent } from './Component/Reports/institution-trial-balance/institution-trial-balance.component';
-import { BranchesTrialBalanceComponent } from './Component/Reports/branches-trial-balance/branches-trial-balance.component';     //accordion and accordion tab
+import { BranchesTrialBalanceComponent } from './Component/Reports/branches-trial-balance/branches-trial-balance.component';
+import { FixedAssetsOfInstitutionComponent } from './Component/Reports/fixed-assets-of-institution/fixed-assets-of-institution.component';
+import { FixedAssetsAdditionsComponent } from './Component/Reports/fixed-assets-additions/fixed-assets-additions.component';
+import { TotalExclusionOfFixedAssetsComponent } from './Component/Reports/total-exclusion-of-fixed-assets/total-exclusion-of-fixed-assets.component';
+import { DepreciationOfFixedAssetsComponent } from './Component/Reports/depreciation-of-fixed-assets/depreciation-of-fixed-assets.component';     //accordion and accordion tab
 
 
 // import { NgSelect2Module } from 'select2';
@@ -66,7 +70,11 @@ import { BranchesTrialBalanceComponent } from './Component/Reports/branches-tria
     GeneralDailyComponent,
     InstitutionfeesComponent,
     InstitutionTrialBalanceComponent,
-    BranchesTrialBalanceComponent
+    BranchesTrialBalanceComponent,
+    FixedAssetsOfInstitutionComponent,
+    FixedAssetsAdditionsComponent,
+    TotalExclusionOfFixedAssetsComponent,
+    DepreciationOfFixedAssetsComponent
   ],
   imports: [
     BrowserModule,

@@ -14,6 +14,10 @@ import { GeneralDailyComponent } from './Component/Reports/general-daily/general
 import { InstitutionfeesComponent } from './Component/Reports/institutionfees/institutionfees.component';
 import { InstitutionTrialBalanceComponent } from './Component/Reports/institution-trial-balance/institution-trial-balance.component';
 import { BranchesTrialBalanceComponent } from './Component/Reports/branches-trial-balance/branches-trial-balance.component';
+import { FixedAssetsOfInstitutionComponent } from './Component/Reports/fixed-assets-of-institution/fixed-assets-of-institution.component';
+import { FixedAssetsAdditionsComponent } from './Component/Reports/fixed-assets-additions/fixed-assets-additions.component';
+import { TotalExclusionOfFixedAssetsComponent } from './Component/Reports/total-exclusion-of-fixed-assets/total-exclusion-of-fixed-assets.component';
+import { DepreciationOfFixedAssetsComponent } from './Component/Reports/depreciation-of-fixed-assets/depreciation-of-fixed-assets.component';
 
 const routes: Routes = [
   //no layout routes
@@ -36,6 +40,10 @@ const routes: Routes = [
     {path:'Institutionfees', component:InstitutionfeesComponent},
     {path:'InstitutionTrialBalance', component:InstitutionTrialBalanceComponent},
     {path:'BranchesTrialBalance', component:BranchesTrialBalanceComponent},
+    {path:'FixedAssetsOfInstitution', component:FixedAssetsOfInstitutionComponent},
+    {path:'FixedAssetsAdditions', component:FixedAssetsAdditionsComponent},
+    {path:'TotalExclusionOfFixedAssets', component:TotalExclusionOfFixedAssetsComponent},
+    {path:'DepreciationOfFixedAssets', component:DepreciationOfFixedAssetsComponent},
     {path:'ViewReport',component:ViewReportsComponent,data:{permittedRoles:['SuperAdmin','Admin']}},
     { path: '**', redirectTo: '' }
 
