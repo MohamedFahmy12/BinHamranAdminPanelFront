@@ -35,6 +35,18 @@ export class ReportsServiceService {
    return this.http.post(this.common.rooturl+'/ReportViewer/ResultOfPortofolio/',{'todate':todate,'portofolioid':portofolioid});
 
   }
+  ProvisionForDepreciationOfFixedAssets(startDate: string,endDate: string, companyBranchCode: string,AccountID: string,  databaseID:string){
+    return this.http.post(this.common.rooturl+'/ReportViewer/ProvisionForDepreciationOfFixedAssets/',
+    {'startDate':startDate,'endDate': endDate,'companyBranchCode':companyBranchCode,'AccountID': AccountID,'databaseID':databaseID});
+  }
+  DepreciationOfFixedAsset(startDate: string,endDate: string, companyBranchCode: string,AccountID: string,  databaseID:string){
+    return this.http.post(this.common.rooturl+'/ReportViewer/DepreciationOfFixedAssets/',
+    {'startDate':startDate,'endDate': endDate,'companyBranchCode':companyBranchCode,'AccountID': AccountID,'databaseID':databaseID});
+  }
+  LastDurationGoods(startDate: string, companyBranchCode: string, databaseID:string){
+    return this.http.post(this.common.rooturl+'/ReportViewer/LastDurationGoods/',
+    {'startDate':startDate,'companyBranchCode':companyBranchCode,'databaseID':databaseID});
+  }
   MonthlyAnalisisForEntriesModel(startDate: string, companyBranchCode: string, entryID: string, databaseID:string ){
     return this.http.post(this.common.rooturl+'/ReportViewer/MonthlyAnalisisForEntriesModel/',{'startDate':startDate,'companyBranchCode':companyBranchCode,'entryID': entryID,'databaseID':databaseID});
   }

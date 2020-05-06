@@ -37,7 +37,11 @@ import { BranchesTrialBalanceComponent } from './Component/Reports/branches-tria
 import { FixedAssetsOfInstitutionComponent } from './Component/Reports/fixed-assets-of-institution/fixed-assets-of-institution.component';
 import { FixedAssetsAdditionsComponent } from './Component/Reports/fixed-assets-additions/fixed-assets-additions.component';
 import { TotalExclusionOfFixedAssetsComponent } from './Component/Reports/total-exclusion-of-fixed-assets/total-exclusion-of-fixed-assets.component';
-import { DepreciationOfFixedAssetsComponent } from './Component/Reports/depreciation-of-fixed-assets/depreciation-of-fixed-assets.component';     //accordion and accordion tab
+import { DepreciationOfFixedAssetsComponent } from './Component/Reports/depreciation-of-fixed-assets/depreciation-of-fixed-assets.component';
+import { ConsumptionOfDepreciationComponent } from './Component/Reports/consumption-of-depreciation/consumption-of-depreciation.component';
+import { ProvisionForDepreciationOfFixedAssetsComponent } from './Component/Reports/provision-for-depreciation-of-fixed-assets/provision-for-depreciation-of-fixed-assets.component';
+import { LastDurationGoodsComponent } from './Component/Reports/last-duration-goods/last-duration-goods.component';  
+import {DropdownModule} from 'primeng/dropdown';   //accordion and accordion tab
 
 
 // import { NgSelect2Module } from 'select2';
@@ -74,7 +78,10 @@ import { DepreciationOfFixedAssetsComponent } from './Component/Reports/deprecia
     FixedAssetsOfInstitutionComponent,
     FixedAssetsAdditionsComponent,
     TotalExclusionOfFixedAssetsComponent,
-    DepreciationOfFixedAssetsComponent
+    DepreciationOfFixedAssetsComponent,
+    ConsumptionOfDepreciationComponent,
+    ProvisionForDepreciationOfFixedAssetsComponent,
+    LastDurationGoodsComponent
   ],
   imports: [
     BrowserModule,
@@ -83,7 +90,7 @@ import { DepreciationOfFixedAssetsComponent } from './Component/Reports/deprecia
       
     ]) ,
     MultiSelectModule,
-    
+    DropdownModule,
     AccordionModule,
     NgMultiSelectDropDownModule,
     NgSelectModule,

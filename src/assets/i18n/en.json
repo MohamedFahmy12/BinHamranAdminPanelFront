@@ -1,5 +1,16 @@
 {
     "SideBar":{
+        "lblDatabase":"Database",
+        "lblBranch":"Branch",
+        "lblAccount":"Account",
+        "lblFromDate":"FromDate",
+        "lblToDate":"To Date",
+        "lblDate":"Date",
+        "lblChooseAccount":"Choose Account",
+        "lblChooseDatabase":"Choose Database/s",
+        "lblChooseBranch":"Choose Branch/s",
+        "lblChooseEntry":"Choose Entry Type/s",
+
         "lblProfile":"Profile",
         "lblSignOut":"Sign Out",
         "lblWelcome":"Welcome",
@@ -7,7 +18,7 @@
         "lblCards":"Cards",
         "lblCountries":"Country Card",
         "lblPartner":"Partner Card",
-        "lblAccount":"Account Card",
+        
         "lblEmp":"Employee Card",
         "lblPort":"Portofolio Card",
         "lblTransactions":"Transactions",
@@ -34,6 +45,9 @@
         "lbTotalExclusionOfFixedAssets":"Total Exclusion Of Fixed Assets",
         "lbFixedAssetsAdditions":"Fixed Assets Additions",
         "lbFixedAssetsOfInstitution":"Fixed Assets Of Institution",
+        "lblConsumptionOfDepreciation":"Consumption Of Depreciation",
+        "lblProvisionForDepreciationOfFixedAssets":"Provision For Depreciation Of Fixed Assets",
+        "lblLastDurationGoods": "Ending Inventory",
         "lblReports":"Reports",
         "lblResultofport":"Result Of Portofolio",
         "lblEvalport":"Portofolio Evaluation",

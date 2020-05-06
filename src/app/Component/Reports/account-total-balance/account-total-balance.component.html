@@ -49,7 +49,7 @@
                 </a>
             </li>
             <li class="breadcrumb-item active">
-                <span>التحليل الشهرى للحسابات</span>
+                <span>{{ 'SideBar.lbAccountTotalBalance' | translate }}</span>
             </li>
         </ol>
     </nav>
@@ -60,23 +60,15 @@
                     <div class="row w-100 mb-3">
                         <div class="col-lg-4 col-12">
                             <label for="DatabaseName" class="mb-lg-0 mt-lg-0 mb-2 mt-3">
-                                قاعدة البيانات:
+                                {{'SideBar.lblDatabase' | translate}}:
                             </label>
                         </div>
                         <div class="col-lg-8 col-12">
-
                             <div class=" w-100 search position-relative">
                                 <p-multiSelect [options]="DbNames" [(ngModel)]="DbObj.DatabaseNameId"
                                     optionLabel="DbName" (onChange)="pick($event.value)" id="DatabaseNameId"
-                                    name="DatabaseNameId" defaultLabel="اختر قاعدة البيانات"></p-multiSelect>
+                                    name="DatabaseNameId" defaultLabel="{{'SideBar.lblChooseDatabase' | translate}}"></p-multiSelect>
                             </div>
-                            <!-- <div class=" w-100 search position-relative">
-                                <p-multiSelect [options]="DbNames" [(ngModel)]="DbObj.DatabaseNameId"
-                                    optionLabel="DbName" (onChange)="pick($event.value)" id="DatabaseNameId"
-                                    name="DatabaseNameId" defaultLabel="اختر قاعدة البيانات"></p-multiSelect>
-                            </div> -->
-
-
                         </div>
                     </div>
                 </div>
@@ -84,7 +76,7 @@
                     <div class="row w-100 mb-3">
                         <div class="col-lg-4 col-12">
                             <label class="mb-lg-0 mt-lg-0 mb-2 mt-3">
-                                الفرع:
+                                {{'SideBar.lblBranch' | translate}}:
                             </label>
                         </div>
                         <div class="col-lg-8 col-12">
@@ -92,7 +84,7 @@
                                 <div class=" w-100 search position-relative">
                                     <p-multiSelect [options]="Branches" [(ngModel)]="CBObj.COM_BRN_CODE"
                                         optionLabel="COM_BRN_AR_NAME" (onChange)="PickCom($event.value)"
-                                        id="COM_BRN_CODE" name="COM_BRN_CODE" defaultLabel="اختر الفرع"></p-multiSelect>
+                                        id="COM_BRN_CODE" name="COM_BRN_CODE" defaultLabel="{{'SideBar.lblChooseBranch' | translate}}"></p-multiSelect>
                                 </div>
                             </div>
 
@@ -103,15 +95,17 @@
                     <div class="row  w-100 mb-3">
                         <div class="col-lg-4 col-12">
                             <label class="mb-lg-0 mt-lg-0 mb-2 mt-3">
-                                الحساب:
+                                {{'SideBar.lblAccount' | translate}}:
                             </label>
                         </div>
                         <div class="col-lg-8 col-12">
                             <div>
                                 <div class=" w-100 search position-relative">
-                                    <p-multiSelect [options]="Accounts" [(ngModel)]="AccObj.ACC_ID"
+                                    <p-dropdown [options]="Accounts" [(ngModel)]="AccObj.ACC_ID"  optionLabel="ACC_AR_NAME" (onChange)="PickAcc($event.value)" id="ACC_ID"
+                                    name="ACC_ID" defaultLabel="{{'SideBar.lblChooseAccount' | translate}}"></p-dropdown>
+                                    <!-- <p-multiSelect [options]="Accounts" [(ngModel)]="AccObj.ACC_ID"
                                         optionLabel="ACC_AR_NAME" (onChange)="PickAcc($event.value)" id="ACC_ID"
-                                        name="ACC_ID" defaultLabel="اختر الحساب"></p-multiSelect>
+                                        name="ACC_ID" defaultLabel="{{'SideBar.lblChooseAccount' | translate}}"></p-multiSelect> -->
                                 </div>
 
                             </div>
@@ -123,7 +117,7 @@
                     <div class="row w-100 mb-3">
                         <div class="col-lg-4 col-12">
                             <label class="mb-lg-0 mt-lg-0 mb-2 mt-3">
-                                التاريخ:
+                                {{'SideBar.lblDate' | translate}}:
                             </label>
                         </div>
                         <div class="col-lg-8 col-12">

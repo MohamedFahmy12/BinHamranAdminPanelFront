@@ -18,6 +18,9 @@ import { FixedAssetsOfInstitutionComponent } from './Component/Reports/fixed-ass
 import { FixedAssetsAdditionsComponent } from './Component/Reports/fixed-assets-additions/fixed-assets-additions.component';
 import { TotalExclusionOfFixedAssetsComponent } from './Component/Reports/total-exclusion-of-fixed-assets/total-exclusion-of-fixed-assets.component';
 import { DepreciationOfFixedAssetsComponent } from './Component/Reports/depreciation-of-fixed-assets/depreciation-of-fixed-assets.component';
+import { ProvisionForDepreciationOfFixedAssetsComponent } from './Component/Reports/provision-for-depreciation-of-fixed-assets/provision-for-depreciation-of-fixed-assets.component';
+import { ConsumptionOfDepreciationComponent } from './Component/Reports/consumption-of-depreciation/consumption-of-depreciation.component';
+import { LastDurationGoodsComponent } from './Component/Reports/last-duration-goods/last-duration-goods.component';
 
 const routes: Routes = [
   //no layout routes
@@ -44,6 +47,9 @@ const routes: Routes = [
     {path:'FixedAssetsAdditions', component:FixedAssetsAdditionsComponent},
     {path:'TotalExclusionOfFixedAssets', component:TotalExclusionOfFixedAssetsComponent},
     {path:'DepreciationOfFixedAssets', component:DepreciationOfFixedAssetsComponent},
+    {path:'ProvisionForDepreciationOfFixedAssets',component:ProvisionForDepreciationOfFixedAssetsComponent},
+    {path:'ConsumptionOfDepreciation',component:ConsumptionOfDepreciationComponent},
+    {path:'LastDurationGoods',component:LastDurationGoodsComponent},
     {path:'ViewReport',component:ViewReportsComponent,data:{permittedRoles:['SuperAdmin','Admin']}},
     { path: '**', redirectTo: '' }
 

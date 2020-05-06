@@ -49,7 +49,7 @@
                 </a>
             </li>
             <li class="breadcrumb-item active">
-                <span>{{ 'SideBar.lbBranchesTrialBalance' | translate }}</span>
+                <span>{{ 'SideBar.lblProvisionForDepreciationOfFixedAssets' | translate }}</span>
             </li>
         </ol>
     </nav>
@@ -100,10 +100,30 @@
                     </div>
                 </div>
                 <div class="col-lg-6 col-12">
+                    <div class="row  w-100 mb-3">
+                        <div class="col-lg-4 col-12">
+                            <label class="mb-lg-0 mt-lg-0 mb-2 mt-3">
+                                الحساب:
+                            </label>
+                        </div>
+                        <div class="col-lg-8 col-12">
+                            <div>
+                                <div class=" w-100 search position-relative">
+                                    <p-multiSelect [options]="Accounts" [(ngModel)]="AccObj.ACC_ID"
+                                        optionLabel="ACC_AR_NAME" (onChange)="PickAcc($event.value)" id="ACC_ID"
+                                        name="ACC_ID" defaultLabel="اختر الحساب"></p-multiSelect>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-12">
                     <div class="row w-100 mb-3">
                         <div class="col-lg-4 col-12">
                             <label class="mb-lg-0 mt-lg-0 mb-2 mt-3">
-                                 التاريخ:
+                                من تاريخ:
                             </label>
                         </div>
                         <div class="col-lg-8 col-12">
@@ -117,6 +137,31 @@
                             <div class="form-group date_melady w-100">
                             <div class="input-group">
                                 <input readonly name="sDate"  [(ngModel)]="sDate"  id="gregDate" onclick="pickDate(event)" type="text"  class="form-control pr-0 pl-2 w-100 ad_Input">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-12">
+                    <div class="row w-100 mb-3">
+                        <div class="col-lg-4 col-12">
+                            <label class="mb-lg-0 mt-lg-0 mb-2 mt-3">
+                                إلى تاريخ:
+                            </label>
+                        </div>
+                        <div class="col-lg-8 col-12">
+                            <div class="d-flex align-items-center w-100 position-relative">
+                            <div class="form-group date_hijiri w-100" style="display: none;">
+                                    <div class="input-group">
+                                        <input readonly type="text" id="hijrDate" onclick="pickDate(event)" name="DateHijri" [(ngModel)]='DateHijri' class="form-control"
+                                            placeholder="{{ 'ResultOfPortPage.lblHijri' | translate }}" >
+                                    </div>
+                                </div>
+                            <div class="form-group date_melady w-100">
+                            <div class="input-group">
+                                <input readonly name="eDate"  [(ngModel)]="eDate"  id="gregDate2" onclick="pickDate(event)" type="text"  class="form-control pr-0 pl-2 w-100 ad_Input">
                             </div>
 
                         </div>
