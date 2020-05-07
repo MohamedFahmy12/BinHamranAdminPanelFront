@@ -1,260 +1,255 @@
-
 <!-- Loading Page -->
 <div class="body-loading">
-    <div class="lds-ellipsis">
-        <img src="../../../assets/images/waiting.png" alt="">
-       
-    </div>
+  <div class="lds-ellipsis">
+    <img src="../../../assets/images/waiting.png" alt="">
+
+  </div>
 </div>
 
 <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
-    <div class="app-header header-shadow" id="navbar">
+  <div class="app-header header-shadow" id="navbar">
 
-      <div class="app-header__logo">
-          <div class="logo-src"></div>
-          <div class="header__pane mr-auto">
-              <div>
-                  <button type="button" class="hamburger close-sidebar-btn hamburger--elastic is-active" data-class="closed-sidebar">
-                      <span class="hamburger-box">
-                          <span class="hamburger-inner"></span>
-                      </span>
-                  </button>
-              </div>
-          </div>
+    <div class="app-header__logo">
+      <div class="logo-src"></div>
+      <div class="header__pane mr-auto">
+        <div>
+          <button type="button" class="hamburger close-sidebar-btn hamburger--elastic is-active"
+            data-class="closed-sidebar">
+            <span class="hamburger-box">
+              <span class="hamburger-inner"></span>
+            </span>
+          </button>
+        </div>
       </div>
+    </div>
 
-      <div class="app-header__mobile-menu">
-          <div>
-              <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav"> 
-                  <span class="hamburger-box">
-                      <span class="hamburger-inner"></span>
-                  </span>
-              </button>
-          </div>
-      </div>
-
-
-
-      <div class="app-header__menu">
-          <span>
-              <button type="button" class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav" id="edite_side_width__botton">
-                  <span class="btn-icon-wrapper">
-                      <i class="fa fa-ellipsis-v fa-w-6"></i>
-                  </span>
-              </button>
+    <div class="app-header__mobile-menu">
+      <div>
+        <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
+          <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
           </span>
-      </div>    
-      <div class="app-header__content">
-          <div class="app-header-left">
-              <div class="search-wrapper">
-                  <div class="input-holder">
-                      <input type="text" class="search-input" placeholder="Type to search" (change)="search()" [(ngModel)]="searchText">
-                      <button class="search-icon"><span></span></button>
+        </button>
+      </div>
+    </div>
+
+
+
+    <div class="app-header__menu">
+      <span>
+        <button type="button" class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav"
+          id="edite_side_width__botton">
+          <span class="btn-icon-wrapper">
+            <i class="fa fa-ellipsis-v fa-w-6"></i>
+          </span>
+        </button>
+      </span>
+    </div>
+    <div class="app-header__content">
+
+      <div class="app-header-right">
+        <div class="header-btn-lg pr-0">
+          <div class="widget-content p-0">
+            <div class="widget-content-wrapper">
+              <div class="widget-content-left">
+                <div class="btn-group">
+                  <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                    class="p-0 btn d-flex align-items-center">
+                    <img width="42" class="rounded-circle" src="../../../assets/images/avatars/1.jpg" alt="">
+                  </a>
+                  <div tabindex="-1" role="menu" aria-hidden="true"
+                    class="text-center dropdown-menu dropdown-menu-right">
+                    <button type="button" class="dropdown-item">
+                      <i class="fa fa-user"></i>
+                      <span> {{ 'SideBar.lblProfile' | translate }}</span>
+                    </button>
+                    <button type="button" class="dropdown-item" (click)="onLogout()">
+                      <i class="fa fa-sign-out-alt"></i>
+                      <span> {{ 'SideBar.lblSignOut' | translate }}</span>
+                    </button>
                   </div>
-                  <button class="close"></button>
+                </div>
               </div>
-          </div>
-    
-          <div class="app-header-right">
-            <div class="header-btn-lg pr-0">
-                <div class="widget-content p-0">
-                    <div class="widget-content-wrapper"> 
-                        <div class="widget-content-left">
-                            <div class="btn-group">
-                                <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="p-0 btn d-flex align-items-center">
-                                    <img width="42" class="rounded-circle" src="../../../assets/images/avatars/1.jpg" alt="">
-                                </a>
-                                <div tabindex="-1" role="menu" aria-hidden="true" class="text-center dropdown-menu dropdown-menu-right">
-                                    <button type="button" class="dropdown-item">
-                                        <i class="fa fa-user"></i>
-                                        <span>   {{ 'SideBar.lblProfile' | translate }}</span>
-                                    </button>
-                                    <button type="button" class="dropdown-item" (click)="onLogout()">
-                                        <i class="fa fa-sign-out-alt"></i>
-                                        <span> {{ 'SideBar.lblSignOut' | translate }}</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                         <a href="#" *ngIf="!usabtn"  class="w-100 d-block lang" (click)="switchLanguage('en')">
-                            <img src="../../../assets/images/SVG/usa.svg">
-                        </a>  
-                        <a href="#" *ngIf="!saudibtn"  class="w-100 d-block lang" (click)="switchLanguage('ar')">
-                            <img src="../../../assets/images/SVG/saudi-arabia.svg">
-                        </a>   
-                        <!-- <button href="#" *ngIf="!usabtn"  class="w-100 d-block lang">
+              <a href="#" *ngIf="!usabtn" class="w-100 d-block lang" (click)="switchLanguage('en')">
+                <img src="../../../assets/images/SVG/usa.svg">
+              </a>
+              <a href="#" *ngIf="!saudibtn" class="w-100 d-block lang" (click)="switchLanguage('ar')">
+                <img src="../../../assets/images/SVG/saudi-arabia.svg">
+              </a>
+              <!-- <button href="#" *ngIf="!usabtn"  class="w-100 d-block lang">
                             <img src="../../../assets/images/SVG/usa.svg">
                         </button>  
                         <button href="#" *ngIf="!saudibtn"  class="w-100 d-block lang">
                             <img src="../../../assets/images/SVG/saudi-arabia.svg">
                         </button>   -->
 
-    
-                    </div>
-                </div>
-            </div>        
 
             </div>
-      </div>
-    </div>   
-    
-        <div class="app-main">
-        <div class="app-sidebar sidebar-shadow sidebar-text-dark">
-            <div class="app-header__logo">
-                <div class="logo-src"></div>
-                <div class="header__pane mr-auto">
-                    <div>
-                        <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
-                            <span class="hamburger-box">
-                                <span class="hamburger-inner"></span>
-                            </span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="app-header__mobile-menu">
-                <div>
-                    <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
-                        <span class="hamburger-box">
-                            <span class="hamburger-inner"></span>
-                        </span>
-                    </button>
-                </div>
-            </div>
-            <div class="app-header__menu">
-                <span>
-                    <button type="button" class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
-                        <span class="btn-icon-wrapper">
-                            <i class="fa fa-ellipsis-v fa-w-6"></i>
-                        </span>
-                    </button>
-                </span>
-            </div>    
-            <div class="scrollbar-sidebar text-right">
-                <div class="app-sidebar__inner">
-                    <div class="welc-pers d-flex w-100 flex-column align-items-center pt-4">
-                        <img src="../../../assets/images/avatars/1.jpg">
-                        <h4 class="mt-3"> {{ 'SideBar.lblWelcome' | translate }} {{AppLayobj.FullName}}</h4>
-                    </div>
-                    <hr>
-                    <ul class="vertical-nav-menu">
-                        <li class="mt-3 mb-3">
-                            <a  routerLink="/dashboard" class="tap-sidebar-active dashboard" [routerLinkActive]="['mm-active']" >
-                                <i class="fas fa-chart-pie metismenu-icon"></i>
-                                {{ 'SideBar.lblDash' | translate }} 
-                            </a>
-                        </li>
-                   
-                        <li class="mt-3 mb-3">
-                            <a class="tap-sidebar-active ResultportofolioWork RPTEvaluateport reportCompaniesSharesInPortfolio reportSellPurchase CashMovReyalPortofolio RPTEarnings reportProfitsYear reportTotalProfitsYears ProfitsDistributor Earningscollected" [routerLinkActive]="['mm-active']" mainListName="Reports">
-                                    <i class="fas fa-briefcase metismenu-icon"></i>
-                                    {{ 'SideBar.lblReports' | translate }} 
-                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
-                                </a>
-                            <ul>
-                                <li>
-                                    <a class="MonthlyAnalisisForEntriesModel" routerLink="/MonthlyAnalisisForEntriesModel" [routerLinkActive]="['mm-active']" >
-                                        <i class="metismenu-icon"></i>
-                                        {{ 'SideBar.lblMonthlyEntries' | translate }} 
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="MonthlyAnalisisForAccounts" routerLink="/MonthlyAnalisisForAccounts" [routerLinkActive]="['mm-active']" >
-                                        <i class="metismenu-icon"></i>
-                                        {{ 'SideBar.lblMonthlyAccount' | translate }} 
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="OpiningEntries" routerLink="/OpiningEntries" [routerLinkActive]="['mm-active']" >
-                                        <i class="metismenu-icon"></i>
-                                        {{ 'SideBar.lbOpeningEntries' | translate }} 
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="OpiningEntries" routerLink="/AccountTotalBalance" [routerLinkActive]="['mm-active']" >
-                                        <i class="metismenu-icon"></i>
-                                        {{ 'SideBar.lbAccountTotalBalance' | translate }} 
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="OpiningEntries" routerLink="/GeneralDaily" [routerLinkActive]="['mm-active']" >
-                                        <i class="metismenu-icon"></i>
-                                        {{ 'SideBar.lbGeneralDaily' | translate }} 
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="OpiningEntries" routerLink="/Institutionfees" [routerLinkActive]="['mm-active']" >
-                                        <i class="metismenu-icon"></i>
-                                        {{ 'SideBar.lbInstitutionfees' | translate }} 
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="OpiningEntries" routerLink="/InstitutionTrialBalance" [routerLinkActive]="['mm-active']" >
-                                        <i class="metismenu-icon"></i>
-                                        {{ 'SideBar.lbInstitutionTrialBalance' | translate }} 
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="OpiningEntries" routerLink="/BranchesTrialBalance" [routerLinkActive]="['mm-active']" >
-                                        <i class="metismenu-icon"></i>
-                                        {{ 'SideBar.lbBranchesTrialBalance' | translate }} 
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="OpiningEntries" routerLink="/DepreciationOfFixedAssets" [routerLinkActive]="['mm-active']" >
-                                        <i class="metismenu-icon"></i>
-                                        {{ 'SideBar.lbDepreciationOfFixedAssets' | translate }} 
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="OpiningEntries" routerLink="/TotalExclusionOfFixedAssets" [routerLinkActive]="['mm-active']" >
-                                        <i class="metismenu-icon"></i>
-                                        {{ 'SideBar.lbTotalExclusionOfFixedAssets' | translate }} 
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="OpiningEntries" routerLink="/FixedAssetsAdditions" [routerLinkActive]="['mm-active']" >
-                                        <i class="metismenu-icon"></i>
-                                        {{ 'SideBar.lbFixedAssetsAdditions' | translate }} 
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="OpiningEntries" routerLink="/FixedAssetsOfInstitution" [routerLinkActive]="['mm-active']" >
-                                        <i class="metismenu-icon"></i>
-                                        {{ 'SideBar.lbFixedAssetsOfInstitution' | translate }} 
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="OpiningEntries" routerLink="/ConsumptionOfDepreciation" [routerLinkActive]="['mm-active']" >
-                                        <i class="metismenu-icon"></i>
-                                        {{ 'SideBar.lblConsumptionOfDepreciation' | translate }} 
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="OpiningEntries" routerLink="/ProvisionForDepreciationOfFixedAssets" [routerLinkActive]="['mm-active']" >
-                                        <i class="metismenu-icon"></i>
-                                        {{ 'SideBar.lblProvisionForDepreciationOfFixedAssets' | translate }} 
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="OpiningEntries" routerLink="/LastDurationGoods" [routerLinkActive]="['mm-active']" >
-                                        <i class="metismenu-icon"></i>
-                                        {{ 'SideBar.lblLastDurationGoods' | translate }} 
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>  
-        <div class="app-main__outer">
-            <router-outlet></router-outlet>
+          </div>
         </div>
-        </div>   
-       
-    </div>  
 
+      </div>
+    </div>
+  </div>
 
-  
+  <div class="app-main">
+    <div class="app-sidebar sidebar-shadow sidebar-text-dark">
+      <div class="app-header__logo">
+        <div class="logo-src"></div>
+        <div class="header__pane mr-auto">
+          <div>
+            <button type="button" class="hamburger close-sidebar-btn hamburger--elastic" data-class="closed-sidebar">
+              <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="app-header__mobile-menu">
+        <div>
+          <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
+            <span class="hamburger-box">
+              <span class="hamburger-inner"></span>
+            </span>
+          </button>
+        </div>
+      </div>
+      <div class="app-header__menu">
+        <span>
+          <button type="button" class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
+            <span class="btn-icon-wrapper">
+              <i class="fa fa-ellipsis-v fa-w-6"></i>
+            </span>
+          </button>
+        </span>
+      </div>
+      <div class="scrollbar-sidebar text-right">
+        <div class="app-sidebar__inner">
+          <div class="welc-pers d-flex w-100 flex-column align-items-center pt-4">
+            <img src="../../../assets/images/avatars/1.jpg">
+            <h4 class="mt-3"> {{ 'SideBar.lblWelcome' | translate }} {{AppLayobj.FullName}}</h4>
+          </div>
+          <hr>
+          <ul class="vertical-nav-menu">
+            <li class="mt-3 mb-3">
+              <a routerLink="/dashboard" class="tap-sidebar-active dashboard" [routerLinkActive]="['mm-active']">
+                <i class="fas fa-chart-pie metismenu-icon"></i>
+                {{ 'SideBar.lblDash' | translate }}
+              </a>
+            </li>
 
+            <li class="mt-3 mb-3">
+              <a class="tap-sidebar-active ResultportofolioWork RPTEvaluateport reportCompaniesSharesInPortfolio reportSellPurchase CashMovReyalPortofolio RPTEarnings reportProfitsYear reportTotalProfitsYears ProfitsDistributor Earningscollected"
+                [routerLinkActive]="['mm-active']" mainListName="Reports">
+                <i class="fas fa-briefcase metismenu-icon"></i>
+                {{ 'SideBar.lblReports' | translate }}
+                <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+              </a>
+              <ul>
+                <li>
+                  <a class="MonthlyAnalisisForEntriesModel" routerLink="/MonthlyAnalisisForEntriesModel"
+                    [routerLinkActive]="['mm-active']">
+                    <i class="metismenu-icon"></i>
+                    {{ 'SideBar.lblMonthlyEntries' | translate }}
+                  </a>
+                </li>
+                <li>
+                  <a class="MonthlyAnalisisForAccounts" routerLink="/MonthlyAnalisisForAccounts"
+                    [routerLinkActive]="['mm-active']">
+                    <i class="metismenu-icon"></i>
+                    {{ 'SideBar.lblMonthlyAccount' | translate }}
+                  </a>
+                </li>
+                <li>
+                  <a class="OpiningEntries" routerLink="/OpiningEntries" [routerLinkActive]="['mm-active']">
+                    <i class="metismenu-icon"></i>
+                    {{ 'SideBar.lbOpeningEntries' | translate }}
+                  </a>
+                </li>
+                <li>
+                  <a class="OpiningEntries" routerLink="/AccountTotalBalance" [routerLinkActive]="['mm-active']">
+                    <i class="metismenu-icon"></i>
+                    {{ 'SideBar.lbAccountTotalBalance' | translate }}
+                  </a>
+                </li>
+                <li>
+                  <a class="OpiningEntries" routerLink="/GeneralDaily" [routerLinkActive]="['mm-active']">
+                    <i class="metismenu-icon"></i>
+                    {{ 'SideBar.lbGeneralDaily' | translate }}
+                  </a>
+                </li>
+                <li>
+                  <a class="OpiningEntries" routerLink="/Institutionfees" [routerLinkActive]="['mm-active']">
+                    <i class="metismenu-icon"></i>
+                    {{ 'SideBar.lbInstitutionfees' | translate }}
+                  </a>
+                </li>
+                <li>
+                  <a class="OpiningEntries" routerLink="/InstitutionTrialBalance" [routerLinkActive]="['mm-active']">
+                    <i class="metismenu-icon"></i>
+                    {{ 'SideBar.lbInstitutionTrialBalance' | translate }}
+                  </a>
+                </li>
+                <li>
+                  <a class="OpiningEntries" routerLink="/BranchesTrialBalance" [routerLinkActive]="['mm-active']">
+                    <i class="metismenu-icon"></i>
+                    {{ 'SideBar.lbBranchesTrialBalance' | translate }}
+                  </a>
+                </li>
+                <li>
+                  <a class="OpiningEntries" routerLink="/DepreciationOfFixedAssets" [routerLinkActive]="['mm-active']">
+                    <i class="metismenu-icon"></i>
+                    {{ 'SideBar.lbDepreciationOfFixedAssets' | translate }}
+                  </a>
+                </li>
+                <li>
+                  <a class="OpiningEntries" routerLink="/TotalExclusionOfFixedAssets"
+                    [routerLinkActive]="['mm-active']">
+                    <i class="metismenu-icon"></i>
+                    {{ 'SideBar.lbTotalExclusionOfFixedAssets' | translate }}
+                  </a>
+                </li>
+                <li>
+                  <a class="OpiningEntries" routerLink="/FixedAssetsAdditions" [routerLinkActive]="['mm-active']">
+                    <i class="metismenu-icon"></i>
+                    {{ 'SideBar.lbFixedAssetsAdditions' | translate }}
+                  </a>
+                </li>
+                <li>
+                  <a class="OpiningEntries" routerLink="/FixedAssetsOfInstitution" [routerLinkActive]="['mm-active']">
+                    <i class="metismenu-icon"></i>
+                    {{ 'SideBar.lbFixedAssetsOfInstitution' | translate }}
+                  </a>
+                </li>
+                <li>
+                  <a class="OpiningEntries" routerLink="/ConsumptionOfDepreciation" [routerLinkActive]="['mm-active']">
+                    <i class="metismenu-icon"></i>
+                    {{ 'SideBar.lblConsumptionOfDepreciation' | translate }}
+                  </a>
+                </li>
+                <li>
+                  <a class="OpiningEntries" routerLink="/ProvisionForDepreciationOfFixedAssets"
+                    [routerLinkActive]="['mm-active']">
+                    <i class="metismenu-icon"></i>
+                    {{ 'SideBar.lblProvisionForDepreciationOfFixedAssets' | translate }}
+                  </a>
+                </li>
+                <li>
+                  <a class="OpiningEntries" routerLink="/LastDurationGoods" [routerLinkActive]="['mm-active']">
+                    <i class="metismenu-icon"></i>
+                    {{ 'SideBar.lblLastDurationGoods' | translate }}
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="app-main__outer">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+</div>

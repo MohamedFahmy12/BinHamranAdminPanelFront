@@ -57,119 +57,117 @@
         <form class="" #frmRef="ngForm" (ngSubmit)="frmRef.form.valid && Submit(frmRef);">
             <div class="row">
                 <div class="col-12 col-lg-6">
-                    <div class="row w-100 mb-3">
-                        <div class="col-lg-4 col-12">
-                            <label for="DatabaseName" class="mb-lg-0 mt-lg-0 mb-2 mt-3">
-                                قاعدة البيانات:
-                            </label>
-                        </div>
-                        <div class="col-lg-8 col-12">
-
-                            <div class=" w-100 search position-relative">
-                                <p-multiSelect [options]="DbNames" [(ngModel)]="DbObj.DatabaseNameId"
-                                    optionLabel="DbName" (onChange)="pick($event.value)" id="DatabaseNameId"
-                                    name="DatabaseNameId" defaultLabel="اختر قاعدة البيانات"></p-multiSelect>
-                            </div>
-                            <!-- <div class=" w-100 search position-relative">
-                                <p-multiSelect [options]="DbNames" [(ngModel)]="DbObj.DatabaseNameId"
-                                    optionLabel="DbName" (onChange)="pick($event.value)" id="DatabaseNameId"
-                                    name="DatabaseNameId" defaultLabel="اختر قاعدة البيانات"></p-multiSelect>
-                            </div> -->
-
-
-                        </div>
+                  <div class="row w-100 mb-3">
+                    <div class="col-lg-4 col-12">
+                      <label for="DatabaseName" class="mb-lg-0 mt-lg-0 mb-2 mt-3">
+                        {{'SideBar.lblDatabase' | translate}}:
+                      </label>
                     </div>
+                    <div class="col-lg-8 col-12">
+                      <div class=" w-100 search position-relative">
+                        <p-multiSelect [options]="DbNames" [(ngModel)]="DbObj.DatabaseNameId" optionLabel="DbName"
+                          (onChange)="pick($event.value)" id="DatabaseNameId" name="DatabaseNameId"
+                          defaultLabel="{{'SideBar.lblChooseDatabase' | translate}}"></p-multiSelect>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div class="col-lg-6 col-12">
-                    <div class="row w-100 mb-3">
-                        <div class="col-lg-4 col-12">
-                            <label class="mb-lg-0 mt-lg-0 mb-2 mt-3">
-                                الفرع:
-                            </label>
-                        </div>
-                        <div class="col-lg-8 col-12">
-                            <div>
-                                <div class=" w-100 search position-relative">
-                                    <p-multiSelect [options]="Branches" [(ngModel)]="CBObj.COM_BRN_CODE"
-                                        optionLabel="COM_BRN_AR_NAME" (onChange)="PickCom($event.value)"
-                                        id="COM_BRN_CODE" name="COM_BRN_CODE" defaultLabel="اختر الفرع"></p-multiSelect>
-                                </div>
-                            </div>
-
-                        </div>
+                  <div class="row w-100 mb-3">
+                    <div class="col-lg-4 col-12">
+                      <label class="mb-lg-0 mt-lg-0 mb-2 mt-3">
+                        {{'SideBar.lblBranch' | translate}}:
+                      </label>
                     </div>
+                    <div class="col-lg-8 col-12">
+        
+                      <div class=" w-100 search position-relative">
+                        <p-multiSelect [options]="Branches" [(ngModel)]="CBObj.COM_BRN_CODE" optionLabel="COM_BRN_AR_NAME"
+                          (onChange)="PickCom($event.value)" id="COM_BRN_CODE" name="COM_BRN_CODE"
+                          defaultLabel="{{'SideBar.lblChooseBranch' | translate}}"></p-multiSelect>
+                      </div>
+        
+        
+                    </div>
+                  </div>
                 </div>
                 <div class="col-lg-6 col-12">
-                    <div class="row  w-100 mb-3">
-                        <div class="col-lg-4 col-12">
-                            <label class="mb-lg-0 mt-lg-0 mb-2 mt-3">
-                                الحساب:
-                            </label>
-                        </div>
-                        <div class="col-lg-8 col-12">
-                            <div>
-                                <div class=" w-100 search position-relative">
-                                    <p-multiSelect [options]="Accounts" [(ngModel)]="AccObj.ACC_ID"
-                                        optionLabel="ACC_AR_NAME" (onChange)="PickAcc($event.value)" id="ACC_ID"
-                                        name="ACC_ID" defaultLabel="اختر الحساب"></p-multiSelect>
-                                </div>
-
-                            </div>
-
-                        </div>
+                  <div class="row  w-100 mb-3">
+                    <div class="col-lg-4 col-12">
+                      <label class="mb-lg-0 mt-lg-0 mb-2 mt-3">
+                        {{'SideBar.lblAccount' | translate}}:
+                      </label>
                     </div>
+                    <div class="col-lg-8 col-12">
+        
+                      <div class=" w-100 search position-relative">
+                        <!-- <p-dropdown [options]="Accounts" [(ngModel)]="AccObj.ACC_ID"  optionLabel="ACC_AR_NAME" (onChange)="PickAcc($event.value)" id="ACC_ID"
+                                                      name="ACC_ID" defaultLabel="{{'SideBar.lblChooseAccount' | translate}}"></p-dropdown> -->
+                        <p-multiSelect [options]="Accounts" [(ngModel)]="AccObj.ACC_ID" optionLabel="ACC_AR_NAME"
+                          (onChange)="PickAcc($event.value)" id="ACC_ID" name="ACC_ID"
+                          defaultLabel="{{'SideBar.lblChooseAccount' | translate}}"></p-multiSelect>
+                      </div>
+        
+        
+        
+                    </div>
+                  </div>
                 </div>
                 <div class="col-lg-6 col-12">
-                    <div class="row w-100 mb-3">
-                        <div class="col-lg-4 col-12">
-                            <label class="mb-lg-0 mt-lg-0 mb-2 mt-3">
-                                من تاريخ:
-                            </label>
-                        </div>
-                        <div class="col-lg-8 col-12">
-                            <div class="d-flex align-items-center w-100 position-relative">
-                            <div class="form-group date_hijiri w-100" style="display: none;">
-                                    <div class="input-group">
-                                        <input readonly type="text" id="hijrDate" onclick="pickDate(event)" name="DateHijri" [(ngModel)]='DateHijri' class="form-control"
-                                            placeholder="{{ 'ResultOfPortPage.lblHijri' | translate }}" >
-                                    </div>
-                                </div>
-                            <div class="form-group date_melady w-100">
-                            <div class="input-group">
-                                <input readonly name="sDate"  [(ngModel)]="sDate"  id="gregDate" onclick="pickDate(event)" type="text"  class="form-control pr-0 pl-2 w-100 ad_Input">
-                            </div>
-
-                        </div>
+                  <div class="row w-100 mb-3">
+                    <div class="col-lg-4 col-12">
+                      <label class="mb-lg-0 mt-lg-0 mb-2 mt-3">
+                        {{'SideBar.lblFromDate' | translate}}:
+                      </label>
                     </div>
-                </div>
+                    <div class="col-lg-8 col-12">
+                      <div class="d-flex align-items-center w-100 position-relative">
+                        <div class="form-group date_hijiri w-100" style="display: none;">
+                          <div class="input-group">
+                            <input readonly type="text" id="hijrDate" onclick="pickDate(event)" name="DateHijri"
+                              [(ngModel)]='DateHijri' class="form-control"
+                              placeholder="{{ 'ResultOfPortPage.lblHijri' | translate }}">
+                          </div>
+                        </div>
+                        <div class="form-group date_melady w-100">
+                          <div class="input-group">
+                            <input readonly name="sDate" [(ngModel)]="sDate" id="gregDate" onclick="pickDate(event)" type="text"
+                              class="form-control pr-0 pl-2 w-100 ad_Input">
+                          </div>
+        
+                        </div>
+                      </div>
                     </div>
+                  </div>
                 </div>
                 <div class="col-lg-6 col-12">
-                    <div class="row w-100 mb-3">
-                        <div class="col-lg-4 col-12">
-                            <label class="mb-lg-0 mt-lg-0 mb-2 mt-3">
-                                إلى تاريخ:
-                            </label>
-                        </div>
-                        <div class="col-lg-8 col-12">
-                            <div class="d-flex align-items-center w-100 position-relative">
-                            <div class="form-group date_hijiri w-100" style="display: none;">
-                                    <div class="input-group">
-                                        <input readonly type="text" id="hijrDate" onclick="pickDate(event)" name="DateHijri" [(ngModel)]='DateHijri' class="form-control"
-                                            placeholder="{{ 'ResultOfPortPage.lblHijri' | translate }}" >
-                                    </div>
-                                </div>
-                            <div class="form-group date_melady w-100">
-                            <div class="input-group">
-                                <input readonly name="eDate"  [(ngModel)]="eDate"  id="gregDate2" onclick="pickDate(event)" type="text"  class="form-control pr-0 pl-2 w-100 ad_Input">
-                            </div>
-
-                        </div>
+                  <div class="row w-100 mb-3">
+                    <div class="col-lg-4 col-12">
+                      <label class="mb-lg-0 mt-lg-0 mb-2 mt-3">
+                        {{'SideBar.lblToDate' | translate}}:
+                      </label>
                     </div>
-                </div>
+                    <div class="col-lg-8 col-12">
+                      <div class="d-flex align-items-center w-100 position-relative">
+                        <div class="form-group date_hijiri w-100" style="display: none;">
+                          <div class="input-group">
+                            <input readonly type="text" id="hijrDate" onclick="pickDate(event)" name="DateHijri"
+                              [(ngModel)]='DateHijri' class="form-control"
+                              placeholder="{{ 'ResultOfPortPage.lblHijri' | translate }}">
+                          </div>
+                        </div>
+                        <div class="form-group date_melady w-100">
+                          <div class="input-group">
+                            <input readonly name="eDate" [(ngModel)]="eDate" id="gregDate2" onclick="pickDate(event)"
+                              type="text" class="form-control pr-0 pl-2 w-100 ad_Input">
+                          </div>
+        
+                        </div>
+                      </div>
                     </div>
+                  </div>
                 </div>
-            </div>
+              </div>
             <div class="row">
                 <div class="col-12 view-report">
                     <button class="nav-link text-right mr-0" type="submit">

@@ -39,8 +39,8 @@ export class ReportsServiceService {
     return this.http.post(this.common.rooturl+'/ReportViewer/ProvisionForDepreciationOfFixedAssets/',
     {'startDate':startDate,'endDate': endDate,'companyBranchCode':companyBranchCode,'AccountID': AccountID,'databaseID':databaseID});
   }
-  DepreciationOfFixedAsset(startDate: string,endDate: string, companyBranchCode: string,AccountID: string,  databaseID:string){
-    return this.http.post(this.common.rooturl+'/ReportViewer/DepreciationOfFixedAssets/',
+  ConsumptionOfDepreciation(startDate: string,endDate: string, companyBranchCode: string,AccountID: string,  databaseID:string){
+    return this.http.post(this.common.rooturl+'/ReportViewer/ConsumptionOfDepreciation/',
     {'startDate':startDate,'endDate': endDate,'companyBranchCode':companyBranchCode,'AccountID': AccountID,'databaseID':databaseID});
   }
   LastDurationGoods(startDate: string, companyBranchCode: string, databaseID:string){

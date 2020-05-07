@@ -1,187 +1,185 @@
 <!-- Start : portfolio Modal -->
 <div class="modal fade overflow-hidden" id="portfolioModal" tabindex="-1" role="dialog"
-    aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"> {{ 'ResultOfPortPage.lblrstsearch' | translate }}</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body overflow-auto">
-                <table class="table text-right table-hover">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">{{ 'ResultOfPortPage.lblcode' | translate }}</th>
-                            <th scope="col">{{ 'ResultOfPortPage.lblname' | translate }}</th>
-                            <th scope="col">{{ 'ResultOfPortPage.lbllatinName' | translate }}</th>
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"> {{ 'ResultOfPortPage.lblrstsearch' | translate }}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body overflow-auto">
+        <table class="table text-right table-hover">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">{{ 'ResultOfPortPage.lblcode' | translate }}</th>
+              <th scope="col">{{ 'ResultOfPortPage.lblname' | translate }}</th>
+              <th scope="col">{{ 'ResultOfPortPage.lbllatinName' | translate }}</th>
 
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let port of portfolios; index as i"
-                            (click)="onSelectPortfolio(port,'accountModal');" data-dismiss="modal">
-                            <th scope="row">{{i + 1}}</th>
-                            <td>{{port.Code}}</td>
-                            <td>{{port.NameAR}}</td>
-                            <td>{{port.NameEN}}</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let port of portfolios; index as i" (click)="onSelectPortfolio(port,'accountModal');"
+              data-dismiss="modal">
+              <th scope="row">{{i + 1}}</th>
+              <td>{{port.Code}}</td>
+              <td>{{port.NameAR}}</td>
+              <td>{{port.NameEN}}</td>
 
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
+  </div>
 </div>
 <!-- End : portfolio Modal -->
 
 
 
 <div class="app-main__inner pt-4">
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb background-none d-flex align-items-center">
-            <li class="breadcrumb-item active">
-                <a href="#">
-                    <i class="fa fa-home">
-                    </i>
-                </a>
-            </li>
-            <li class="breadcrumb-item active">
-                <span>{{ 'SideBar.lblConsumptionOfDepreciation' | translate }}</span>
-            </li>
-        </ol>
-    </nav>
-    <div class="form__page mt-4 p-5">
-        <form class="" #frmRef="ngForm" (ngSubmit)="frmRef.form.valid && Submit(frmRef);">
-            <div class="row">
-                <div class="col-12 col-lg-6">
-                    <div class="row w-100 mb-3">
-                        <div class="col-lg-4 col-12">
-                            <label for="DatabaseName" class="mb-lg-0 mt-lg-0 mb-2 mt-3">
-                                قاعدة البيانات:
-                            </label>
-                        </div>
-                        <div class="col-lg-8 col-12">
-
-                            <div class=" w-100 search position-relative">
-                                <p-multiSelect [options]="DbNames" [(ngModel)]="DbObj.DatabaseNameId"
-                                    optionLabel="DbName" (onChange)="pick($event.value)" id="DatabaseNameId"
-                                    name="DatabaseNameId" defaultLabel="اختر قاعدة البيانات"></p-multiSelect>
-                            </div>
-                            <!-- <div class=" w-100 search position-relative">
-                                <p-multiSelect [options]="DbNames" [(ngModel)]="DbObj.DatabaseNameId"
-                                    optionLabel="DbName" (onChange)="pick($event.value)" id="DatabaseNameId"
-                                    name="DatabaseNameId" defaultLabel="اختر قاعدة البيانات"></p-multiSelect>
-                            </div> -->
-
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-12">
-                    <div class="row w-100 mb-3">
-                        <div class="col-lg-4 col-12">
-                            <label class="mb-lg-0 mt-lg-0 mb-2 mt-3">
-                                الفرع:
-                            </label>
-                        </div>
-                        <div class="col-lg-8 col-12">
-                            <div>
-                                <div class=" w-100 search position-relative">
-                                    <p-multiSelect [options]="Branches" [(ngModel)]="CBObj.COM_BRN_CODE"
-                                        optionLabel="COM_BRN_AR_NAME" (onChange)="PickCom($event.value)"
-                                        id="COM_BRN_CODE" name="COM_BRN_CODE" defaultLabel="اختر الفرع"></p-multiSelect>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-12">
-                    <div class="row  w-100 mb-3">
-                        <div class="col-lg-4 col-12">
-                            <label class="mb-lg-0 mt-lg-0 mb-2 mt-3">
-                                الحساب:
-                            </label>
-                        </div>
-                        <div class="col-lg-8 col-12">
-                            <div>
-                                <div class=" w-100 search position-relative">
-                                    <p-multiSelect [options]="Accounts" [(ngModel)]="AccObj.ACC_ID"
-                                        optionLabel="ACC_AR_NAME" (onChange)="PickAcc($event.value)" id="ACC_ID"
-                                        name="ACC_ID" defaultLabel="اختر الحساب"></p-multiSelect>
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-12">
-                    <div class="row w-100 mb-3">
-                        <div class="col-lg-4 col-12">
-                            <label class="mb-lg-0 mt-lg-0 mb-2 mt-3">
-                                من تاريخ:
-                            </label>
-                        </div>
-                        <div class="col-lg-8 col-12">
-                            <div class="d-flex align-items-center w-100 position-relative">
-                            <div class="form-group date_hijiri w-100" style="display: none;">
-                                    <div class="input-group">
-                                        <input readonly type="text" id="hijrDate" onclick="pickDate(event)" name="DateHijri" [(ngModel)]='DateHijri' class="form-control"
-                                            placeholder="{{ 'ResultOfPortPage.lblHijri' | translate }}" >
-                                    </div>
-                                </div>
-                            <div class="form-group date_melady w-100">
-                            <div class="input-group">
-                                <input readonly name="sDate"  [(ngModel)]="sDate"  id="gregDate" onclick="pickDate(event)" type="text"  class="form-control pr-0 pl-2 w-100 ad_Input">
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-12">
-                    <div class="row w-100 mb-3">
-                        <div class="col-lg-4 col-12">
-                            <label class="mb-lg-0 mt-lg-0 mb-2 mt-3">
-                                إلى تاريخ:
-                            </label>
-                        </div>
-                        <div class="col-lg-8 col-12">
-                            <div class="d-flex align-items-center w-100 position-relative">
-                            <div class="form-group date_hijiri w-100" style="display: none;">
-                                    <div class="input-group">
-                                        <input readonly type="text" id="hijrDate" onclick="pickDate(event)" name="DateHijri" [(ngModel)]='DateHijri' class="form-control"
-                                            placeholder="{{ 'ResultOfPortPage.lblHijri' | translate }}" >
-                                    </div>
-                                </div>
-                            <div class="form-group date_melady w-100">
-                            <div class="input-group">
-                                <input readonly name="eDate"  [(ngModel)]="eDate"  id="gregDate2" onclick="pickDate(event)" type="text"  class="form-control pr-0 pl-2 w-100 ad_Input">
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                    </div>
-                </div>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb background-none d-flex align-items-center">
+      <li class="breadcrumb-item active">
+        <a href="#">
+          <i class="fa fa-home">
+          </i>
+        </a>
+      </li>
+      <li class="breadcrumb-item active">
+        <span>{{ 'SideBar.lblConsumptionOfDepreciation' | translate }}</span>
+      </li>
+    </ol>
+  </nav>
+  <div class="form__page mt-4 p-5">
+    <form class="" #frmRef="ngForm" (ngSubmit)="frmRef.form.valid && Submit(frmRef);">
+      <div class="row">
+        <div class="col-12 col-lg-6">
+          <div class="row w-100 mb-3">
+            <div class="col-lg-4 col-12">
+              <label for="DatabaseName" class="mb-lg-0 mt-lg-0 mb-2 mt-3">
+                {{'SideBar.lblDatabase' | translate}}:
+              </label>
             </div>
-            <div class="row">
-                <div class="col-12 view-report">
-                    <button class="nav-link text-right mr-0" type="submit">
-                        <i class="fas fa-eye"></i>
-                        <span class="mr-2">{{ 'ResultOfPortPage.lblShowReport' | translate }}</span>
-                    </button>
+            <div class="col-lg-8 col-12">
+              <div class=" w-100 search position-relative">
+                <p-multiSelect [options]="DbNames" [(ngModel)]="DbObj.DatabaseNameId" optionLabel="DbName"
+                  (onChange)="pick($event.value)" id="DatabaseNameId" name="DatabaseNameId"
+                  defaultLabel="{{'SideBar.lblChooseDatabase' | translate}}"></p-multiSelect>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-12">
+          <div class="row w-100 mb-3">
+            <div class="col-lg-4 col-12">
+              <label class="mb-lg-0 mt-lg-0 mb-2 mt-3">
+                {{'SideBar.lblBranch' | translate}}:
+              </label>
+            </div>
+            <div class="col-lg-8 col-12">
+
+              <div class=" w-100 search position-relative">
+                <p-multiSelect [options]="Branches" [(ngModel)]="CBObj.COM_BRN_CODE" optionLabel="COM_BRN_AR_NAME"
+                  (onChange)="PickCom($event.value)" id="COM_BRN_CODE" name="COM_BRN_CODE"
+                  defaultLabel="{{'SideBar.lblChooseBranch' | translate}}"></p-multiSelect>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-12">
+          <div class="row  w-100 mb-3">
+            <div class="col-lg-4 col-12">
+              <label class="mb-lg-0 mt-lg-0 mb-2 mt-3">
+                {{'SideBar.lblAccount' | translate}}:
+              </label>
+            </div>
+            <div class="col-lg-8 col-12">
+
+              <div class=" w-100 search position-relative">
+                <!-- <p-dropdown [options]="Accounts" [(ngModel)]="AccObj.ACC_ID"  optionLabel="ACC_AR_NAME" (onChange)="PickAcc($event.value)" id="ACC_ID"
+                                              name="ACC_ID" defaultLabel="{{'SideBar.lblChooseAccount' | translate}}"></p-dropdown> -->
+                <p-multiSelect [options]="Accounts" [(ngModel)]="AccObj.ACC_ID" optionLabel="ACC_AR_NAME"
+                  (onChange)="PickAcc($event.value)" id="ACC_ID" name="ACC_ID"
+                  defaultLabel="{{'SideBar.lblChooseAccount' | translate}}"></p-multiSelect>
+              </div>
+
+
+
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-12">
+          <div class="row w-100 mb-3">
+            <div class="col-lg-4 col-12">
+              <label class="mb-lg-0 mt-lg-0 mb-2 mt-3">
+                {{'SideBar.lblFromDate' | translate}}:
+              </label>
+            </div>
+            <div class="col-lg-8 col-12">
+              <div class="d-flex align-items-center w-100 position-relative">
+                <div class="form-group date_hijiri w-100" style="display: none;">
+                  <div class="input-group">
+                    <input readonly type="text" id="hijrDate" onclick="pickDate(event)" name="DateHijri"
+                      [(ngModel)]='DateHijri' class="form-control"
+                      placeholder="{{ 'ResultOfPortPage.lblHijri' | translate }}">
+                  </div>
+                </div>
+                <div class="form-group date_melady w-100">
+                  <div class="input-group">
+                    <input readonly name="sDate" [(ngModel)]="sDate" id="gregDate" onclick="pickDate(event)" type="text"
+                      class="form-control pr-0 pl-2 w-100 ad_Input">
+                  </div>
 
                 </div>
+              </div>
             </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-12">
+          <div class="row w-100 mb-3">
+            <div class="col-lg-4 col-12">
+              <label class="mb-lg-0 mt-lg-0 mb-2 mt-3">
+                {{'SideBar.lblToDate' | translate}}:
+              </label>
+            </div>
+            <div class="col-lg-8 col-12">
+              <div class="d-flex align-items-center w-100 position-relative">
+                <div class="form-group date_hijiri w-100" style="display: none;">
+                  <div class="input-group">
+                    <input readonly type="text" id="hijrDate" onclick="pickDate(event)" name="DateHijri"
+                      [(ngModel)]='DateHijri' class="form-control"
+                      placeholder="{{ 'ResultOfPortPage.lblHijri' | translate }}">
+                  </div>
+                </div>
+                <div class="form-group date_melady w-100">
+                  <div class="input-group">
+                    <input readonly name="eDate" [(ngModel)]="eDate" id="gregDate2" onclick="pickDate(event)"
+                      type="text" class="form-control pr-0 pl-2 w-100 ad_Input">
+                  </div>
 
-        </form>
-    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 view-report">
+          <button class="nav-link text-right mr-0" type="submit">
+            <i class="fas fa-eye"></i>
+            <span class="mr-2">{{ 'ResultOfPortPage.lblShowReport' | translate }}</span>
+          </button>
+
+        </div>
+      </div>
+
+    </form>
+  </div>
 </div>
 
 <div id="designer" dir="ltr">

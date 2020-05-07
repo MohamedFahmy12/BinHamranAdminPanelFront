@@ -6,11 +6,12 @@
         "lblFromDate":"FromDate",
         "lblToDate":"To Date",
         "lblDate":"Date",
+        "lblEntryType":"Entry Type",
         "lblChooseAccount":"Choose Account",
         "lblChooseDatabase":"Choose Database/s",
         "lblChooseBranch":"Choose Branch/s",
         "lblChooseEntry":"Choose Entry Type/s",
-
+        "lblChoice": "Options",
         "lblProfile":"Profile",
         "lblSignOut":"Sign Out",
         "lblWelcome":"Welcome",
@@ -488,7 +489,7 @@
         "lblcode":"Code",
         "lblname":"Name",
         "lbllatinName":"English Name",
-        "breadcrumb":"Result Of Portofolio",
+        "breadcrumb":"Sorry!",
         "lblChPort":"Choose Portofolio",
         "ValidChPort":"You Must Choose Portofolio",
         "lblTillDate":"Till Date",
@@ -971,7 +972,7 @@
         "enterDate":"please enter date",
         "MustgetInsertCompany":"Must  Insert Company",
         "Inputonce":"Company Input once",
-        "Reporttoster":"please Make Sure from Stocks price"
+        "Reporttoster":"please choose the database first"
 
     },
     "dashboard":{

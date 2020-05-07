@@ -41,7 +41,7 @@ import { DepreciationOfFixedAssetsComponent } from './Component/Reports/deprecia
 import { ConsumptionOfDepreciationComponent } from './Component/Reports/consumption-of-depreciation/consumption-of-depreciation.component';
 import { ProvisionForDepreciationOfFixedAssetsComponent } from './Component/Reports/provision-for-depreciation-of-fixed-assets/provision-for-depreciation-of-fixed-assets.component';
 import { LastDurationGoodsComponent } from './Component/Reports/last-duration-goods/last-duration-goods.component';  
-import {DropdownModule} from 'primeng/dropdown';   //accordion and accordion tab
+
 
 
 // import { NgSelect2Module } from 'select2';
@@ -90,7 +90,7 @@ import {DropdownModule} from 'primeng/dropdown';   //accordion and accordion tab
       
     ]) ,
     MultiSelectModule,
-    DropdownModule,
+   
     AccordionModule,
     NgMultiSelectDropDownModule,
     NgSelectModule,

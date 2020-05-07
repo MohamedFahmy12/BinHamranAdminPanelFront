@@ -1263,3 +1263,7 @@ label {
 }
 
 /*# sourceMappingURL=main-ltr.css.map */
+body .ui-multiselect{
+  width: 100%;
+
+}

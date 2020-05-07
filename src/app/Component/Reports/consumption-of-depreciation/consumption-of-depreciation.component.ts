@@ -101,7 +101,7 @@ export class ConsumptionOfDepreciationComponent implements OnInit {
       debugger;
       this.sDate = (<HTMLInputElement>document.getElementById("gregDate"))
         .value ? (<HTMLInputElement>document.getElementById("gregDate")).value : null;
-      this.ReportSer.DepreciationOfFixedAsset(this.sDate,this.eDate,this.ComIDS,this.AccIDs, this.dbIds).subscribe(
+      this.ReportSer.ConsumptionOfDepreciation(this.sDate,this.eDate,this.ComIDS,this.AccIDs, this.dbIds).subscribe(
         (data: Response) => {
           debugger;
           this.result = data;

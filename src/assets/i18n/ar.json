@@ -6,10 +6,12 @@
         "lblFromDate":"من تاريخ",
         "lblToDate":"الى تاريخ",
         "lblDate":"التاريخ",
+        "lblEntryType": "نوع السند",
         "lblChooseAccount":"إختر حساب",
         "lblChooseBranch":"إختر فرع",
         "lblChooseDatabase":"إختر قاعدة بيانات",
         "lblChooseEntry":"إختؤ نوع السند",
+        "lblChoice":"خيارات",
         "lblProfile":"الملف الشخصي",
         "lblSignOut":"تسجيل الخروج",
         "lblWelcome":"مرحباً",
@@ -366,7 +368,7 @@
         "lblcode":"الرمز",
         "lblname":"الإسم",
         "lbllatinName":"الإسم اللاتيني",
-        "breadcrumb":"نتيجة عمل المحفظة",
+        "breadcrumb":"عفواً",
         "lblChPort":"اختيار المحفظة",
         "ValidChPort":"يجب اختيار المحفظة",
         "lblTillDate":"حتى تاريخ",
@@ -976,7 +978,7 @@
         "RcAcc":"حساب الريال سند الصرف غير صحيح",
         "ExAcc":"حساب الريال سند القبض غير صحيح",
         "enterDate":"الرجاء ادخال التاريخ",
-        "Reporttoster":"برجاء التأكد من سعر الاسهم اليومي للشركات"
+        "Reporttoster":"برجاء أختيار قاعدة البيانات اولا"
         
     },
     "dashboard":{
