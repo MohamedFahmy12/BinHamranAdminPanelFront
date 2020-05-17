@@ -12,7 +12,9 @@ import { CommonService } from 'src/app/Services/Share/common.service';
 })
 export class DashboardComponent implements OnInit {
   accModal:boolean=false;
-  constructor(private data:CommonService,private DashboardSer:DashboardService,private loginSer:LoginService,private route: ActivatedRoute) { }
+  constructor(private data:CommonService,private DashboardSer:DashboardService,private loginSer:LoginService,private route: ActivatedRoute) {
+    console.log(this.textColor)
+   }
   TotalsellingOrders:number=0;
   TotalPurchaseOrders:number=0;
   TotalSellingInvoice:number=0;
@@ -20,10 +22,12 @@ export class DashboardComponent implements OnInit {
   // Total:number=0;
   Partners:number=0;
   root:any;
+  textColor:string[]=['text-warning','text-primary','text-danger']
+
   ngOnInit() {
     this.root =this.data.rooturl.replace("api","");
-    
-    
+
+
   }
 
 

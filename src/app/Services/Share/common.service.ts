@@ -6,7 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class CommonService {
 readonly rooturl='http://localhost:63103/api';
-//readonly rooturl='http://www.stockapi.gmtcc.co/api';
+//readonly rooturl='http://benhamranadminpanelapi.gmtcc.co/';
 
 
 

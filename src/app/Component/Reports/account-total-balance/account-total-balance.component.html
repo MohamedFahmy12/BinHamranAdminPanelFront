@@ -2,7 +2,7 @@
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb background-none d-flex align-items-center">
       <li class="breadcrumb-item active">
-        <a href="#">
+        <a routerLink="/dashboard">
           <i class="fa fa-home">
           </i>
         </a>
@@ -40,13 +40,13 @@
               </label>
             </div>
             <div class="col-lg-8 col-12">
-              
+
                 <div class=" w-100 search position-relative">
                   <p-multiSelect [options]="Branches" [(ngModel)]="CBObj.COM_BRN_CODE" optionLabel="COM_BRN_AR_NAME"
                     (onChange)="PickCom($event.value)" id="COM_BRN_CODE" name="COM_BRN_CODE"
                     defaultLabel="{{'SideBar.lblChooseBranch' | translate}}"></p-multiSelect>
                 </div>
-              
+
 
             </div>
           </div>

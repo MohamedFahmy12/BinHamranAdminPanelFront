@@ -14,7 +14,7 @@ import {AgGridModule} from "ag-grid-angular";
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
-import {APP_BASE_HREF} from '@angular/common'; 
+import {APP_BASE_HREF} from '@angular/common';
 import {  HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader'
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -40,7 +40,7 @@ import { TotalExclusionOfFixedAssetsComponent } from './Component/Reports/total-
 import { DepreciationOfFixedAssetsComponent } from './Component/Reports/depreciation-of-fixed-assets/depreciation-of-fixed-assets.component';
 import { ConsumptionOfDepreciationComponent } from './Component/Reports/consumption-of-depreciation/consumption-of-depreciation.component';
 import { ProvisionForDepreciationOfFixedAssetsComponent } from './Component/Reports/provision-for-depreciation-of-fixed-assets/provision-for-depreciation-of-fixed-assets.component';
-import { LastDurationGoodsComponent } from './Component/Reports/last-duration-goods/last-duration-goods.component';  
+import { LastDurationGoodsComponent } from './Component/Reports/last-duration-goods/last-duration-goods.component';
 
 
 
@@ -54,7 +54,7 @@ import { LastDurationGoodsComponent } from './Component/Reports/last-duration-go
 
 
 
-  
+
 
 @NgModule({
   declarations: [
@@ -85,12 +85,13 @@ import { LastDurationGoodsComponent } from './Component/Reports/last-duration-go
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AgGridModule.withComponents([
       ChildMessageComponent,
-      
+
     ]) ,
     MultiSelectModule,
-   
+
     AccordionModule,
     NgMultiSelectDropDownModule,
     NgSelectModule,
@@ -114,7 +115,7 @@ import { LastDurationGoodsComponent } from './Component/Reports/last-duration-go
   // AgGridModule.withComponents([PartialMatchFilter]),
   ],
   providers: [{provide: APP_BASE_HREF, useValue : '/' },
-   
+
 {
    provide: HTTP_INTERCEPTORS,
   useClass:AuthInterceptor,
