@@ -21,6 +21,7 @@ import { DepreciationOfFixedAssetsComponent } from './Component/Reports/deprecia
 import { ProvisionForDepreciationOfFixedAssetsComponent } from './Component/Reports/provision-for-depreciation-of-fixed-assets/provision-for-depreciation-of-fixed-assets.component';
 import { ConsumptionOfDepreciationComponent } from './Component/Reports/consumption-of-depreciation/consumption-of-depreciation.component';
 import { LastDurationGoodsComponent } from './Component/Reports/last-duration-goods/last-duration-goods.component';
+import { EntriesAnalysisComponent } from './Component/Reports/entries-analysis/entries-analysis.component';
 
 const routes: Routes = [
   //no layout routes
@@ -50,6 +51,7 @@ const routes: Routes = [
     {path:'ProvisionForDepreciationOfFixedAssets',component:ProvisionForDepreciationOfFixedAssetsComponent},
     {path:'ConsumptionOfDepreciation',component:ConsumptionOfDepreciationComponent},
     {path:'LastDurationGoods',component:LastDurationGoodsComponent},
+    {path:'EntriesAnalysis',component:EntriesAnalysisComponent},
     {path:'ViewReport',component:ViewReportsComponent,data:{permittedRoles:['SuperAdmin','Admin']}},
     { path: '**', redirectTo: '' }
 
