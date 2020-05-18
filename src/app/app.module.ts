@@ -41,6 +41,7 @@ import { DepreciationOfFixedAssetsComponent } from './Component/Reports/deprecia
 import { ConsumptionOfDepreciationComponent } from './Component/Reports/consumption-of-depreciation/consumption-of-depreciation.component';
 import { ProvisionForDepreciationOfFixedAssetsComponent } from './Component/Reports/provision-for-depreciation-of-fixed-assets/provision-for-depreciation-of-fixed-assets.component';
 import { LastDurationGoodsComponent } from './Component/Reports/last-duration-goods/last-duration-goods.component';
+import { EntriesAnalysisComponent } from './Component/Reports/entries-analysis/entries-analysis.component';
 
 
 
@@ -81,7 +82,8 @@ import { LastDurationGoodsComponent } from './Component/Reports/last-duration-go
     DepreciationOfFixedAssetsComponent,
     ConsumptionOfDepreciationComponent,
     ProvisionForDepreciationOfFixedAssetsComponent,
-    LastDurationGoodsComponent
+    LastDurationGoodsComponent,
+    EntriesAnalysisComponent
   ],
   imports: [
     BrowserModule,
