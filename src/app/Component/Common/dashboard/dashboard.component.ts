@@ -24,18 +24,18 @@ export class DashboardComponent implements OnInit {
   root:any;
   textColor:string[]=['text-warning','text-primary','text-danger'];
   navbarsFooterStaticFromJson:any;
-  getJsonNavsBottom(){
-    debugger;
-    this.DashboardSer.getJsonSideBars().subscribe(res=>{
-     let json:any;
-     json=res;
-    //  this.getAllNavbarBottom();
-    console.log("res",res)
-    console.log("json",json)
-      this.navbarsFooterStaticFromJson= json.sideBarMenu; //أسم الKey الى في ملف الترجمة
-      console.log("this.navbarsFooterStaticFromJson",this.navbarsFooterStaticFromJson)
-    })
-   }
+  // getJsonNavsBottom(){
+  //   debugger;
+  //   this.DashboardSer.getJsonSideBars().subscribe(res=>{
+  //    let json:any;
+  //    json=res;
+  //   //  this.getAllNavbarBottom();
+  //   console.log("res",res)
+  //   console.log("json",json)
+  //     this.navbarsFooterStaticFromJson= json.sideBarMenu; //أسم الKey الى في ملف الترجمة
+  //     console.log("this.navbarsFooterStaticFromJson",this.navbarsFooterStaticFromJson)
+  //   })
+  //  }
 
   ngOnInit() {
     this.root =this.data.rooturl.replace("api","");

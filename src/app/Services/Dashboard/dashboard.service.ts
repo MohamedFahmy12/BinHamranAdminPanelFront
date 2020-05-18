@@ -9,8 +9,8 @@ import { HttpClient } from '@angular/common/http';
 
     constructor(private http:HttpClient,private common:CommonService) { }
 
-    public getJsonSideBars() {
-      return this.http.get("../assets/i18n/ar.json");
-    }
+    // public getJsonSideBars() {
+    //   return this.http.get("../assets/i18n/ar.json");
+    // }
 
   }
