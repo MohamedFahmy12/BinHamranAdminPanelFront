@@ -10,16 +10,16 @@
   </ul>
   <div class="reportCategory">
     <div class="card-deck justify-content-center">
-      <a class="MonthlyAnalisisForEntriesModel mb-3" routerLink="/MonthlyAnalisisForEntriesModel"
+      <a class="MonthlyAnalisisForEntriesModel mb-3 zoom_In" *ngFor="let color of textColor" routerLink="/MonthlyAnalisisForEntriesModel"
         [routerLinkActive]="['mm-active']">
-        <div class="card" style="width: 18rem;">
-          <i class="fas fa-file-signature pt-3 fa-2x text-warning m-auto"></i>
+        <div class="card" style="width: 18rem;"  >
+          <i [class]="'fas fa-file-signature pt-3 fa-2x  m-auto ' + color"></i>
           <div class="card-body m-auto">
             <p class="card-text"> {{ 'SideBar.lblMonthlyEntries' | translate }}</p>
           </div>
         </div>
       </a>
-      <a class="MonthlyAnalisisForAccounts mb-3" routerLink="/MonthlyAnalisisForAccounts"
+      <!-- <a class="MonthlyAnalisisForAccounts mb-3" routerLink="/MonthlyAnalisisForAccounts"
         [routerLinkActive]="['mm-active']">
         <div class="card" style="width: 18rem;">
           <i class="fas fa-file-alt pt-3 fa-2x text-primary m-auto"></i>
@@ -133,7 +133,7 @@
             <p class="card-text">   {{ 'SideBar.lblLastDurationGoods' | translate }}</p>
           </div>
         </div>
-      </a>
+      </a> -->
     </div>
   </div>
 </div>

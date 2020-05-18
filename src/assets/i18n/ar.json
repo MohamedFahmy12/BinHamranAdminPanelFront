@@ -48,7 +48,7 @@
         "lblCheckExchange":"سند قيد يومية",
         "lblRiyalReciept":"سند صرف ريال",
         "lblCheckReciept":"سند صرف شيك",
-        
+
 
         "lblReports":"التقارير",
         "lblResultofport":"نتيجة عمل المحفظة",
@@ -74,6 +74,25 @@
         "lblSaleBill":"فاتورة بيع",
         "lblPurchaseBill":"فاتورة شراء"
     },
+    "sideBarMenu":{
+        "lblMonthlyAccount":"التحليل الشهرى للحسابات",
+        "lblMonthlyEntries":"التحليل الشهرى لانواع السندات",
+        "lbOpeningEntries":"القيد الافتتاحى",
+        "lbAccountTotalBalance":"رصيد الحساب المجمع",
+        "lbGeneralDaily":"اليومية العامة",
+        "lbInstitutionfees":"مصاريف المؤسسة",
+        "slcttype1":"الحسابات والفروع",
+        "slcttype2":"الحسابات الشهور",
+        "lbInstitutionTrialBalance":"ميزان المراجعه للمؤسسة",
+        "lbBranchesTrialBalance":"ميزان المراجعه للفروع",
+        "lbDepreciationOfFixedAssets":"إجمالي استهلاك الأصول الثابتة",
+        "lbTotalExclusionOfFixedAssets":"إجمالي استبعاد الأصول الثابتة",
+        "lbFixedAssetsAdditions":"إضافات الأصول الثابتة",
+        "lbFixedAssetsOfInstitution":"بيان بالأصول الثابتة للمؤسسة",
+        "lblConsumptionOfDepreciation":"مجمع إهلاكات",
+        "lblProvisionForDepreciationOfFixedAssets":"مخصص إستهلاك الاصول الثابتة",
+        "lblLastDurationGoods":"بضاعة آخر المده"
+    },
     "CountryPage": {
         "breadcrumb":"البلد",
         "BtnNew": "جديد",
@@ -86,7 +105,7 @@
         "lblarname":"الإسم العربي",
         "ValidArName":"يجب إدخال الإسم بالعربي",
         "lblEnname":"الإسم اللاتيني"
-      
+
     },
     "PartnerPage":{
         "breadcrumb":"بطاقة الشركة",
@@ -137,7 +156,7 @@
         "Opreations":"العمليات"
 
 
-         
+
     },
     "AccountPage":{
         "breadcrumb":"بطاقة حساب",
@@ -543,7 +562,7 @@
         "lblbankcomexp":"مصاريف عمولات بنكية",
         "lblValidAccount":"يجب إختيار الحساب",
         "lblTaxComm":"الضريبة على العمولات",
-        "lblStocksSales":"مبيعات الأسهم", 
+        "lblStocksSales":"مبيعات الأسهم",
         "lblStocksPurchase":"مشتريات الأسهم",
         "lblProfitsAccount":"حساب الأرباح ",
         "lblRiyalAccount":"حساب الريال"
@@ -645,7 +664,7 @@
         "open":"مفتوح",
         "close":"مغلق",
         "Portofolio":"المحفظه"
-       
+
     },
 
     "selling":{
@@ -707,7 +726,7 @@
         "pricetype":"نوع السعر",
         "invoiceNum":"رقم الفاتوره",
         "dateofstarting":"تاريخ التنفيذ",
-        
+
         "stocksNum":"عدد الاسهم",
         "NetAmount":"صافي القيمه",
         "sumtion":"ترصيد عدد الاسهم الغير مباعه",
@@ -814,7 +833,7 @@
         "pricetype":"نوع السعر",
         "invoiceNum":"رقم الفاتوره",
         "dateofstarting":"تاريخ التنفيذ",
-        
+
         "stocksNum":"عدد الاسهم",
         "NetAmount":"صافي القيمه",
         "sumtion":"ترصيد عدد الاسهم الغير مباعه",
@@ -822,8 +841,8 @@
         "CompanyCode":"كود الشركه",
         "typeprice":"نو السعر",
         "Save":"حفظ"
-       
-        
+
+
 
     },
     "exchangeVoucher":{
@@ -979,7 +998,7 @@
         "ExAcc":"حساب الريال سند القبض غير صحيح",
         "enterDate":"الرجاء ادخال التاريخ",
         "Reporttoster":"برجاء أختيار قاعدة البيانات اولا"
-        
+
     },
     "dashboard":{
         "TotalsellingOrders" :"اجمالي اوامر البيع",

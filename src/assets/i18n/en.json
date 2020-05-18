@@ -19,7 +19,7 @@
         "lblCards":"Cards",
         "lblCountries":"Country Card",
         "lblPartner":"Partner Card",
-        
+
         "lblEmp":"Employee Card",
         "lblPort":"Portofolio Card",
         "lblTransactions":"Transactions",
@@ -73,6 +73,25 @@
         "lblSaleBill":"Sale Bill",
         "lblPurchaseBill":"Purchase Bill"
     },
+    "sideBarMenu":{
+        "lblMonthlyAccount":"Monthly Analysis For Accounts",
+        "lblMonthlyEntries":"Monthly Analysis For Entries",
+        "lbOpeningEntries":"Opening Entries",
+        "lbAccountTotalBalance":"Account Total Balance",
+        "lbGeneralDaily":"General Daily",
+        "lbInstitutionfees":"Institution fees",
+        "slcttype1":"Accounts and branches",
+        "slcttype2":"Accounts and months",
+        "lbInstitutionTrialBalance":"Institution Trial Balance",
+        "lbBranchesTrialBalance":"Branches Trial Balance",
+        "lbDepreciationOfFixedAssets":"Depreciation Of Fixed Assets",
+        "lbTotalExclusionOfFixedAssets":"Total Exclusion Of Fixed Assets",
+        "lbFixedAssetsAdditions":"Fixed Assets Additions",
+        "lbFixedAssetsOfInstitution":"Fixed Assets Of Institution",
+        "lblConsumptionOfDepreciation":"Consumption Of Depreciation",
+        "lblProvisionForDepreciationOfFixedAssets":"Provision For Depreciation Of Fixed Assets",
+        "lblLastDurationGoods": "Ending Inventory"
+    },
     "CountryPage": {
         "breadcrumb":"Country",
         "BtnNew": "New",
@@ -85,7 +104,7 @@
         "lblarname":"Arabic Name",
         "ValidArName":"You must enter Arabic Name",
         "lblEnname":"English Name"
-      
+
     },
     "PartnerPage":{
         "breadcrumb":"Partner Card",
@@ -109,7 +128,7 @@
         "lblIssuePlace":"Issue Place",
         "lblIssueDate":"Issue Date",
         "PlaceholderHijri":"Hijri Date",
-        "PlaceholderGorg":"Gregorian Date", 
+        "PlaceholderGorg":"Gregorian Date",
         "lblcountry":"Country",
         "slctCountry":"Choose",
         "lblAddress":"Address",
@@ -204,7 +223,7 @@
         "Notes":"Notes",
         "BtnPrint":"Print"
 
-    }, 
+    },
     "EmployeePage":{
         "breadcrumb":"Employee Card",
         "BtnNew": "New",
@@ -286,7 +305,7 @@
         "StockPrice":"Stock Price",
         "lblPortAccount":"Account"
     },
-    
+
     "sellOrder":{
         "Code":"Code",
         "ArabicName":"Arabic Name",
@@ -385,11 +404,11 @@
         "open":"open",
         "close":"close",
         "Querytype":"Querytype",
-       
+
         "pricetype":"pricetype",
         "invoiceNum":"invoiceNum",
         "dateofstarting":"dateofstarting",
-        
+
         "stocksNum":"stocksNum",
         "NetAmount":"NetAmount",
         "sumtion":"sumtion",
@@ -807,11 +826,11 @@
         "open":"open",
         "close":"close",
         "Querydata":"Querytype",
-       
+
         "pricetype":"pricetype",
         "invoiceNum":"invoiceNum",
         "dateofstarting":"dateofstarting",
-        
+
         "stocksNum":"stocksNum",
         "NetAmount":"NetAmount",
         "sumtion":"sumtion",
@@ -890,7 +909,7 @@
         "PMsg":"You Do Not Have Permission To Access This Page"
     },
 
-           
+
 
     "ToastrMsg":{
         "SavedSuccess":"Saved successfully",
@@ -988,5 +1007,5 @@
         "email":"Email"
     }
 
-   
+
 }

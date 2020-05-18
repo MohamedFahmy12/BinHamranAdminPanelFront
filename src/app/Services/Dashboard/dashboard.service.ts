@@ -8,8 +8,9 @@ import { HttpClient } from '@angular/common/http';
   export class DashboardService {
 
     constructor(private http:HttpClient,private common:CommonService) { }
-    
-  
-  
+
+    public getJsonSideBars() {
+      return this.http.get("../assets/i18n/ar.json");
+    }
+
   }
-  

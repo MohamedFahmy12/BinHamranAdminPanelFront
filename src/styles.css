@@ -42,15 +42,36 @@ body {
   animation-fill-mode: forwards;
 }
 .reportCategory a{
-  animation: fadeInAnimation ease 5s ;
-  animation-iteration-count: 1;
+  opacity: 0;
+  transform: translateX(50px);
+  -webkit-animation: 0.4s fadeInAnimation ease-in-out 0.33333s;
+  animation: 0.4s fadeInAnimation ease-in-out 0.33333s;
+  -webkit-animation-fill-mode: forwards;
   animation-fill-mode: forwards;
-}
+  -webkit-animation-delay: 0.4s;
+  animation-delay: 0.4s;
 
+}
+.reportCategory .zoom_In{
+transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+transition-duration: 300ms;
+transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+--transform-translate-x: 0;
+--transform-translate-y: 0;
+--transform-rotate: 0;
+--transform-skew-x: 0;
+--transform-skew-y: 0;
+--transform-scale-x: 1;
+--transform-scale-y: 1;
+transform: translateX(var(--transform-translate-x)) translateY(var(--transform-translate-y)) rotate(var(--transform-rotate)) skewX(var(--transform-skew-x)) skewY(var(--transform-skew-y)) scaleX(var(--transform-scale-x)) scaleY(var(--transform-scale-y));
+cursor: pointer;
+}
+.reportCategory .zoom_In:hover{
+--transform-scale-x: 1.05;
+--transform-scale-y: 1.05;
+}
 @keyframes fadeInAnimation {
-  0% {
-      opacity: 0;
-  }
+
   100% {
       opacity: 1;
    }
