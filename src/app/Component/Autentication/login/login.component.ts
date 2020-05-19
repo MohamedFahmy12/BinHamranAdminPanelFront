@@ -18,14 +18,14 @@ export class LoginComponent implements OnInit {
   loginobj: LoginmodelModule = new LoginmodelModule();
 
   constructor(private LoginSer:LoginService, private router: Router, private toastr: ToastrService) {
-    
+
 
    }
    ngOnInit() {
 debugger;
     if(localStorage.getItem('token')!=null)
     {
-      this.router.navigateByUrl('/dashboard'); 
+      this.router.navigateByUrl('/dashboard');
     }
     else
     {
@@ -39,7 +39,7 @@ debugger;
 
 
 
-  //start :Login 
+  //start :Login
 onSubmit(){
 debugger;
   this.LoginSer.Post(this.loginobj).subscribe(
@@ -50,15 +50,15 @@ localStorage.setItem('lan','ar');
 // this.router.navigate(['/', 'dashboard']).then(nav => {
 //   window.location.reload();
 //   console.log(nav); // true if navigation is successful
-   
+
 
 // }, err => {
 //   console.log(err) // when there's an error
 // });
-this.router.navigateByUrl('/dashboard'); 
+this.router.navigateByUrl('/dashboard');
 window.location.reload();
-      
-     
+
+
     },
     err=>{
         if(err.status==400)

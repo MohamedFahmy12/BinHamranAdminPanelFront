@@ -5,7 +5,8 @@ import { LoginService } from 'src/app/Services/Authentication/login.service';
 import { TranslateService } from '@ngx-translate/core';
 import { DateHelperService } from 'src/app/Helper/date-helper.service';
 import { __values } from 'tslib';
-import * as $ from 'jquery';
+// import * as $ from 'jquery';
+import { NgxSpinnerService } from "ngx-spinner";
 
 declare function require(name: string): any;
 @Component({
@@ -17,31 +18,39 @@ export class AppLayoutComponent implements OnInit {
   usabtn:boolean=true;
   saudibtn:boolean=true;
   lan:string;
-  constructor( private datehelp:DateHelperService,private router:Router,private loginSer:LoginService,private translate: TranslateService) { 
+  loading = true;
+  loaded = false;
+
+  constructor( private datehelp:DateHelperService,private router:Router,
+    private loginSer:LoginService,private translate: TranslateService, private SpinnerService: NgxSpinnerService) {
      translate.setDefaultLang('ar');
   }
 
- 
+
   ngOnInit() {
     this.FirstOpen();
-    let Loading = document.querySelector('.body-loading');
-    let LoadingImg = document.querySelector('.lds-ellipsis');
+    // let Loading = document.querySelector('.body-loading');
+    // let LoadingImg = document.querySelector('.lds-ellipsis');
 
-    window.onload = () => {    
-      // Hide Loading
-      setTimeout( () => {
-          LoadingImg.classList.add('img-hide');
-      }, 600);
-      setTimeout( () => {
-          Loading.classList.add('img-hide');
-      }, 800);
-      setTimeout( () => {
-          Loading.remove()
-      }, 1000);
-  }
+  //   window.onload = () => {
+  //     // Hide Loading
+  //     setTimeout( () => {
+  //         LoadingImg.classList.add('img-hide');
+  //     }, 600);
+  //     setTimeout( () => {
+  //         Loading.classList.add('img-hide');
+  //     }, 800);
+  //     setTimeout( () => {
+  //         Loading.remove()
+  //     }, 1000);
+  // }
   this.datehelp.hijiri_melady();
-
+  this.GetDashboardDetails();
   }
+  GetDashboardDetails() {
+    this.SpinnerService.show();
+       this.SpinnerService.hide();
+    }
 
   hijiri_melady(){
     $(".date_hijiri_melady .form-group .btn_melady").on('click', function() {
@@ -70,7 +79,7 @@ export class AppLayoutComponent implements OnInit {
   this.saudibtn=true;
   this.translate.use('ar');
   require("style-loader!../../../assets/css/main-rtl.css");
-} 
+}
 else
 {
   this.usabtn=true;
@@ -80,7 +89,7 @@ else
 }
       this.loginSer.GetUserProfile().subscribe(
         res=>{
-         
+
       this.AppLayobj=res as ApplicationUserModelModule;
         },
         err=> {
@@ -98,9 +107,9 @@ else
     window.location.reload();
     localStorage.setItem('lan',language);
   }
-  
+
 searchText:string="";
-searchedItem:string=""; 
+searchedItem:string="";
 oldMainListName:string="";
 filterByValue(array, string) {
   return array.filter(o =>
@@ -127,7 +136,7 @@ arrayOfTabs = [{ nameEN: 'Dash Board',nameAR: 'لوحة التحكم',className:
                { nameEN: 'Check Reciept',nameAR: 'سند صرف شيك',className:'checkReceipt', },
                { nameEN: 'Riyal Exchange',nameAR: 'سند قبض ريال',className:'exchangeVoucher', },
                { nameEN: 'Daily entry bond',nameAR: 'سند قيد يومية',className:'exchangeCheck', },
-               
+
                { nameEN: 'Result Of Portofolio',nameAR: 'نتيجة عمل المحفظة',className:'ResultportofolioWork', },
                { nameEN: 'Portofolio Evaluation',nameAR: 'تقييم المحفظة',className:'RPTEvaluateport', },
                { nameEN: 'Total Stocks Of Partners In Portofolio',nameAR: 'بيان مجمع بجميع أسهم الشركات في المحفظة ',className:'reportCompaniesSharesInPortfolio', },
@@ -155,7 +164,7 @@ search()
 var e_1, _a;
 var elements = document.getElementsByClassName(this.searchedItem);
 try {
-    for (var elements_1 = __values(elements), elements_1_1 = elements_1.next(); !elements_1_1.done; elements_1_1 = elements_1.next()) 
+    for (var elements_1 = __values(elements), elements_1_1 = elements_1.next(); !elements_1_1.done; elements_1_1 = elements_1.next())
     {
         var element = elements_1_1.value;
         var mainListName= element.getAttribute("mainListName");
@@ -172,7 +181,7 @@ try {
           element.click();
         }
 
-        
+
     }
 }
 catch (e_1_1) { e_1 = { error: e_1_1 }; }
@@ -183,7 +192,7 @@ finally {
     finally { if (e_1) throw e_1.error; }
 }
 this.searchedItem="";
-  
+
 }
 
 }
