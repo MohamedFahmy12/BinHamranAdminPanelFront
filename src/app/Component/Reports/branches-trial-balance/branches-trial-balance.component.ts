@@ -10,13 +10,16 @@ import { DateHelperService } from 'src/app/Helper/date-helper.service';
 import { TranslateService } from '@ngx-translate/core';
 import { NgForm } from '@angular/forms';
 
+declare var Stimulsoft:any;
 @Component({
   selector: 'app-branches-trial-balance',
   templateUrl: './branches-trial-balance.component.html',
   styleUrls: ['./branches-trial-balance.component.css']
 })
 export class BranchesTrialBalanceComponent implements OnInit {
-
+  options: any;
+  designer: any;
+  report:any;
   result: any;
   sDate: any;
   eDate:any;
@@ -39,7 +42,7 @@ export class BranchesTrialBalanceComponent implements OnInit {
   public iconFieldsPort: Object = {};
   public iconWaterMarkPort: string = "";
   constructor(private ReportSer: ReportsServiceService, private toastr: ToastrService,
-  private router: Router, private datehelp: DateHelperService, private translate: TranslateService) { }
+    private router: Router, private datehelp: DateHelperService, private translate: TranslateService) { }
     ngOnInit() {
       this.toastr.warning(this.ToastrMsgTranslate("ToastrMsg.Reporttoster"), this.PageName);
       this.sDate = this.datehelp.GetCurrentDate();
@@ -164,7 +167,15 @@ export class BranchesTrialBalanceComponent implements OnInit {
         }
       );
     }
-
-
+    ViewReportDesign(){
+      this.options = new Stimulsoft.Designer.StiDesignerOptions();
+      this.options.appearance.fullScreenMode = false;
+      this.designer = new Stimulsoft.Designer.StiDesigner(this.options,"StiDesigner",false);
+      this.report = new Stimulsoft.Report.StiReport();
+      this.report.loadFile('/reports/BranchesTrialBalance.mrt');
+      this.designer.report = this.report;
+      this.designer.renderHtml("designer");
+  }
+  
 
 }
