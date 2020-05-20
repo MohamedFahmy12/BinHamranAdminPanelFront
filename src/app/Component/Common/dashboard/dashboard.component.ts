@@ -7,7 +7,7 @@ import { CommonService } from 'src/app/Services/Share/common.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  // template: `<app-modals (valueChange)='displayCounter($event)'></app-modals>`,
+   //template: `<app-modals (valueChange)='displayCounter($event)'></app-modals>`,
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {

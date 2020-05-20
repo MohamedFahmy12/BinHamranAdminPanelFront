@@ -81,6 +81,7 @@ export class ReportsServiceService {
     return this.http.post(this.common.rooturl+'/ReportViewer/BranchesTrialBalance/',
     {'startDate':startDate,'companyBranchCode':companyBranchCode,'databaseID':databaseID});
   }
+  
   FixedAssetsOfInstitution(startDate: string,endDate: string, companyBranchCode: string,  databaseID:string)
   {
     return this.http.post(this.common.rooturl+'/ReportViewer/FixedAssetsOfInstitution/',

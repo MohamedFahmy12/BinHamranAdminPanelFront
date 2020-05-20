@@ -21,13 +21,15 @@
             "aot": false,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/reports"
             ],
             "styles": [
               "node_modules/primeicons/primeicons.css",
               "node_modules/primeng/resources/themes/nova-light/theme.css",
               "node_modules/primeng/resources/primeng.min.css",
               "node_modules/ngx-toastr/toastr.css",
+              "src/assets/css/stimulsoft.designer.office2013.whiteblue.css",
               "src/assets/css/stimulsoft.viewer.office2013.whiteblue.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
@@ -40,7 +42,8 @@
               "src/assets/scripts/main.js",
               "src/assets/scripts/main-1.js",
               "src/assets/scripts/stimulsoft.reports.js",
-              "src/assets/scripts/stimulsoft.viewer.js"
+              "src/assets/scripts/stimulsoft.viewer.js",
+              "src/assets/scripts/stimulsoft.designer.js"
             ]
           },
           "configurations": {
