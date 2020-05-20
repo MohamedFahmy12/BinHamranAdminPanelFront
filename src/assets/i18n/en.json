@@ -508,6 +508,7 @@
         "lblgotoSett":"Go To Settings"
     },
     "ResultOfPortPage":{
+        "lblReportDesign":"Report Design",
         "lblrstsearch":"Search Result",
         "lblcode":"Code",
         "lblname":"Name",
