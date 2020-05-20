@@ -43,6 +43,7 @@ import { ProvisionForDepreciationOfFixedAssetsComponent } from './Component/Repo
 import { LastDurationGoodsComponent } from './Component/Reports/last-duration-goods/last-duration-goods.component';
 import { EntriesAnalysisComponent } from './Component/Reports/entries-analysis/entries-analysis.component';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -90,6 +91,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
     BrowserModule,
     BrowserAnimationsModule,
     NgxSpinnerModule,
+    ReactiveFormsModule,
     AgGridModule.withComponents([
       ChildMessageComponent,
 
