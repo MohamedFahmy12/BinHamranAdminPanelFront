@@ -51,7 +51,7 @@ export class MonthlyAnalisisForAccountsComponent implements OnInit {
     this.ToDate = 2019;
     this.BreadCrumTranslate();
     this.SelectDatabase();
-    
+
 
   }
   PickCom(event){

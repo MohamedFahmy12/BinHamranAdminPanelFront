@@ -64,7 +64,7 @@
 
                   <select  [(ngModel)]="AccObj.ACC_ID"  class="form-control w-100" (onChange)="PickAcc($event.value)">
                     <option > {{'SideBar.lblChooseAccount' | translate}} </option>
-                    <option *ngFor="let c of Accounts"  > {{c.ACC_AR_NAME}}</option>
+                    <option *ngFor="let c of Accounts" [ngValue]="c.ACC_ID" > {{c.ACC_AR_NAME}}</option>
                   </select>
               </div>
             </div>
