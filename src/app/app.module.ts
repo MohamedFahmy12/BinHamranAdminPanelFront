@@ -42,7 +42,6 @@ import { ConsumptionOfDepreciationComponent } from './Component/Reports/consumpt
 import { ProvisionForDepreciationOfFixedAssetsComponent } from './Component/Reports/provision-for-depreciation-of-fixed-assets/provision-for-depreciation-of-fixed-assets.component';
 import { LastDurationGoodsComponent } from './Component/Reports/last-duration-goods/last-duration-goods.component';
 import { EntriesAnalysisComponent } from './Component/Reports/entries-analysis/entries-analysis.component';
-import { NgxSpinnerModule } from "ngx-spinner";
 
 
 
@@ -89,7 +88,6 @@ import { NgxSpinnerModule } from "ngx-spinner";
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    NgxSpinnerModule,
     AgGridModule.withComponents([
       ChildMessageComponent,
 

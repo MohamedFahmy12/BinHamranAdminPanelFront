@@ -40,7 +40,6 @@
     "hijri-date": "^0.2.2",
     "jquery": "^3.5.1",
     "ng-multiselect-dropdown": "^0.2.10",
-    "ngx-spinner": "^9.0.2",
     "ngx-toaster": "^1.0.1",
     "ngx-toastr": "^11.3.3",
     "popper.js": "^1.16.1",
