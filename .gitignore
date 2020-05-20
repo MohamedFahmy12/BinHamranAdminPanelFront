@@ -44,3 +44,8 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+src/app/Services/Dashboard/dashboard.service.ts
+src/assets/css/mainBackup.css
+src/assets/scripts/main_bac.js
+src/app/Services/Dashboard/dashboard.service.ts
+src/app/Services/Dashboard/dashboard.service.ts

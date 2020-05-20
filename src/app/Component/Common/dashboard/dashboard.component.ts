@@ -11,19 +11,20 @@ import { CommonService } from 'src/app/Services/Share/common.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  accModal:boolean=false;
-  constructor(private data:CommonService,private DashboardSer:DashboardService,private loginSer:LoginService,private route: ActivatedRoute) {
+  accModal: boolean = false;
+  constructor(private data: CommonService, private DashboardSer: DashboardService, private loginSer: LoginService,
+     private route: ActivatedRoute) {
     console.log(this.textColor)
-   }
-  TotalsellingOrders:number=0;
-  TotalPurchaseOrders:number=0;
-  TotalSellingInvoice:number=0;
-  TotalPurchaseInvoice:number=0;
+  }
+  TotalsellingOrders: number = 0;
+  TotalPurchaseOrders: number = 0;
+  TotalSellingInvoice: number = 0;
+  TotalPurchaseInvoice: number = 0;
   // Total:number=0;
-  Partners:number=0;
-  root:any;
-  textColor:string[]=['text-warning','text-primary','text-danger'];
-  navbarsFooterStaticFromJson:any;
+  Partners: number = 0;
+  root: any;
+  textColor: string[] = ['text-warning', 'text-primary', 'text-danger'];
+  navbarsFooterStaticFromJson: any;
   // getJsonNavsBottom(){
   //   debugger;
   //   this.DashboardSer.getJsonSideBars().subscribe(res=>{
@@ -36,24 +37,16 @@ export class DashboardComponent implements OnInit {
   //     console.log("this.navbarsFooterStaticFromJson",this.navbarsFooterStaticFromJson)
   //   })
   //  }
-
   ngOnInit() {
-    this.root =this.data.rooturl.replace("api","");
-
+    this.root = this.data.rooturl.replace("api", "");
 
   }
 
-
-
-  showModal()
-  {
+  showModal() {
     debugger;
-    this.accModal=true;
-
+    this.accModal = true;
   }
-
   displayCounter(count) {
     alert(count);
-}
-
+  }
 }
