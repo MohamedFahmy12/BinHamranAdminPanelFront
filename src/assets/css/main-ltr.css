@@ -1,9 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Cairo&display=swap");
 @import url("./fonts.css");
-html {
-  direction: ltr
+html, body {
+  direction: ltr;
+    text-align: left;
 }
-
 .body-login {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -176,8 +176,8 @@ html {
 .app-header .dropdown-menu.dropdown-menu-right {
   left: auto !important;
   border: 0;
-  -webkit-transform: translate3d(45px, 55px, 0px) !important;
-          transform: translate3d(45px, 55px, 0px) !important;
+  /* -webkit-transform: translate3d(45px, 55px, 0px) !important;
+          transform: translate3d(45px, 55px, 0px) !important; */
 }
 
 .app-header .dropdown-menu.dropdown-menu-right .dropdown-item {
@@ -213,7 +213,7 @@ html {
   color: #fff;
   text-decoration: none;
   background-color: #3569fd !important;
-  padding-left: 2rem;
+  /* padding-left: 2rem; */
 }
 
 .app-header .dropdown-menu.dropdown-menu-right.noti-drob {
@@ -226,7 +226,7 @@ html {
 }
 
 @media (max-width: 992px) {
-  .app-header .dropdown-menu {
+  /* .app-header .dropdown-menu {
     position: fixed !important;
     z-index: 50;
     right: 10% !important;
@@ -235,15 +235,15 @@ html {
     -webkit-transform: translateY(-50%) !important;
             transform: translateY(-50%) !important;
     min-width: 10px !important;
-  }
+  } */
 }
 
 @media (max-width: 676px) {
-  .app-header .dropdown-menu {
+  /* .app-header .dropdown-menu {
     right: 20% !important;
     top: 13% !important;
     width: 57% !important;
-  }
+  } */
 }
 
 .app-theme-white.fixed-header .app-header__logo {
@@ -253,7 +253,7 @@ html {
 .app-theme-white.fixed-header .app-header__logo .logo-src {
   height: 80px;
   width: 100px;
- 
+
 }
 
 .app-theme-white.fixed-header .mr-auto {
@@ -277,28 +277,28 @@ html {
 }
 
 .app-sidebar .scrollbar-sidebar .vertical-nav-menu li a {
-  color: #3569fd !important;
+  /* color: #3569fd !important; */
   text-align: left;
-  height: auto;
+  /* height: auto; */
 }
 
 .app-sidebar .scrollbar-sidebar .vertical-nav-menu li a ul > li > a {
   color: #3569fd !important;
   padding-left: 1.5rem !important;
- 
+
 }
 
-.app-sidebar .scrollbar-sidebar .vertical-nav-menu ul {
+/* .app-sidebar .scrollbar-sidebar .vertical-nav-menu ul {
   padding: .5em 2rem 0 0;
-}
+} */
 
-.app-sidebar .scrollbar-sidebar .vertical-nav-menu ul > li > a:hover, .app-sidebar .scrollbar-sidebar .vertical-nav-menu ul > li > a.mm-active {
+/* .app-sidebar .scrollbar-sidebar .vertical-nav-menu ul > li > a:hover, .app-sidebar .scrollbar-sidebar .vertical-nav-menu ul > li > a.mm-active {
   color: #fff !important;
   background: #3569fd !important;
   -webkit-box-shadow: 3px 2px 20px 0px #e8e8e869;
           box-shadow: 3px 2px 20px 0px #e8e8e869;
   padding-left: 2rem !important;
-}
+} */
 
 .app-sidebar .scrollbar-sidebar .vertical-nav-menu i.metismenu-state-icon {
   opacity: 1;
@@ -313,21 +313,21 @@ html {
   padding-left: 2.8rem !important;
 }
 
-.app-sidebar .scrollbar-sidebar .tap-sidebar-active:hover, .app-sidebar .scrollbar-sidebar .tap-sidebar-active:focus, .app-sidebar .scrollbar-sidebar .tap-sidebar-active.mm-active {
+/* .app-sidebar .scrollbar-sidebar .tap-sidebar-active:hover, .app-sidebar .scrollbar-sidebar .tap-sidebar-active:focus, .app-sidebar .scrollbar-sidebar .tap-sidebar-active.mm-active {
   background: none !important;
   color: #3568fd !important;
   border-radius: 0;
   border-left: 5px solid #3569fd !important;
   padding-left: 3rem !important;
-}
+} */
 
-.app-sidebar .scrollbar-sidebar:hover .welc-pers img {
+/* .app-sidebar .scrollbar-sidebar:hover .welc-pers img {
   width: 50% !important;
-}
+} */
 
-.app-sidebar .scrollbar-sidebar:hover .welc-pers h4 {
+/* .app-sidebar .scrollbar-sidebar:hover .welc-pers h4 {
   display: block;
-}
+} */
 
 .closed-sidebar .welc-pers {
   padding-top: 1rem !important;
@@ -513,7 +513,7 @@ html {
   border: 0;
 }
 
-.app-main__outer .titele__bage .row .navbar .navbar-toggler:hover, 
+.app-main__outer .titele__bage .row .navbar .navbar-toggler:hover,
 .app-main__outer .titele__bage .row .navbar .navbar-toggler:focus {
   text-decoration: none;
   background-color: #3569fd;
@@ -808,9 +808,9 @@ select.form-control option {
 }
 
 @media (max-width: 991.98px) {
-  .app-header .app-header__content {
+  /* .app-header .app-header__content {
     background: #3569fd !important;
-  }
+  } */
   .app-header .app-header__content .header-btn-lg {
     margin-right: .5rem;
     padding: 0 .5rem;

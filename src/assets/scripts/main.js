@@ -18532,7 +18532,7 @@ $(".date_hijiri_melady .form-group .btn_hijiri").on('click', function() {
               CLICK_DATA_API: "click.bs.tab.data-api"
           },
           Oe = {
-              DROPDOWN_MENU: "dropdown-menu",
+            //   DROPDOWN_MENU: "dropdown-menu",
               ACTIVE: "active",
               DISABLED: "disabled",
               FADE: "fade",
@@ -18545,7 +18545,7 @@ $(".date_hijiri_melady .form-group .btn_hijiri").on('click', function() {
               ACTIVE_UL: "> li > .active",
               DATA_TOGGLE: '[data-toggle="tab"], [data-toggle="pill"], [data-toggle="list"]',
               DROPDOWN_TOGGLE: ".dropdown-toggle",
-              DROPDOWN_ACTIVE_CHILD: "> .dropdown-menu .active"
+            //   DROPDOWN_ACTIVE_CHILD: "> .dropdown-menu .active"
           },
           Ie = function() {
               function e(e) {
@@ -33413,6 +33413,23 @@ $(".date_hijiri_melady .form-group .btn_hijiri").on('click', function() {
 // $(".app-header__content").click(function(){
 //     alert('hello');
 // })
-$(document).on('click',".app-header__content .widget-content .btn-group img",function(){
-    $(".text-center.dropdown-menu.dropdown-menu-right").css('display','flex')
+// $(document).on('click',".app-header__content .widget-content .btn-group img",function(e){
+//     e.preventDefault();
+//      if($('#displayDropdown').hasClass('displayDropdown')){
+//   $('#displayDropdown').removeClass('displayDropdown');
+//   console.log('ddd' )
+//   }else{
+//     $('#displayDropdown').addClass('displayDropdown');
+//     console.log('nnn' )
+//  }
+//  console.log( 'dis'+($('#displayDropdown').hasClass('displayDropdown')))
+// //  );
+//     // $("#displayDropdown").toggleClass('displayDropdown')
+// })
+$(document).ready(function () {
+    $('.app-header__content .widget-content .btn-group img').click(function(){
+        // alert('gggg')
+        $("#displayDropdown").toggleClass('displayDropdown')
+    })
+
 })
