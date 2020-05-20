@@ -62,10 +62,9 @@
                   (onChange)="PickAcc($event.value)" id="ACC_ID" name="ACC_ID"
                   defaultLabel="{{'SideBar.lblChooseAccount' | translate}}"></p-multiSelect> -->
 
-                  <select name="type" id="type" [(ngModel)]="type" class="form-control w-100">
-                    <option value="1" selected> {{ 'SideBar.slctttype1' | translate }} </option>
-                    <option value="2"> {{ 'SideBar.slctttype2' | translate }} </option>
-                    <option value="3"> {{ 'SideBar.slctttype3' | translate }} </option>
+                  <select  [(ngModel)]="AccObj.ACC_ID"  class="form-control w-100" (onChange)="PickAcc($event.value)">
+                    <option > {{'SideBar.lblChooseAccount' | translate}} </option>
+                    <option *ngFor="let c of Accounts"  > {{c.ACC_AR_NAME}}</option>
                   </select>
               </div>
             </div>
