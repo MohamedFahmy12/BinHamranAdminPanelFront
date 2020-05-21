@@ -69,15 +69,15 @@ export class AccountTotalBalanceComponent implements OnInit {
     }
 
   }
-  // PickAcc(event){
-  //   debugger;
-  //   this.AccIDs = event[0].ACC_ID;
-  //   for(var i = 1; i< event.length ; i++)
-  //   {
-  //     var id= event[i].ACC_ID;
-  //     this.AccIDs += ','+ id;
-  //   }
-  // }
+  PickAcc(event){
+    debugger;
+    this.AccIDs = event[0].ACC_ID;
+    for(var i = 1; i< event.length ; i++)
+    {
+      var id= event[i].ACC_ID;
+      this.AccIDs += ','+ id;
+    }
+  }
   pick(event){
     debugger;
     this.dbIds = event[0].DatabaseNameId;
@@ -128,7 +128,6 @@ export class AccountTotalBalanceComponent implements OnInit {
     debugger;
     this.ToDate = (<HTMLInputElement>document.getElementById("gregDate"))
       .value ? (<HTMLInputElement>document.getElementById("gregDate")).value : null;
-      this.AccIDs = (<HTMLSelectElement>document.getElementById("ACC_ID")).value;
     this.ReportSer.AccountTotalBalance(this.ToDate, this.ComIDS,this.AccIDs, this.dbIds).subscribe(
       (data: Response) => {
         debugger;

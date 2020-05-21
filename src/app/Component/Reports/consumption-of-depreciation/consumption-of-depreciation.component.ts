@@ -61,15 +61,15 @@ export class ConsumptionOfDepreciationComponent implements OnInit {
         this.ComIDS += ','+ id;
       }
     }
-    // PickAcc(event){
-    //   debugger;
-    //   this.AccIDs = event[0].ACC_ID;
-    //   for(var i = 1; i< event.length ; i++)
-    //   {
-    //     var id= event[i].ACC_ID;
-    //     this.AccIDs += ','+ id;
-    //   }
-    // }
+    PickAcc(event){
+      debugger;
+      this.AccIDs = event[0].ACC_ID;
+      for(var i = 1; i< event.length ; i++)
+      {
+        var id= event[i].ACC_ID;
+        this.AccIDs += ','+ id;
+      }
+    }
     pick(event){
       debugger;
       this.dbIds = event[0].DatabaseNameId;
@@ -106,7 +106,6 @@ export class ConsumptionOfDepreciationComponent implements OnInit {
       debugger;
       this.sDate = (<HTMLInputElement>document.getElementById("gregDate"))
         .value ? (<HTMLInputElement>document.getElementById("gregDate")).value : null;
-      this.AccIDs = (<HTMLSelectElement>document.getElementById("ACC_ID")).value;
       this.ReportSer.ConsumptionOfDepreciation(this.sDate,this.eDate,this.ComIDS,this.AccIDs, this.dbIds).subscribe(
         (data: Response) => {
           debugger;
