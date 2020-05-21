@@ -10,13 +10,18 @@ import { ReportsServiceService } from 'src/app/Services/Reports/reports-service.
 import { ToastrService } from 'ngx-toastr';
 import { EntryModule } from 'src/app/Models/DataModels/entry/entry.module';
 
+declare var Stimulsoft:any;
+declare var StiOptions:any;
 @Component({
   selector: 'app-last-duration-goods',
   templateUrl: './last-duration-goods.component.html',
   styleUrls: ['./last-duration-goods.component.css']
 })
 export class LastDurationGoodsComponent implements OnInit {
-
+  options: any = new Stimulsoft.Designer.StiDesignerOptions();
+	designer: any = new Stimulsoft.Designer.StiDesigner(this.options, 'StiDesigner', false);
+  report:any;
+  reportName:string;
   result: any;
   sDate: any;
   eDate:any;
@@ -164,5 +169,28 @@ export class LastDurationGoodsComponent implements OnInit {
         }
       );
     }
-
+    ViewReportDesign() {
+      debugger;
+     StiOptions.WebServer.url = "http://localhost:63103/api/ReportData/GetDataSource"
+      this.report = Stimulsoft.Report.StiReport.createNewReport();
+      this.report.loadFile('/reports/LastDurationGoods.mrt');
+      this.designer.onSaveReport = function (args) {
+        this.JsonReport = args.report.saveToJsonString();
+        this.reportName= "LastDurationGoods";
+        $.ajax({
+          url:'http://localhost:63103/api/ReportData/SaveFile',
+          type:'Post',
+          data: {JsonReport: this.JsonReport,reportName: this.reportName },
+          success: function(res){
+            alert(res);
+          },
+          error:function(err){
+            console.log("err: ",JSON.stringify(err));
+          }
+        })
+      }
+      this.options.appearance.fullScreenMode = false;
+      this.designer.report = this.report;
+      this.designer.renderHtml("designer");
+    }
 }

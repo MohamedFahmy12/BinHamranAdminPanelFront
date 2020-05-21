@@ -10,12 +10,18 @@ import { DateHelperService } from 'src/app/Helper/date-helper.service';
 import { TranslateService } from '@ngx-translate/core';
 import { NgForm } from '@angular/forms';
 
+declare var Stimulsoft:any;
+declare var StiOptions:any;
 @Component({
   selector: 'app-account-total-balance',
   templateUrl: './account-total-balance.component.html',
   styleUrls: ['./account-total-balance.component.css']
 })
 export class AccountTotalBalanceComponent implements OnInit {
+  options: any = new Stimulsoft.Designer.StiDesignerOptions();
+	designer: any = new Stimulsoft.Designer.StiDesigner(this.options, 'StiDesigner', false);
+  report:any;
+  reportName:string;
   result: any;
   ToDate: any;
   DateHijri: any;
@@ -36,7 +42,7 @@ export class AccountTotalBalanceComponent implements OnInit {
   ToastrMsg: string;
   // options: any = new Stimulsoft.Designer.StiDesignerOptions();
   // viewer: any = new Stimulsoft.Viewer.StiViewer(this.options, 'StiViewer', false);
-  // report: any = new Stimulsoft.Report.StiReport();
+  // report: any = new Stimulsoft.Report.StiReport.createNewReport();
   // designer: any = new Stimulsoft.Designer.StiDesigner(this.options, 'StiDesigner', false);
 
   public iconFieldsPort: Object = {};
@@ -63,15 +69,15 @@ export class AccountTotalBalanceComponent implements OnInit {
     }
 
   }
-  PickAcc(event){
-    debugger;
-    this.AccIDs = event[0].ACC_ID;
-    for(var i = 1; i< event.length ; i++)
-    {
-      var id= event[i].ACC_ID;
-      this.AccIDs += ','+ id;
-    }
-  }
+  // PickAcc(event){
+  //   debugger;
+  //   this.AccIDs = event[0].ACC_ID;
+  //   for(var i = 1; i< event.length ; i++)
+  //   {
+  //     var id= event[i].ACC_ID;
+  //     this.AccIDs += ','+ id;
+  //   }
+  // }
   pick(event){
     debugger;
     this.dbIds = event[0].DatabaseNameId;
@@ -122,6 +128,7 @@ export class AccountTotalBalanceComponent implements OnInit {
     debugger;
     this.ToDate = (<HTMLInputElement>document.getElementById("gregDate"))
       .value ? (<HTMLInputElement>document.getElementById("gregDate")).value : null;
+      this.AccIDs = (<HTMLSelectElement>document.getElementById("ACC_ID")).value;
     this.ReportSer.AccountTotalBalance(this.ToDate, this.ComIDS,this.AccIDs, this.dbIds).subscribe(
       (data: Response) => {
         debugger;
@@ -214,5 +221,28 @@ export class AccountTotalBalanceComponent implements OnInit {
       }
     );
   }
-
+  ViewReportDesign() {
+    debugger;
+   StiOptions.WebServer.url = "http://localhost:63103/api/ReportData/GetDataSource"
+    this.report = Stimulsoft.Report.StiReport.createNewReport();
+    this.report.loadFile('/reports/AccountTotalBalance.mrt');
+    this.designer.onSaveReport = function (args) {
+      this.JsonReport = args.report.saveToJsonString();
+      this.reportName= "AccountTotalBalance";
+      $.ajax({
+        url:'http://localhost:63103/api/ReportData/SaveFile',
+        type:'Post',
+        data: {JsonReport: this.JsonReport,reportName: this.reportName },
+        success: function(res){
+          alert(res);
+        },
+        error:function(err){
+          console.log("err: ",JSON.stringify(err));
+        }
+      })
+    }
+    this.options.appearance.fullScreenMode = false;
+    this.designer.report = this.report;
+    this.designer.renderHtml("designer");
+  }
 }

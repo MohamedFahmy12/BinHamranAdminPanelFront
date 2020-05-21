@@ -10,13 +10,18 @@ import { DateHelperService } from 'src/app/Helper/date-helper.service';
 import { TranslateService } from '@ngx-translate/core';
 import { NgForm } from '@angular/forms';
 
+declare var Stimulsoft:any;
+declare var StiOptions:any;
 @Component({
   selector: 'app-depreciation-of-fixed-assets',
   templateUrl: './depreciation-of-fixed-assets.component.html',
   styleUrls: ['./depreciation-of-fixed-assets.component.css']
 })
 export class DepreciationOfFixedAssetsComponent implements OnInit {
-
+  options: any = new Stimulsoft.Designer.StiDesignerOptions();
+	designer: any = new Stimulsoft.Designer.StiDesigner(this.options, 'StiDesigner', false);
+  report:any;
+  reportName:string;
   result: any;
   sDate: any;
   eDate:any;
@@ -166,7 +171,30 @@ export class DepreciationOfFixedAssetsComponent implements OnInit {
         }
       );
     }
-
+    ViewReportDesign() {
+      debugger;
+     StiOptions.WebServer.url = "http://localhost:63103/api/ReportData/GetDataSource"
+      this.report = Stimulsoft.Report.StiReport.createNewReport();
+      this.report.loadFile('/reports/DepreciationOfFixedAssets.mrt');
+      this.designer.onSaveReport = function (args) {
+        this.JsonReport = args.report.saveToJsonString();
+        this.reportName= "DepreciationOfFixedAssets";
+        $.ajax({
+          url:'http://localhost:63103/api/ReportData/SaveFile',
+          type:'Post',
+          data: {JsonReport: this.JsonReport,reportName: this.reportName },
+          success: function(res){
+            alert(res);
+          },
+          error:function(err){
+            console.log("err: ",JSON.stringify(err));
+          }
+        })
+      }
+      this.options.appearance.fullScreenMode = false;
+      this.designer.report = this.report;
+      this.designer.renderHtml("designer");
+    }
 
 
 }

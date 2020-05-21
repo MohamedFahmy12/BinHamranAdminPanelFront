@@ -61,9 +61,9 @@
                         <!-- <p-multiSelect [options]="Accounts" [(ngModel)]="AccObj.ACC_ID" optionLabel="ACC_AR_NAME"
                           (onChange)="PickAcc($event.value)" id="ACC_ID" name="ACC_ID"
                           defaultLabel="{{'SideBar.lblChooseAccount' | translate}}"></p-multiSelect> -->
-                          <select  [(ngModel)]="AccObj.ACC_ID"  class="form-control w-100" (onChange)="PickAcc($event.value)">
-                            <option > {{'SideBar.lblChooseAccount' | translate}} </option>
-                            <option *ngFor="let c of Accounts"  > {{c.ACC_AR_NAME}}</option>
+                          <select  [(ngModel)]="AccObj.ACC_ID"  class="form-control w-100" id="ACC_ID" name="ACC_ID" >
+                            <option> {{'SideBar.lblChooseAccount' | translate}} </option>
+                            <option *ngFor="let c of Accounts" [ngValue]="c.ACC_ID" > {{c.ACC_AR_NAME}}</option>
                           </select>
                       </div>
                     </div>
@@ -122,14 +122,24 @@
                   </div>
                 </div>
               </div>
-            <div class="row">
+              <div class="row">
                 <div class="col-12 view-report">
+                 <div class="col-8 view-report">
+                  <div class="col-4 view-report">
                     <button class="nav-link text-right mr-0" type="submit">
-                        <i class="fas fa-eye"></i>
-                        <span class="mr-2">{{ 'ResultOfPortPage.lblShowReport' | translate }}</span>
+                      <i class="fas fa-eye"></i>
+                      <span class="mr-2">{{ 'ResultOfPortPage.lblShowReport' | translate }}</span>
                     </button>
+                  </div>
+                  <div class="col-3 view-report text-primary">
+                    <a (click)="ViewReportDesign()" class="nav-link text-right mr-0">
+                      <i class="fas fa-paint-brush"></i>
+                      <span class="mr-2">{{ 'ResultOfPortPage.lblReportDesign' | translate }}</span>
+                    </a>
+                  </div>
+                 </div>
                 </div>
-            </div>
+              </div>
         </form>
     </div>
 </div>

@@ -10,13 +10,18 @@ import { ReportsServiceService } from 'src/app/Services/Reports/reports-service.
 import { Router } from '@angular/router';
 import { EntryModule } from 'src/app/Models/DataModels/entry/entry.module';
 
+declare var Stimulsoft:any;
+declare var StiOptions:any;
 @Component({
   selector: 'app-provision-for-depreciation-of-fixed-assets',
   templateUrl: './provision-for-depreciation-of-fixed-assets.component.html',
   styleUrls: ['./provision-for-depreciation-of-fixed-assets.component.css']
 })
 export class ProvisionForDepreciationOfFixedAssetsComponent implements OnInit {
-
+  options: any = new Stimulsoft.Designer.StiDesignerOptions();
+	designer: any = new Stimulsoft.Designer.StiDesigner(this.options, 'StiDesigner', false);
+  report:any;
+  reportName:string;
   result: any;
   sDate: any;
   eDate:any;
@@ -56,15 +61,15 @@ export class ProvisionForDepreciationOfFixedAssetsComponent implements OnInit {
         this.ComIDS += ','+ id;
       }
     }
-    PickAcc(event){
-      debugger;
-      this.AccIDs = event[0].ACC_ID;
-      for(var i = 1; i< event.length ; i++)
-      {
-        var id= event[i].ACC_ID;
-        this.AccIDs += ','+ id;
-      }
-    }
+    // PickAcc(event){
+    //   debugger;
+    //   this.AccIDs = event[0].ACC_ID;
+    //   for(var i = 1; i< event.length ; i++)
+    //   {
+    //     var id= event[i].ACC_ID;
+    //     this.AccIDs += ','+ id;
+    //   }
+    // }
     pick(event){
       debugger;
       this.dbIds = event[0].DatabaseNameId;
@@ -101,6 +106,7 @@ export class ProvisionForDepreciationOfFixedAssetsComponent implements OnInit {
       debugger;
       this.sDate = (<HTMLInputElement>document.getElementById("gregDate"))
         .value ? (<HTMLInputElement>document.getElementById("gregDate")).value : null;
+      this.AccIDs = (<HTMLSelectElement>document.getElementById("ACC_ID")).value;
       this.ReportSer.ProvisionForDepreciationOfFixedAssets(this.sDate,this.eDate,this.ComIDS,this.AccIDs, this.dbIds).subscribe(
         (data: Response) => {
           debugger;
@@ -165,6 +171,29 @@ export class ProvisionForDepreciationOfFixedAssetsComponent implements OnInit {
       );
     }
 
-
+    ViewReportDesign() {
+      debugger;
+     StiOptions.WebServer.url = "http://localhost:63103/api/ReportData/GetDataSource"
+      this.report = Stimulsoft.Report.StiReport.createNewReport();
+      this.report.loadFile('/reports/ProvisionForDepreciationOfFixedAssets.mrt');
+      this.designer.onSaveReport = function (args) {
+        this.JsonReport = args.report.saveToJsonString();
+        this.reportName= "ProvisionForDepreciationOfFixedAssets";
+        $.ajax({
+          url:'http://localhost:63103/api/ReportData/SaveFile',
+          type:'Post',
+          data: {JsonReport: this.JsonReport,reportName: this.reportName },
+          success: function(res){
+            alert(res);
+          },
+          error:function(err){
+            console.log("err: ",JSON.stringify(err));
+          }
+        })
+      }
+      this.options.appearance.fullScreenMode = false;
+      this.designer.report = this.report;
+      this.designer.renderHtml("designer");
+    }
 
 }

@@ -10,13 +10,18 @@ import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { NgForm } from '@angular/forms';
 
+declare var Stimulsoft:any;
+declare var StiOptions:any;
 @Component({
   selector: 'app-entries-analysis',
   templateUrl: './entries-analysis.component.html',
   styleUrls: ['./entries-analysis.component.css']
 })
 export class EntriesAnalysisComponent implements OnInit {
-
+  options: any = new Stimulsoft.Designer.StiDesignerOptions();
+	designer: any = new Stimulsoft.Designer.StiDesigner(this.options, 'StiDesigner', false);
+  report:any;
+  reportName:string;
   type:string;
   result: any;
   sDate: any;
@@ -168,6 +173,29 @@ export class EntriesAnalysisComponent implements OnInit {
         }
       );
     }
-
+    ViewReportDesign() {
+      debugger;
+     StiOptions.WebServer.url = "http://localhost:63103/api/ReportData/GetDataSource"
+      this.report = Stimulsoft.Report.StiReport.createNewReport();
+      this.report.loadFile('/reports/MonthlyAnalisisForAccounts.mrt');
+      this.designer.onSaveReport = function (args) {
+        this.JsonReport = args.report.saveToJsonString();
+        this.reportName= "MonthlyAnalisisForAccounts";
+        $.ajax({
+          url:'http://localhost:63103/api/ReportData/SaveFile',
+          type:'Post',
+          data: {JsonReport: this.JsonReport,reportName: this.reportName },
+          success: function(res){
+            alert(res);
+          },
+          error:function(err){
+            console.log("err: ",JSON.stringify(err));
+          }
+        })
+      }
+      this.options.appearance.fullScreenMode = false;
+      this.designer.report = this.report;
+      this.designer.renderHtml("designer");
+    }
 
 }

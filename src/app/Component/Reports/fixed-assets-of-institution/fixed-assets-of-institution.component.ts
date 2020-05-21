@@ -10,12 +10,18 @@ import { TranslateService } from '@ngx-translate/core';
 import { DateHelperService } from 'src/app/Helper/date-helper.service';
 import { NgForm } from '@angular/forms';
 
+declare var Stimulsoft:any;
+declare var StiOptions:any;
 @Component({
   selector: 'app-fixed-assets-of-institution',
   templateUrl: './fixed-assets-of-institution.component.html',
   styleUrls: ['./fixed-assets-of-institution.component.css']
 })
 export class FixedAssetsOfInstitutionComponent implements OnInit {
+  options: any = new Stimulsoft.Designer.StiDesignerOptions();
+	designer: any = new Stimulsoft.Designer.StiDesigner(this.options, 'StiDesigner', false);
+  report:any;
+  reportName:string;
   result: any;
   sDate: any;
   eDate:any;
@@ -165,5 +171,28 @@ export class FixedAssetsOfInstitutionComponent implements OnInit {
         }
       );
     }
-
+    ViewReportDesign() {
+      debugger;
+     StiOptions.WebServer.url = "http://localhost:63103/api/ReportData/GetDataSource"
+      this.report = Stimulsoft.Report.StiReport.createNewReport();
+      this.report.loadFile('/reports/FixedAssetsOfInstitution.mrt');
+      this.designer.onSaveReport = function (args) {
+        this.JsonReport = args.report.saveToJsonString();
+        this.reportName= "FixedAssetsOfInstitution";
+        $.ajax({
+          url:'http://localhost:63103/api/ReportData/SaveFile',
+          type:'Post',
+          data: {JsonReport: this.JsonReport,reportName: this.reportName },
+          success: function(res){
+            alert(res);
+          },
+          error:function(err){
+            console.log("err: ",JSON.stringify(err));
+          }
+        })
+      }
+      this.options.appearance.fullScreenMode = false;
+      this.designer.report = this.report;
+      this.designer.renderHtml("designer");
+    }
 }

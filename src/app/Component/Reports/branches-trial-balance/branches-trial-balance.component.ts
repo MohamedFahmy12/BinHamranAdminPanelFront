@@ -10,16 +10,19 @@ import { DateHelperService } from 'src/app/Helper/date-helper.service';
 import { TranslateService } from '@ngx-translate/core';
 import { NgForm } from '@angular/forms';
 
-declare var Stimulsoft: any;
+declare var Stimulsoft:any;
+declare var StiOptions:any;
 @Component({
   selector: 'app-branches-trial-balance',
   templateUrl: './branches-trial-balance.component.html',
   styleUrls: ['./branches-trial-balance.component.css']
 })
 export class BranchesTrialBalanceComponent implements OnInit {
-  options: any;
-  designer: any;
-  report: any;
+  options: any = new Stimulsoft.Designer.StiDesignerOptions();
+	designer: any = new Stimulsoft.Designer.StiDesigner(this.options, 'StiDesigner', false);
+  report:any;
+  reportName:string;
+  
   result: any;
   sDate: any;
   eDate: any;
@@ -165,19 +168,27 @@ export class BranchesTrialBalanceComponent implements OnInit {
     );
   }
   ViewReportDesign() {
-    this.options = new Stimulsoft.Designer.StiDesignerOptions();
-    this.options.appearance.fullScreenMode = false;
-    this.designer = new Stimulsoft.Designer.StiDesigner(this.options, "StiDesigner", false);
-    this.report = new Stimulsoft.Report.StiReport();
+    debugger;
+    StiOptions.WebServer.url = "http://localhost:63103/api/ReportData/GetDataSource"
+    this.report = Stimulsoft.Report.StiReport.createNewReport();
     this.report.loadFile('/reports/BranchesTrialBalance.mrt');
+    this.designer.onSaveReport = function (args) {
+      this.JsonReport = args.report.saveToJsonString();
+      this.reportName = "BranchesTrialBalance";
+      $.ajax({
+        url: 'http://localhost:63103/api/ReportData/SaveFile',
+        type: 'Post',
+        data: { JsonReport: this.JsonReport, reportName: this.reportName },
+        success: function (res) {
+          alert(res);
+        },
+        error: function (err) {
+          console.log("err: ", JSON.stringify(err));
+        }
+      })
+    }
+    this.options.appearance.fullScreenMode = false;
     this.designer.report = this.report;
     this.designer.renderHtml("designer");
-    this.designer.onSaveReport = function (args) {
-      var jsonReport = args.report.saveToJsonString();
-      
-    }
   }
-
-
-
 }

@@ -10,13 +10,18 @@ import { TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router';
 import { EntryModule } from 'src/app/Models/DataModels/entry/entry.module';
 
+declare var Stimulsoft:any;
+declare var StiOptions:any;
 @Component({
   selector: 'app-opining-entry',
   templateUrl: './opining-entry.component.html',
   styleUrls: ['./opining-entry.component.css']
 })
 export class OpiningEntryComponent implements OnInit {
-
+  options: any = new Stimulsoft.Designer.StiDesignerOptions();
+	designer: any = new Stimulsoft.Designer.StiDesigner(this.options, 'StiDesigner', false);
+  report:any;
+  reportName:string;
   result: any;
   ToDate: any;
   DateHijri: any;
@@ -37,7 +42,7 @@ export class OpiningEntryComponent implements OnInit {
   ToastrMsg: string;
   // options: any = new Stimulsoft.Designer.StiDesignerOptions();
   // viewer: any = new Stimulsoft.Viewer.StiViewer(this.options, 'StiViewer', false);
-  // report: any = new Stimulsoft.Report.StiReport();
+  // report: any = new Stimulsoft.Report.StiReport.createNewReport();
   // designer: any = new Stimulsoft.Designer.StiDesigner(this.options, 'StiDesigner', false);
 
   public iconFieldsPort: Object = {};
@@ -185,6 +190,29 @@ export class OpiningEntryComponent implements OnInit {
     );
   }
 
-
+  ViewReportDesign() {
+    debugger;
+   StiOptions.WebServer.url = "http://localhost:63103/api/ReportData/GetDataSource"
+    this.report = Stimulsoft.Report.StiReport.createNewReport();
+    this.report.loadFile('/reports/OpeningEntries.mrt');
+    this.designer.onSaveReport = function (args) {
+      this.JsonReport = args.report.saveToJsonString();
+      this.reportName= "OpeningEntries";
+      $.ajax({
+        url:'http://localhost:63103/api/ReportData/SaveFile',
+        type:'Post',
+        data: {JsonReport: this.JsonReport,reportName: this.reportName },
+        success: function(res){
+          alert(res);
+        },
+        error:function(err){
+          console.log("err: ",JSON.stringify(err));
+        }
+      })
+    }
+    this.options.appearance.fullScreenMode = false;
+    this.designer.report = this.report;
+    this.designer.renderHtml("designer");
+  }
 
 }

@@ -102,10 +102,20 @@
       </div>
       <div class="row">
         <div class="col-12 view-report">
-          <button class="nav-link text-right mr-0" type="submit">
-            <i class="fas fa-eye"></i>
-            <span class="mr-2">{{ 'ResultOfPortPage.lblShowReport' | translate }}</span>
-          </button>
+         <div class="col-8 view-report">
+          <div class="col-4 view-report">
+            <button class="nav-link text-right mr-0" type="submit">
+              <i class="fas fa-eye"></i>
+              <span class="mr-2">{{ 'ResultOfPortPage.lblShowReport' | translate }}</span>
+            </button>
+          </div>
+          <div class="col-3 view-report text-primary">
+            <a (click)="ViewReportDesign()" class="nav-link text-right mr-0">
+              <i class="fas fa-paint-brush"></i>
+              <span class="mr-2">{{ 'ResultOfPortPage.lblReportDesign' | translate }}</span>
+            </a>
+          </div>
+         </div>
         </div>
       </div>
     </form>
