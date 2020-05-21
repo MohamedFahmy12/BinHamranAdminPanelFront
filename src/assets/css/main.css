@@ -25888,7 +25888,12 @@ a.fc-more:hover {
 .closed-sidebar .app-sidebar .vertical-nav-menu li:not(:first-child) {
   display: none;
 }
-
+.app-container.app-theme-white.body-tabs-shadow.fixed-sidebar.fixed-header.sidebar-mobile-open.closed-sidebar-mobile.closed-sidebar .app-sidebar .vertical-nav-menu li{
+display: block;
+}
+.app-container.app-theme-white.body-tabs-shadow.fixed-sidebar.fixed-header.sidebar-mobile-open.closed-sidebar-mobile.closed-sidebar .app-sidebar .app-sidebar__inner ul li a{
+  text-indent: unset;
+}
 .app-sidebar .scrollbar-sidebar .vertical-nav-menu ul>li>a:hover,
 .app-sidebar .scrollbar-sidebar .vertical-nav-menu ul>li>a.mm-active {
   color: #fff !important;
