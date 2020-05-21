@@ -312,11 +312,11 @@ html, body {
 }
 
 @media (max-width: 992px) {
-  .closed-sidebar .welc-pers h4 {
+  /* .closed-sidebar .welc-pers h4 {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-  }
+  } */
 }
 
 .app-main__outer {
