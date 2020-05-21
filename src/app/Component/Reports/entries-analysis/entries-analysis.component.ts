@@ -178,20 +178,28 @@ export class EntriesAnalysisComponent implements OnInit {
      StiOptions.WebServer.url = "http://localhost:63103/api/ReportData/GetDataSource"
       this.report = Stimulsoft.Report.StiReport.createNewReport();
       this.report.loadFile('/reports/MonthlyAnalisisForAccounts.mrt');
+      let jsonReport:string;
       this.designer.onSaveReport = function (args) {
-        this.JsonReport = args.report.saveToJsonString();
-        this.reportName= "MonthlyAnalisisForAccounts";
+        jsonReport = args.report.saveToJsonString();
+        this.reportName= "BranchesTrialBalance";
+        var newData =   {
+          "data":jsonReport,
+          "fileName":this.reportName
+          };
+          var dataJson = JSON.stringify(newData);
         $.ajax({
           url:'http://localhost:63103/api/ReportData/SaveFile',
           type:'Post',
-          data: {JsonReport: this.JsonReport,reportName: this.reportName },
+          data: dataJson,
           success: function(res){
             alert(res);
           },
           error:function(err){
             console.log("err: ",JSON.stringify(err));
-          }
-        })
+          },
+          dataType: "json",
+          contentType: "application/json"
+        });
       }
       this.options.appearance.fullScreenMode = false;
       this.designer.report = this.report;

@@ -225,21 +225,29 @@ export class AccountTotalBalanceComponent implements OnInit {
    StiOptions.WebServer.url = "http://localhost:63103/api/ReportData/GetDataSource"
     this.report = Stimulsoft.Report.StiReport.createNewReport();
     this.report.loadFile('/reports/AccountTotalBalance.mrt');
-    this.designer.onSaveReport = function (args) {
-      this.JsonReport = args.report.saveToJsonString();
-      this.reportName= "AccountTotalBalance";
-      $.ajax({
-        url:'http://localhost:63103/api/ReportData/SaveFile',
-        type:'Post',
-        data: {JsonReport: this.JsonReport,reportName: this.reportName },
-        success: function(res){
-          alert(res);
-        },
-        error:function(err){
-          console.log("err: ",JSON.stringify(err));
-        }
-      })
-    }
+    let jsonReport:string;
+      this.designer.onSaveReport = function (args) {
+        jsonReport = args.report.saveToJsonString();
+        this.reportName= "AccountTotalBalance";
+        var newData =   {
+          "data":jsonReport,
+          "fileName":this.reportName
+          };
+          var dataJson = JSON.stringify(newData);
+        $.ajax({
+          url:'http://localhost:63103/api/ReportData/SaveFile',
+          type:'Post',
+          data: dataJson,
+          success: function(res){
+            alert(res);
+          },
+          error:function(err){
+            console.log("err: ",JSON.stringify(err));
+          },
+          dataType: "json",
+          contentType: "application/json"
+        });
+      }
     this.options.appearance.fullScreenMode = false;
     this.designer.report = this.report;
     this.designer.renderHtml("designer");

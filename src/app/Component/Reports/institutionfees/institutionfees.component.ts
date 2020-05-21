@@ -182,6 +182,33 @@ export class InstitutionfeesComponent implements OnInit {
      }else{
       this.report.loadFile('/reports/InstitutionfeesMonths.mrt');
      }
+     let jsonReport:string;
+    this.designer.onSaveReport = function (args) {
+      jsonReport = args.report.saveToJsonString();
+      if(this.type == "1"){
+        this.reportName= "InstitutionfeesBranches";
+      }else{
+        this.reportName= "InstitutionfeesMonths";
+      }
+      var newData =   {
+        "data":jsonReport,
+        "fileName":this.reportName
+        };
+        var dataJson = JSON.stringify(newData);
+      $.ajax({
+        url:'http://localhost:63103/api/ReportData/SaveFile',
+        type:'Post',
+        data: dataJson,
+        success: function(res){
+          alert(res);
+        },
+        error:function(err){
+          console.log("err: ",JSON.stringify(err));
+        },
+        dataType: "json",
+        contentType: "application/json"
+      });
+    }
       this.designer.onSaveReport = function (args) {
         this.JsonReport = args.report.saveToJsonString();
         if(this.type == "1"){
