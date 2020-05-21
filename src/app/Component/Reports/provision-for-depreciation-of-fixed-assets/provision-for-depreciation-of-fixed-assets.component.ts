@@ -51,6 +51,7 @@ export class ProvisionForDepreciationOfFixedAssetsComponent implements OnInit {
       this.eDate = this.datehelp.GetCurrentDate();
       this.BreadCrumTranslate();
       this.SelectDatabase();
+      this.AccIDs = "0";
     }
     PickCom(event){
       debugger;
