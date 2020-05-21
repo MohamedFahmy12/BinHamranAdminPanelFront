@@ -341,13 +341,13 @@ html, body {
   display: none;
 }
 
-.closed-sidebar .app-sidebar:hover .app-sidebar__inner ul ul li a {
+/* .closed-sidebar .app-sidebar:hover .app-sidebar__inner ul ul li a {
   padding-left: 1.5em;
-}
+} */
 
-.closed-sidebar .app-sidebar .app-sidebar__inner ul.mm-show {
+/* .closed-sidebar .app-sidebar .app-sidebar__inner ul.mm-show {
   padding: .5em 2rem 0 0 !important;
-}
+} */
 
 .closed-sidebar .app-sidebar .app-sidebar__inner ul li a {
   margin-right: -.3rem;
