@@ -183,11 +183,13 @@ export class InstitutionfeesComponent implements OnInit {
       this.report.loadFile('/reports/InstitutionfeesMonths.mrt');
      }
      let jsonReport:string;
+     let typo: string = this.type;
     this.designer.onSaveReport = function (args) {
       jsonReport = args.report.saveToJsonString();
-      if(this.type == "1"){
+      debugger;
+      if(typo == "1"){
         this.reportName= "InstitutionfeesBranches";
-      }else{
+      }else if(typo == "2"){
         this.reportName= "InstitutionfeesMonths";
       }
       var newData =   {
@@ -209,25 +211,6 @@ export class InstitutionfeesComponent implements OnInit {
         contentType: "application/json"
       });
     }
-      this.designer.onSaveReport = function (args) {
-        this.JsonReport = args.report.saveToJsonString();
-        if(this.type == "1"){
-          this.reportName= "InstitutionfeesBranches";
-        }else{
-          this.reportName= "InstitutionfeesMonths";
-        }
-        $.ajax({
-          url:'http://localhost:63103/api/ReportData/SaveFile',
-          type:'Post',
-          data: {JsonReport: this.JsonReport,reportName: this.reportName },
-          success: function(res){
-            alert(res);
-          },
-          error:function(err){
-            console.log("err: ",JSON.stringify(err));
-          }
-        })
-      }
       this.options.appearance.fullScreenMode = false;
       this.designer.report = this.report;
       this.designer.renderHtml("designer");

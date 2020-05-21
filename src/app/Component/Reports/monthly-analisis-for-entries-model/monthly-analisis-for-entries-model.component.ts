@@ -235,7 +235,7 @@ export class MonthlyAnalisisForEntriesModelComponent implements OnInit {
   ViewReportDesign() {
     debugger;
    StiOptions.WebServer.url = "http://localhost:63103/api/ReportData/GetDataSource"
-    this.report = Stimulsoft.Report.StiReport();
+    this.report = Stimulsoft.Report.StiReport.createNewReport();
     this.report.loadFile('/reports/MonthlyAnalisisForEntriesModel.mrt');
     let jsonReport:string;
     this.designer.onSaveReport = function (args) {
