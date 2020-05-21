@@ -57,7 +57,7 @@ export class MonthlyAnalisisForAccountsComponent implements OnInit {
     this.ToDate = 2019;
     this.BreadCrumTranslate();
     this.SelectDatabase();
-
+    this.AccIDs = "0";
 
   }
   
@@ -70,15 +70,15 @@ export class MonthlyAnalisisForAccountsComponent implements OnInit {
     }
 
   }
-  PickAcc(event){
-    debugger;
-    this.AccIDs = event[0].ACC_ID;
-    for(var i = 1; i< event.length ; i++)
-    {
-      var id= event[i].ACC_ID;
-      this.AccIDs += ','+ id;
-    }
-  }
+  // PickAcc(event){
+  //   debugger;
+  //   this.AccIDs = event[0].ACC_ID;
+  //   for(var i = 1; i< event.length ; i++)
+  //   {
+  //     var id= event[i].ACC_ID;
+  //     this.AccIDs += ','+ id;
+  //   }
+  // }
   pick(event) {
     debugger;
     this.dbIds = event[0].DatabaseNameId;

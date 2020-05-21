@@ -58,14 +58,14 @@
               <div class=" w-100 search position-relative">
                 <!-- <p-dropdown [options]="Accounts" [(ngModel)]="AccObj.ACC_ID"  optionLabel="ACC_AR_NAME" (onChange)="PickAcc($event.value)" id="ACC_ID"
                                                         name="ACC_ID" defaultLabel="{{'SideBar.lblChooseAccount' | translate}}"></p-dropdown> -->
-                <p-multiSelect [options]="Accounts" [(ngModel)]="AccObj.ACC_ID" optionLabel="ACC_AR_NAME"
+                <!-- <p-multiSelect [options]="Accounts" [(ngModel)]="AccObj.ACC_ID" optionLabel="ACC_AR_NAME"
                   (onChange)="PickAcc($event.value)" id="ACC_ID" name="ACC_ID"
-                  defaultLabel="{{'SideBar.lblChooseAccount' | translate}}"></p-multiSelect>
+                  defaultLabel="{{'SideBar.lblChooseAccount' | translate}}"></p-multiSelect> -->
 
-                  <!-- <select  [(ngModel)]="AccObj.ACC_ID"  class="form-control w-100" (onChange)="PickAcc($event.value)" name=>
-                    <option > {{'SideBar.lblChooseAccount' | translate}} </option>
-                    <option *ngFor="let c of Accounts" [ngValue]="c.ACC_ID" > {{c.ACC_AR_NAME}}</option>
-                  </select> -->
+                  <select [(ngModel)]="AccIDs" class="form-control w-100"  name="ACC_ID">
+                    <option value="0">{{'SideBar.lblChooseAccount' | translate}}</option>
+                    <option *ngFor="let c of Accounts" [ngValue]="c.ACC_ID"> {{c.ACC_AR_NAME}}</option>
+                  </select>
               </div>
             </div>
           </div>
