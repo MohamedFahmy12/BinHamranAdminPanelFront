@@ -10,8 +10,8 @@ import { DateHelperService } from 'src/app/Helper/date-helper.service';
 import { TranslateService } from '@ngx-translate/core';
 import { NgForm } from '@angular/forms';
 
-declare var Stimulsoft:any;
-declare var StiOptions:any;
+declare var Stimulsoft: any;
+declare var StiOptions: any;
 @Component({
   selector: 'app-account-total-balance',
   templateUrl: './account-total-balance.component.html',
@@ -19,9 +19,10 @@ declare var StiOptions:any;
 })
 export class AccountTotalBalanceComponent implements OnInit {
   options: any = new Stimulsoft.Designer.StiDesignerOptions();
-	designer: any = new Stimulsoft.Designer.StiDesigner(this.options, 'StiDesigner', false);
-  report:any;
-  reportName:string;
+  designer: any = new Stimulsoft.Designer.StiDesigner(this.options, 'StiDesigner', false);
+  report: any;
+  reportName: string;
+  currentLocation: any;
   result: any;
   ToDate: any;
   DateHijri: any;
@@ -57,15 +58,13 @@ export class AccountTotalBalanceComponent implements OnInit {
     this.BreadCrumTranslate();
     this.SelectDatabase();
     this.AccIDs = "0";
-
   }
-  PickCom(event){
+  PickCom(event) {
     debugger;
     this.ComIDS = event[0].COM_BRN_CODE;
-    for(var i = 1; i< event.length ; i++)
-    {
-      var id= event[i].COM_BRN_CODE;
-      this.ComIDS += ','+ id;
+    for (var i = 1; i < event.length; i++) {
+      var id = event[i].COM_BRN_CODE;
+      this.ComIDS += ',' + id;
     }
 
   }
@@ -78,14 +77,13 @@ export class AccountTotalBalanceComponent implements OnInit {
   //     this.AccIDs += ','+ id;
   //   }
   // }
-  pick(event){
+  pick(event) {
     debugger;
     this.dbIds = event[0].DatabaseNameId;
-    for(var i = 1; i< event.length ; i++)
-    {
+    for (var i = 1; i < event.length; i++) {
       debugger;
-      var id= event[i].DatabaseNameId;
-      this.dbIds += ','+ id;
+      var id = event[i].DatabaseNameId;
+      this.dbIds += ',' + id;
     }
 
     this.SelectBranches();
@@ -126,9 +124,10 @@ export class AccountTotalBalanceComponent implements OnInit {
 
   ViewReport() {
     debugger;
+    this.currentLocation = window.location;
     this.ToDate = (<HTMLInputElement>document.getElementById("gregDate"))
       .value ? (<HTMLInputElement>document.getElementById("gregDate")).value : null;
-    this.ReportSer.AccountTotalBalance(this.ToDate, this.ComIDS,this.AccIDs, this.dbIds).subscribe(
+    this.ReportSer.AccountTotalBalance(this.ToDate, this.ComIDS, this.AccIDs, this.dbIds, this.currentLocation).subscribe(
       (data: Response) => {
         debugger;
         this.result = data;
@@ -139,32 +138,7 @@ export class AccountTotalBalanceComponent implements OnInit {
       }
     );
   }
-  EditReport() {
-
-    this.router.navigate(['/editreports', { 'ReportEdit': 'RPTResultOfPortofolioWork.mrt' }]);
-    debugger;
-    // this.ToDate = (<HTMLInputElement>document.getElementById("gregDate")).value?(<HTMLInputElement>document.getElementById("gregDate")).value:null;
-    // this.ReportSer.EditResultOfPortofolioWork(this.ToDate,this.PortfolioID).subscribe(
-    //   (data: Response)=>{
-    //     debugger;
-    //   this.result=data;
-    // this.report.loadFile("http://localhost:56296/UploadFiles/RPTResultOfPortofolioWork.mrt");
-
-    //   this.designer.onSaveReport = function (args) {
-    //     var report = args.report;
-    //     report.saveFile("http://localhost:56296/UploadFiles/RPTResultOfPortofolioWork.mrt");
-    //   }
-    //    this.options.appearance.fullScreenMode = true;
-
-    //    this.designer.report = this.report;
-    //    this.designer.renderHtml("designer");
-
-    //   },
-    //   err=>{
-    //     this.toastr.error(this.ToastrMsgTranslate("ToastrMsg.UnExpError"),this.PageName);
-    //   }
-    // );
-  }
+ 
 
   onSelectPortfolio(selectedItem: any, modalId: any) {
     debugger;
@@ -222,34 +196,41 @@ export class AccountTotalBalanceComponent implements OnInit {
   }
   ViewReportDesign() {
     debugger;
-   StiOptions.WebServer.url = "http://localhost:63103/api/ReportData/GetDataSource"
+    this.reportName = "AccountTotalBalance";
+    StiOptions.WebServer.url = "http://localhost:63103/api/ReportData/GetDataSource"
     this.report = Stimulsoft.Report.StiReport.createNewReport();
-    this.report.loadFile('/reports/AccountTotalBalance.mrt');
-    let jsonReport:string;
-      this.designer.onSaveReport = function (args) {
-        jsonReport = args.report.saveToJsonString();
-        this.reportName= "AccountTotalBalance";
-        var newData =   {
-          "data":jsonReport,
-          "fileName":this.reportName
-          };
-          var dataJson = JSON.stringify(newData);
-        $.ajax({
-          url:'http://localhost:63103/api/ReportData/SaveFile',
-          type:'Post',
-          data: dataJson,
-          success: function(res){
-            alert(res);
-          },
-          error:function(err){
-            console.log("err: ",JSON.stringify(err));
-          },
-          dataType: "json",
-          contentType: "application/json"
-        });
-      }
-    this.options.appearance.fullScreenMode = false;
-    this.designer.report = this.report;
-    this.designer.renderHtml("designer");
+    let datafile: string;
+    this.ReportSer.getReportForDesigner(this.reportName).subscribe(dres => {
+      datafile = dres;
+    }, err => { }, () => {
+      debugger;
+      this.report.load(datafile);
+      this.designer.report = this.report;
+      this.designer.renderHtml("designer");
+    });
+    let jsonReport: string;
+    this.designer.onSaveReport = function (args) {
+      debugger;
+      jsonReport = args.report.saveToJsonString();
+      this.reportName = "AccountTotalBalance";
+      var newData = {
+        "data": jsonReport,
+        "fileName": this.reportName
+      };
+      var dataJson = JSON.stringify(newData);
+      $.ajax({
+        url: 'http://localhost:63103/api/ReportData/SaveFile',
+        type: 'Post',
+        data: dataJson,
+        success: function (res) {
+          location.reload(true);
+        },
+        error: function (err) {
+          console.log("err: ", JSON.stringify(err));
+        },
+        dataType: "json",
+        contentType: "application/json"
+      });
+    }
   }
 }

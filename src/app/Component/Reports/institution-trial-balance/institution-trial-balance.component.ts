@@ -22,6 +22,7 @@ export class InstitutionTrialBalanceComponent implements OnInit {
 	designer: any = new Stimulsoft.Designer.StiDesigner(this.options, 'StiDesigner', false);
   report:any;
   reportName:string;
+  currentLocation:any;
   result: any;
   sDate: any;
   eDate:any;
@@ -104,9 +105,10 @@ export class InstitutionTrialBalanceComponent implements OnInit {
   
     ViewReport() {
       debugger;
+      this.currentLocation = window.location;
       this.sDate = (<HTMLInputElement>document.getElementById("gregDate"))
         .value ? (<HTMLInputElement>document.getElementById("gregDate")).value : null;
-      this.ReportSer.InstitutionTrialBalance(this.sDate, this.dbIds).subscribe(
+      this.ReportSer.InstitutionTrialBalance(this.sDate, this.dbIds,this.currentLocation).subscribe(
         (data: Response) => {
           debugger;
           this.result = data;
@@ -172,16 +174,28 @@ export class InstitutionTrialBalanceComponent implements OnInit {
 
     ViewReportDesign() {
       debugger;
+      this.reportName= "InstitutionTrialBalance";
+
      StiOptions.WebServer.url = "http://localhost:63103/api/ReportData/GetDataSource"
       this.report = Stimulsoft.Report.StiReport.createNewReport();
-      this.report.loadFile('/reports/InstitutionTrialBalance.mrt');
+      let datafile:any;
+      this.ReportSer.getReportForDesigner(this.reportName).subscribe(dres => {
+        datafile = dres;
+      }, err => { }, () => {
+        this.report.load(datafile);
+        this.designer.report = this.report;
+        this.designer.renderHtml("designer");
+  
+      })
       let jsonReport:string;
     this.designer.onSaveReport = function (args) {
-      jsonReport = args.report.saveToJsonString();
       this.reportName= "InstitutionTrialBalance";
+
+      jsonReport = args.report.saveToJsonString();
       var newData =   {
         "data":jsonReport,
-        "fileName":this.reportName
+        "fileName":this.reportName,
+        "currentlocation": window.location
         };
         var dataJson = JSON.stringify(newData);
       $.ajax({
@@ -198,8 +212,6 @@ export class InstitutionTrialBalanceComponent implements OnInit {
         contentType: "application/json"
       });
     }
-      this.options.appearance.fullScreenMode = false;
-      this.designer.report = this.report;
-      this.designer.renderHtml("designer");
+
     }
 }
