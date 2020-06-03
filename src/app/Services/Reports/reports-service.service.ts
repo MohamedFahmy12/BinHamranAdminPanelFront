@@ -19,6 +19,9 @@ export class ReportsServiceService {
    debugger;
    return this.http.get(this.common.rooturl+'/ReportData/GetDbNames');
  }
+ getReportForDesigner(reportName:string){
+  return this.http.get<string>(this.common.rooturl+'/ReportData/getReportForDesigner?reportName='+reportName);
+ }
  GetCompanyBranches(dbIds:any){
    return this.http.get(this.common.rooturl+'/ReportData/GetCompanyBranches?dbIds='+dbIds );
  }
@@ -35,72 +38,72 @@ export class ReportsServiceService {
    return this.http.post(this.common.rooturl+'/ReportViewer/ResultOfPortofolio/',{'todate':todate,'portofolioid':portofolioid});
 
   }
-  ProvisionForDepreciationOfFixedAssets(startDate: string,endDate: string, companyBranchCode: string,AccountID: string,  databaseID:string){
+  ProvisionForDepreciationOfFixedAssets(startDate: string,endDate: string, companyBranchCode: string,AccountID: string,  databaseID:string,currentLocation:string){
     return this.http.post(this.common.rooturl+'/ReportViewer/ProvisionForDepreciationOfFixedAssets/',
-    {'startDate':startDate,'endDate': endDate,'companyBranchCode':companyBranchCode,'AccountID': AccountID,'databaseID':databaseID});
+    {'startDate':startDate,'endDate': endDate,'companyBranchCode':companyBranchCode,'AccountID': AccountID,'databaseID':databaseID,'currentLocation':currentLocation});
   }
-  ConsumptionOfDepreciation(startDate: string,endDate: string, companyBranchCode: string,AccountID: string,  databaseID:string){
+  ConsumptionOfDepreciation(startDate: string,endDate: string, companyBranchCode: string,AccountID: string,  databaseID:string,currentLocation:string){
     return this.http.post(this.common.rooturl+'/ReportViewer/ConsumptionOfDepreciation/',
-    {'startDate':startDate,'endDate': endDate,'companyBranchCode':companyBranchCode,'AccountID': AccountID,'databaseID':databaseID});
+    {'startDate':startDate,'endDate': endDate,'companyBranchCode':companyBranchCode,'AccountID': AccountID,'databaseID':databaseID,'currentLocation':currentLocation});
   }
-  LastDurationGoods(startDate: string, companyBranchCode: string, databaseID:string){
+  LastDurationGoods(startDate: string, companyBranchCode: string, databaseID:string,currentLocation:string){
     return this.http.post(this.common.rooturl+'/ReportViewer/LastDurationGoods/',
-    {'startDate':startDate,'companyBranchCode':companyBranchCode,'databaseID':databaseID});
+    {'startDate':startDate,'companyBranchCode':companyBranchCode,'databaseID':databaseID,'currentLocation':currentLocation});
   }
-  MonthlyAnalisisForEntriesModel(startDate: string, companyBranchCode: string, entryID: string, databaseID:string ){
-    return this.http.post(this.common.rooturl+'/ReportViewer/MonthlyAnalisisForEntriesModel/',{'startDate':startDate,'companyBranchCode':companyBranchCode,'entryID': entryID,'databaseID':databaseID});
+  MonthlyAnalisisForEntriesModel(startDate: string, companyBranchCode: string, entryID: string, databaseID:string,currentLocation:string ){
+    return this.http.post(this.common.rooturl+'/ReportViewer/MonthlyAnalisisForEntriesModel/',{'startDate':startDate,'companyBranchCode':companyBranchCode,'entryID': entryID,'databaseID':databaseID,'currentLocation':currentLocation});
   }
-  MonthlyAnalisisForAccounts(startDate: string, companyBranchCode: string, AccountID: string, databaseID:string ){
-    return this.http.post(this.common.rooturl+'/ReportViewer/MonthlyAnalisisForAccounts/',{'startDate':startDate,'companyBranchCode':companyBranchCode,'AccountID': AccountID,'databaseID':databaseID});
+  MonthlyAnalisisForAccounts(startDate: string, companyBranchCode: string, AccountID: string, databaseID:string,currentLocation:any ){
+    return this.http.post(this.common.rooturl+'/ReportViewer/MonthlyAnalisisForAccounts/',{'startDate':startDate,'companyBranchCode':companyBranchCode,'AccountID': AccountID,'databaseID':databaseID,'currentLocation':currentLocation});
   }
-  OpeningEntries(startDate: string, companyBranchCode: string, databaseID:string ){
-    return this.http.post(this.common.rooturl+'/ReportViewer/OpeningEntries/',{'startDate':startDate,'companyBranchCode':companyBranchCode,'databaseID':databaseID});
+  OpeningEntries(startDate: string, companyBranchCode: string, databaseID:string,currentLocation:string ){
+    return this.http.post(this.common.rooturl+'/ReportViewer/OpeningEntries/',{'startDate':startDate,'companyBranchCode':companyBranchCode,'databaseID':databaseID,'currentLocation':currentLocation});
   }
-  AccountTotalBalance(startDate: string, companyBranchCode: string, AccountID: string, databaseID:string )
+  AccountTotalBalance(startDate: string, companyBranchCode: string, AccountID: string, databaseID:string,currentLocation:string )
   {
     return this.http.post(this.common.rooturl+'/ReportViewer/AccountTotalBalance/',
-    {'startDate':startDate,'companyBranchCode':companyBranchCode,'AccountID': AccountID,'databaseID':databaseID});
+    {'startDate':startDate,'companyBranchCode':companyBranchCode,'AccountID': AccountID,'databaseID':databaseID,'currentLocation':currentLocation});
   }
-  GeneralDaily(startDate: string,endDate: string, companyBranchCode: string,  databaseID:string)
+  GeneralDaily(startDate: string,endDate: string, companyBranchCode: string,  databaseID:string,currentLocation:string)
   {
     return this.http.post(this.common.rooturl+'/ReportViewer/GeneralDaily/',
-    {'startDate':startDate,'endDate': endDate,'companyBranchCode':companyBranchCode,'databaseID':databaseID});
+    {'startDate':startDate,'endDate': endDate,'companyBranchCode':companyBranchCode,'databaseID':databaseID,'currentLocation':currentLocation});
   }
-  Institutionfees(startDate: string,endDate: string, companyBranchCode: string,  databaseID:string,type:string)
+  Institutionfees(startDate: string,endDate: string, companyBranchCode: string,  databaseID:string,type:string,currentLocation:string)
   {
     return this.http.post(this.common.rooturl+'/ReportViewer/Institutionfees/',
-    {'startDate':startDate,'endDate': endDate,'companyBranchCode':companyBranchCode,'databaseID':databaseID,'type':type});
+    {'startDate':startDate,'endDate': endDate,'companyBranchCode':companyBranchCode,'databaseID':databaseID,'type':type,'currentLocation':currentLocation});
   }
-  InstitutionTrialBalance(startDate: string,   databaseID:string)
+  InstitutionTrialBalance(startDate: string,   databaseID:string,currentLocation:string)
   {
     return this.http.post(this.common.rooturl+'/ReportViewer/InstitutionTrialBalance/',
-    {'startDate':startDate,'databaseID':databaseID});
+    {'startDate':startDate,'databaseID':databaseID,'currentLocation':currentLocation});
   }
-  BranchesTrialBalance(startDate: string, companyBranchCode: string, databaseID:string)
+  BranchesTrialBalance(startDate: string, companyBranchCode: string, databaseID:string,currentLocation:string)
   {
     return this.http.post(this.common.rooturl+'/ReportViewer/BranchesTrialBalance/',
-    {'startDate':startDate,'companyBranchCode':companyBranchCode,'databaseID':databaseID});
+    {'startDate':startDate,'companyBranchCode':companyBranchCode,'databaseID':databaseID,'currentLocation':currentLocation});
   }
   
-  FixedAssetsOfInstitution(startDate: string,endDate: string, companyBranchCode: string,  databaseID:string)
+  FixedAssetsOfInstitution(startDate: string,endDate: string, companyBranchCode: string,  databaseID:string,currentLocation:string)
   {
     return this.http.post(this.common.rooturl+'/ReportViewer/FixedAssetsOfInstitution/',
-    {'startDate':startDate,'endDate': endDate,'companyBranchCode':companyBranchCode,'databaseID':databaseID});
+    {'startDate':startDate,'endDate': endDate,'companyBranchCode':companyBranchCode,'databaseID':databaseID,'currentLocation':currentLocation});
   }
-  FixedAssetsAdditions(startDate: string,endDate: string, companyBranchCode: string,  databaseID:string)
+  FixedAssetsAdditions(startDate: string,endDate: string, companyBranchCode: string,  databaseID:string,currentLocation:string)
   {
     return this.http.post(this.common.rooturl+'/ReportViewer/FixedAssetsAdditions/',
-    {'startDate':startDate,'endDate': endDate,'companyBranchCode':companyBranchCode,'databaseID':databaseID});
+    {'startDate':startDate,'endDate': endDate,'companyBranchCode':companyBranchCode,'databaseID':databaseID,'currentLocation':currentLocation});
   }
-  TotalExclusionOfFixedAssets(startDate: string,endDate: string, companyBranchCode: string,  databaseID:string)
+  TotalExclusionOfFixedAssets(startDate: string,endDate: string, companyBranchCode: string,  databaseID:string,currentLocation:string)
   {
     return this.http.post(this.common.rooturl+'/ReportViewer/TotalExclusionOfFixedAssets/',
-    {'startDate':startDate,'endDate': endDate,'companyBranchCode':companyBranchCode,'databaseID':databaseID});
+    {'startDate':startDate,'endDate': endDate,'companyBranchCode':companyBranchCode,'databaseID':databaseID,'currentLocation':currentLocation});
   }
-  DepreciationOfFixedAssets(startDate: string,endDate: string, companyBranchCode: string,  databaseID:string)
+  DepreciationOfFixedAssets(startDate: string,endDate: string, companyBranchCode: string,  databaseID:string,currentLocation:string)
   {
     return this.http.post(this.common.rooturl+'/ReportViewer/DepreciationOfFixedAssets/',
-    {'startDate':startDate,'endDate': endDate,'companyBranchCode':companyBranchCode,'databaseID':databaseID});
+    {'startDate':startDate,'endDate': endDate,'companyBranchCode':companyBranchCode,'databaseID':databaseID,'currentLocation':currentLocation});
   }
    savereport(report:any){
     debugger;
@@ -168,5 +171,8 @@ export class ReportsServiceService {
     return this.http.get(this.common.rooturl+'/Portfolio/GetAllportparteners/'+id);
   }
 
+  GetPath(){
+    return this.http.get(this.common.rooturl+'/ReportViewer/GetPath');
+  }
 
 }

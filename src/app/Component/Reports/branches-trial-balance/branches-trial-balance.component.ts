@@ -10,8 +10,8 @@ import { DateHelperService } from 'src/app/Helper/date-helper.service';
 import { TranslateService } from '@ngx-translate/core';
 import { NgForm } from '@angular/forms';
 
-declare var Stimulsoft:any;
-declare var StiOptions:any;
+declare var Stimulsoft: any;
+declare var StiOptions: any;
 @Component({
   selector: 'app-branches-trial-balance',
   templateUrl: './branches-trial-balance.component.html',
@@ -19,10 +19,10 @@ declare var StiOptions:any;
 })
 export class BranchesTrialBalanceComponent implements OnInit {
   options: any = new Stimulsoft.Designer.StiDesignerOptions();
-	designer: any = new Stimulsoft.Designer.StiDesigner(this.options, 'StiDesigner', false);
-  report:any;
-  reportName:string;
-  
+  designer: any = new Stimulsoft.Designer.StiDesigner(this.options, 'StiDesigner', false);
+  report: any;
+  reportName: string;
+  currentLocation: any;
   result: any;
   sDate: any;
   eDate: any;
@@ -102,9 +102,10 @@ export class BranchesTrialBalanceComponent implements OnInit {
 
   ViewReport() {
     debugger;
+    this.currentLocation = window.location;
     this.sDate = (<HTMLInputElement>document.getElementById("gregDate"))
       .value ? (<HTMLInputElement>document.getElementById("gregDate")).value : null;
-    this.ReportSer.BranchesTrialBalance(this.sDate, this.ComIDS, this.dbIds).subscribe(
+    this.ReportSer.BranchesTrialBalance(this.sDate, this.ComIDS, this.dbIds, this.currentLocation).subscribe(
       (data: Response) => {
         debugger;
         this.result = data;
@@ -169,34 +170,42 @@ export class BranchesTrialBalanceComponent implements OnInit {
   }
   ViewReportDesign() {
     debugger;
+    this.reportName = "BranchesTrialBalance";
     StiOptions.WebServer.url = "http://localhost:63103/api/ReportData/GetDataSource"
     this.report = Stimulsoft.Report.StiReport.createNewReport();
-    this.report.loadFile('/reports/BranchesTrialBalance.mrt');
-    let jsonReport:string;
+    let datafile: any;
+    this.ReportSer.getReportForDesigner(this.reportName).subscribe(dres => {
+      datafile = dres;
+    }, err => { }, () => {
+      this.report.load(datafile);
+      this.designer.report = this.report;
+      this.designer.renderHtml("designer");
+
+    })
+    let jsonReport: string;
     this.designer.onSaveReport = function (args) {
+      this.reportName = "BranchesTrialBalance";
+
       jsonReport = args.report.saveToJsonString();
-      this.reportName= "BranchesTrialBalance";
-      var newData =   {
-        "data":jsonReport,
-        "fileName":this.reportName
-        };
-        var dataJson = JSON.stringify(newData);
+      var newData = {
+        "data": jsonReport,
+        "fileName": this.reportName,
+        "currentlocation": window.location
+      };
+      var dataJson = JSON.stringify(newData);
       $.ajax({
-        url:'http://localhost:63103/api/ReportData/SaveFile',
-        type:'Post',
+        url: 'http://localhost:63103/api/ReportData/SaveFile',
+        type: 'Post',
         data: dataJson,
-        success: function(res){
+        success: function (res) {
           alert(res);
         },
-        error:function(err){
-          console.log("err: ",JSON.stringify(err));
+        error: function (err) {
+          console.log("err: ", JSON.stringify(err));
         },
         dataType: "json",
         contentType: "application/json"
       });
     }
-    this.options.appearance.fullScreenMode = false;
-    this.designer.report = this.report;
-    this.designer.renderHtml("designer");
   }
 }

@@ -12,8 +12,8 @@ import { BranchModule } from 'src/app/Models/DataModels/branch/branch.module';
 import { HttpClientModule } from '@angular/common/http';
 
 
-declare var Stimulsoft:any;
-declare var StiOptions:any;
+declare var Stimulsoft: any;
+declare var StiOptions: any;
 @Component({
   selector: 'app-monthly-analisis-for-accounts',
   templateUrl: './monthly-analisis-for-accounts.component.html',
@@ -21,9 +21,11 @@ declare var StiOptions:any;
 })
 export class MonthlyAnalisisForAccountsComponent implements OnInit {
   options: any = new Stimulsoft.Designer.StiDesignerOptions();
-	designer: any = new Stimulsoft.Designer.StiDesigner(this.options, 'StiDesigner', false);
-  report:any;
-  reportName:string;
+  designer: any = new Stimulsoft.Designer.StiDesigner(this.options, 'StiDesigner', false);
+  report: any;
+  reportName: string;
+  currentLocation: any;
+  path: any;
   result: any;
   ToDate: any;
   DateHijri: any;
@@ -50,17 +52,21 @@ export class MonthlyAnalisisForAccountsComponent implements OnInit {
   public iconFieldsPort: Object = {};
   public iconWaterMarkPort: string = "";
   constructor(private ReportSer: ReportsServiceService, private toastr: ToastrService,
-    private router: Router, private datehelp: DateHelperService, private translate: TranslateService,private http: HttpClientModule) { }
+    private router: Router, private datehelp: DateHelperService, private translate: TranslateService, private http: HttpClientModule) { }
 
   ngOnInit() {
+    this.ReportSer.GetPath().subscribe(res => {
+      this.path = res;
+    })
     this.toastr.warning(this.ToastrMsgTranslate("ToastrMsg.Reporttoster"), this.PageName);
     this.ToDate = 2019;
     this.BreadCrumTranslate();
     this.SelectDatabase();
     this.AccIDs = "0";
 
+
   }
-  
+
   PickCom(event) {
     debugger;
     this.ComIDS = event[0].COM_BRN_CODE;
@@ -126,9 +132,11 @@ export class MonthlyAnalisisForAccountsComponent implements OnInit {
 
   ViewReport() {
     debugger;
+    this.currentLocation = window.location;
+    console.log("ress=", this.currentLocation)
     this.ToDate = (<HTMLInputElement>document.getElementById("gregDate"))
       .value ? (<HTMLInputElement>document.getElementById("gregDate")).value : null;
-    this.ReportSer.MonthlyAnalisisForAccounts(this.ToDate, this.ComIDS, this.AccIDs, this.dbIds).subscribe(
+    this.ReportSer.MonthlyAnalisisForAccounts(this.ToDate, this.ComIDS, this.AccIDs, this.dbIds, this.currentLocation).subscribe(
       (data: Response) => {
         debugger;
         this.result = data;
@@ -222,35 +230,48 @@ export class MonthlyAnalisisForAccountsComponent implements OnInit {
   }
   ViewReportDesign() {
     debugger;
-   StiOptions.WebServer.url = "http://localhost:63103/api/ReportData/GetDataSource"
+    this.reportName = "MonthlyAnalisisForAccounts";
+
+    StiOptions.WebServer.url = "http://localhost:63103/api/ReportData/GetDataSource"
     this.report = Stimulsoft.Report.StiReport.createNewReport();
-    this.report.loadFile('/reports/MonthlyAnalisisForAccounts.mrt');
-    let jsonReport:string;
+    let datafile: string;
+    let jsonReport: string;
+    this.ReportSer.getReportForDesigner(this.reportName).subscribe(dres => {
+      datafile = dres;
+    }, err => { }, () => {
+      this.report.load(datafile);
+      this.designer.report = this.report;
+      this.designer.renderHtml("designer");
+
+    })
+
     this.designer.onSaveReport = function (args) {
+      debugger;
+      
+      this.reportName = "MonthlyAnalisisForAccounts";
+
       jsonReport = args.report.saveToJsonString();
-      this.reportName= "MonthlyAnalisisForAccounts";
-      var newData =   {
-        "data":jsonReport,
-        "fileName":this.reportName
-        };
-        var dataJson = JSON.stringify(newData);
+
+      var newData = {
+        "data": jsonReport,
+        "fileName": this.reportName
+      };
+      var dataJson = JSON.stringify(newData);
       $.ajax({
-        url:'http://localhost:63103/api/ReportData/SaveFile',
-        type:'Post',
+        url: 'http://localhost:63103/api/ReportData/SaveFile',
+        type: 'Post',
         data: dataJson,
-        success: function(res){
-          alert(res);
+        success: function () {
+          location.reload(true);
         },
-        error:function(err){
-          console.log("err: ",JSON.stringify(err));
+        error: function (err) {
+          console.log("err: ", JSON.stringify(err));
         },
         dataType: "json",
         contentType: "application/json"
       });
     }
-    this.options.appearance.fullScreenMode = false;
-    this.designer.report = this.report;
-    this.designer.renderHtml("designer");
+
   }
 
 }
