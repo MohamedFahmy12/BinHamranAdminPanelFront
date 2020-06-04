@@ -5293,9 +5293,9 @@ input[type="button"].btn-block {
   margin-bottom: 0;
 }
 
-.form__page {
+/* .form__page {
   padding: 1.5rem 2rem;
-}
+} */
 
 .titele__bage input {
   width: 80px;
@@ -11673,12 +11673,13 @@ button,
 
 .fixed-sidebar .app-sidebar {
   position: fixed;
-  height: 100vh
+  height: 100vh;
+  z-index: 10;
 }
 
 .fixed-sidebar .app-main .app-main__outer {
   z-index: 9;
-  padding-left: 280px
+  /* padding-left: 280px */
 }
 
 .fixed-sidebar.fixed-header .app-sidebar .app-header__logo {
@@ -11822,9 +11823,9 @@ button,
   margin-right: auto
 }
 
-.closed-sidebar.fixed-sidebar .app-main__outer {
+/* .closed-sidebar.fixed-sidebar .app-main__outer {
   padding-left: 80px
-}
+} */
 
 .closed-sidebar.fixed-header:not(.fixed-sidebar) .app-sidebar .app-header__logo {
   visibility: hidden
@@ -11898,7 +11899,7 @@ button,
 }
 
 .app-main .app-main__inner {
-  padding: 30px 30px 0;
+  /* padding: 30px 30px 0; */
   flex: 1
 }
 
@@ -25257,7 +25258,7 @@ a.fc-more:hover {
   }
 
   .app-main .app-main__outer {
-    padding-left: 0 !important
+    /* padding-left: 0 !important */
   }
 
   .app-header {
