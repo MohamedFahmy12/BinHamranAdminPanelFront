@@ -26,8 +26,6 @@ export class BranchesTrialBalanceComponent implements OnInit {
   result: any;
   sDate: any;
   eDate: any;
-  DateHijri: any;
-  PortfolioID: number;
   dbIds: string;
   ComIDS: string;
   AccIDs: string;
@@ -39,7 +37,6 @@ export class BranchesTrialBalanceComponent implements OnInit {
   Accounts: AccountModule[];
   Entries: EntryModule[];
   Branches: BranchModule[];
-  PortfolioNameARtxt: string = '';
   PageName: string;
   ToastrMsg: string;
   public iconFieldsPort: Object = {};
@@ -116,18 +113,6 @@ export class BranchesTrialBalanceComponent implements OnInit {
       }
     );
   }
-  EditReport() {
-
-    this.router.navigate(['/editreports', { 'ReportEdit': 'RPTResultOfPortofolioWork.mrt' }]);
-    debugger;
-  }
-
-  onSelectPortfolio(selectedItem: any, modalId: any) {
-    debugger;
-    this.PortfolioID = selectedItem.PortfolioID ? selectedItem.PortfolioID : 0;
-    this.PortfolioNameARtxt = selectedItem.NameAR ? selectedItem.NameAR : '';
-  }
-
   SelectDatabase() {
     debugger;
     this.ReportSer.GetDbNames().subscribe(
