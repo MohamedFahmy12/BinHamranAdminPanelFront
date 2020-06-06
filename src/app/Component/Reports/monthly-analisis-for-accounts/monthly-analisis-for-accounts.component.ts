@@ -247,7 +247,7 @@ export class MonthlyAnalisisForAccountsComponent implements OnInit {
 
     this.designer.onSaveReport = function (args) {
       debugger;
-      
+
       this.reportName = "MonthlyAnalisisForAccounts";
 
       jsonReport = args.report.saveToJsonString();

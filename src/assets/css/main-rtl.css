@@ -195,10 +195,10 @@ html, body {
   right: 0;
 }
 
-.fixed-sidebar .app-main .app-main__outer {
+/* .fixed-sidebar .app-main .app-main__outer {
   padding-right: 280px;
   padding-left: 0px;
-}
+} */
 
 .app-sidebar .scrollbar-sidebar {
   overflow-y: auto !important;
@@ -308,7 +308,7 @@ html, body {
 }
 
 .closed-sidebar .app-main__outer {
-  padding-right: 80px !important;
+  /* padding-right: 80px !important; */
 }
 
 @media (max-width: 992px) {
@@ -324,9 +324,9 @@ html, body {
   transition: all 0.3s ease-in-out;
 }
 
-.app-main__outer .app-main__inner {
+/* .app-main__outer .app-main__inner {
   padding: 20px 50px 0;
-}
+} */
 
 .app-main__outer .app-main__inner .breadcrumb {
   background: none;
@@ -753,7 +753,7 @@ select.form-control {
 
 @media (max-width: 1266px) {
   .app-main .app-main__outer {
-    padding-right: 80px !important;
+    /* padding-right: 80px !important; */
   }
 }
 
@@ -766,7 +766,7 @@ select.form-control {
             transform: translateX(280px);
   }
   .app-main .app-main__outer {
-    padding-right: 0 !important;
+    /* padding-right: 0 !important; */
   }
 }
 
