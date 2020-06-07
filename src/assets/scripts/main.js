@@ -33437,3 +33437,4 @@ StiJsDesigner.prototype.MaximizeDesigner = function() {
     var e = this.options.mainPanel.parentElement;
     this.options.maximizeMode = !0, e.setAttribute("styleHistory", e.getAttribute("style")), this.options.mainPanel.setAttribute("styleHistory", this.options.mainPanel.getAttribute("style")), e.removeAttribute("style"), this.options.mainPanel.removeAttribute("style"), e.style.position = "fixed", e.style.zIndex = "1000000", e.style.top = "60px", e.style.left = "0px", e.style.bottom = "0px", e.style.right = "0px"
 }
+console.log('width' +$('#scrollbar-sidebar').width())
