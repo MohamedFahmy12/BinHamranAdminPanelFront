@@ -5,7 +5,7 @@
     <Databases isList="true" count="1">
       <MS_x0020_SQL Ref="2" type="Stimulsoft.Report.Dictionary.StiSqlDatabase" isKey="true">
         <Alias>MS SQL</Alias>
-        <ConnectionStringEncrypted>9Mjdz01K0/1pCCXMRRjjJ9FwgS5IBbqB7F3tkeGYpBvVWlPr2Vda1exGhJhlmG0byXCD70Vpgs1vayUEZ9xtE9l4kYjNTXIdaW15+P+E6HvCVlMJ0QPTzeFh0UDk2GFehCyzrw==</ConnectionStringEncrypted>
+        <ConnectionStringEncrypted>9HTPC2II08hsW7X8dOzhXtHEyaHGStOB7FvoXE0FJS/D0s8JWwXizcdL+dzldPYvgm7hiU5fwtVhTE3cZyX2v+J4989GbXvNfHv9GGHksXvgavujS1n68eEFzVBzeG2L3GzRy0tcS5n6Qe2l6djgp9MQswjFaKs=</ConnectionStringEncrypted>
         <Name>MS SQL</Name>
       </MS_x0020_SQL>
     </Databases>
@@ -35,7 +35,6 @@
 @ENDDATE,
 @CompanyBranchID,
 @DatabaseID</SqlCommand>
-        <Type>StoredProcedure</Type>
       </TotalExclusionOfFixedAssets>
     </DataSources>
     <Relations isList="true" count="0" />
@@ -319,10 +318,10 @@
     <value>Stimulsoft.Report.Dll</value>
   </ReferencedAssemblies>
   <ReportAlias>Report</ReportAlias>
-  <ReportChanged>6/7/2020 1:19:04 PM</ReportChanged>
+  <ReportChanged>5/3/2020 5:22:14 PM</ReportChanged>
   <ReportCreated>5/3/2020 5:14:38 PM</ReportCreated>
-  <ReportFile>D:\New project\BinHamranAdminPanel3\BinHamranAdminPanel\Reports\TotalExclusionOfFixedAssets.mrt</ReportFile>
-  <ReportGuid>fa2c1d4b1ca148a599177786cca0ba4a</ReportGuid>
+  <ReportFile>C:\Users\modyf\source\repos\BinHamranAdminPanel3\BinHamranAdminPanel\Reports\TotalExclusionOfFixedAssets.mrt</ReportFile>
+  <ReportGuid>54c5cbd913b54ff48834e8f760cc6936</ReportGuid>
   <ReportName>Report</ReportName>
   <ReportUnit>Centimeters</ReportUnit>
   <ReportVersion>2019.3.5.0</ReportVersion>

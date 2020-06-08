@@ -94,21 +94,30 @@ cursor: pointer;
 .reportCategory a:nth-child(15) { animation-delay: 1.9s }
 .reportCategory a:nth-child(16) { animation-delay: 2s }
 
-
-@media only screen and (max-width: 768px){
-.stiDesignerClearAllStyles {
-  font-size: smaller;
-  margin: 0 !important;
-  padding: 0 !important;
+@media only screen and (max-width: 576px) {
+  .app-container.app-theme-white.body-tabs-shadow.fixed-sidebar.fixed-header .app-main .app-main__outer{
+    margin: 0 ;
+  }
 }
+@media only screen and (max-width: 768px){
+
 .stiDesignerZoomScale_Mouse {
   position: relative;
   width: 10px;
 }
+.stiDesignerToolButtonOver_Mouse, .stiDesignerToolButton_Mouse{
+  padding: 0 !important;
+}
+
 }
 
 @media only screen and (max-width: 992px){
 #StiViewerReportPanel{
   overflow-x: scroll !important;
+}
+.stiDesignerClearAllStyles {
+  font-size: smaller;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 }

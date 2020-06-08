@@ -13,134 +13,136 @@
         </li>
       </ol>
     </nav>
-    <div class="form__page mt-4 p-5">
-      <form class="" #frmRef="ngForm" (ngSubmit)="frmRef.form.valid && Submit(frmRef);">
-        <div class="row">
-          <div class="col-12 col-lg-6">
-            <div class="row w-100 mb-3">
-              <div class="col-lg-4 col-12">
-                <label for="DatabaseName" class="mb-lg-0 mt-lg-0 mb-2 mt-3">
-                  {{'SideBar.lblDatabase' | translate}}:
-                </label>
-              </div>
-              <div class="col-lg-8 col-12">
-                <div class=" w-100 search position-relative">
-                  <p-multiSelect [options]="DbNames" [(ngModel)]="DbObj.DatabaseNameId" optionLabel="DbName"
-                    (onChange)="pick($event.value)" id="DatabaseNameId" name="DatabaseNameId"
-                    defaultLabel="{{'SideBar.lblChooseDatabase' | translate}}"></p-multiSelect>
+    <div class="col-md-10">
+      <div class="form__page mt-4 p-5 ">
+        <form class="" #frmRef="ngForm" (ngSubmit)="frmRef.form.valid && Submit(frmRef);">
+          <div class="row">
+            <div class="col-12 col-lg-6">
+              <div class="row w-100 mb-3">
+                <div class="col-lg-4 col-12">
+                  <label for="DatabaseName" class="mb-lg-0 mt-lg-0 mb-2 mt-3">
+                    {{'SideBar.lblDatabase' | translate}}:
+                  </label>
                 </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-6 col-12">
-            <div class="row w-100 mb-3">
-              <div class="col-lg-4 col-12">
-                <label class="mb-lg-0 mt-lg-0 mb-2 mt-3">
-                  {{'SideBar.lblBranch' | translate}}:
-                </label>
-              </div>
-              <div class="col-lg-8 col-12">
-                <div class=" w-100 search position-relative">
-                  <p-multiSelect [options]="Branches" [(ngModel)]="CBObj.COM_BRN_CODE" optionLabel="COM_BRN_AR_NAME"
-                    (onChange)="PickCom($event.value)" id="COM_BRN_CODE" name="COM_BRN_CODE"
-                    defaultLabel="{{'SideBar.lblChooseBranch' | translate}}"></p-multiSelect>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-6 col-12">
-            <div class="row w-100 mb-3">
-              <div class="col-lg-4 col-12">
-                <label class="mb-lg-0 mt-lg-0 mb-2 mt-3">
-                  {{'SideBar.lblFromDate' | translate}}:
-                </label>
-              </div>
-              <div class="col-lg-8 col-12">
-                <div class="d-flex align-items-center w-100 position-relative">
-                  <div class="form-group date_hijiri w-100" style="display: none;">
-                    <div class="input-group">
-                      <input readonly type="text" id="hijrDate" onclick="pickDate(event)" name="DateHijri"
-                        [(ngModel)]='DateHijri' class="form-control"
-                        placeholder="{{ 'ResultOfPortPage.lblHijri' | translate }}">
-                    </div>
-                  </div>
-                  <div class="form-group date_melady w-100">
-                    <div class="input-group">
-                      <input readonly name="sDate" [(ngModel)]="sDate" id="gregDate" onclick="pickDate(event)"
-                        type="text" class="form-control w-100 ad_Input">
-                    </div>
+                <div class="col-lg-8 col-12">
+                  <div class=" w-100 search position-relative">
+                    <p-multiSelect [options]="DbNames" [(ngModel)]="DbObj.DatabaseNameId" optionLabel="DbName"
+                      (onChange)="pick($event.value)" id="DatabaseNameId" name="DatabaseNameId"
+                      defaultLabel="{{'SideBar.lblChooseDatabase' | translate}}"></p-multiSelect>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="col-lg-6 col-12">
-            <div class="row w-100 mb-3">
-              <div class="col-lg-4 col-12">
-                <label class="mb-lg-0 mt-lg-0 mb-2 mt-3">
-                  {{'SideBar.lblToDate' | translate}}:
-                </label>
-              </div>
-              <div class="col-lg-8 col-12">
-                <div class="d-flex align-items-center w-100 position-relative">
-                  <div class="form-group date_hijiri w-100" style="display: none;">
-                    <div class="input-group">
-                      <input readonly type="text" id="hijrDate" onclick="pickDate(event)" name="DateHijri"
-                        [(ngModel)]='DateHijri' class="form-control"
-                        placeholder="{{ 'ResultOfPortPage.lblHijri' | translate }}">
-                    </div>
+            <div class="col-lg-6 col-12">
+              <div class="row w-100 mb-3">
+                <div class="col-lg-4 col-12">
+                  <label class="mb-lg-0 mt-lg-0 mb-2 mt-3">
+                    {{'SideBar.lblBranch' | translate}}:
+                  </label>
+                </div>
+                <div class="col-lg-8 col-12">
+                  <div class=" w-100 search position-relative">
+                    <p-multiSelect [options]="Branches" [(ngModel)]="CBObj.COM_BRN_CODE" optionLabel="COM_BRN_AR_NAME"
+                      (onChange)="PickCom($event.value)" id="COM_BRN_CODE" name="COM_BRN_CODE"
+                      defaultLabel="{{'SideBar.lblChooseBranch' | translate}}"></p-multiSelect>
                   </div>
-                  <div class="form-group date_melady w-100">
-                    <div class="input-group">
-                      <input readonly name="eDate" [(ngModel)]="eDate" id="gregDate2" onclick="pickDate(event)"
-                        type="text" class="form-control w-100 ad_Input">
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-12">
+              <div class="row w-100 mb-3">
+                <div class="col-lg-4 col-12">
+                  <label class="mb-lg-0 mt-lg-0 mb-2 mt-3">
+                    {{'SideBar.lblFromDate' | translate}}:
+                  </label>
+                </div>
+                <div class="col-lg-8 col-12">
+                  <div class="d-flex align-items-center w-100 position-relative">
+                    <div class="form-group date_hijiri w-100" style="display: none;">
+                      <div class="input-group">
+                        <input readonly type="text" id="hijrDate" onclick="pickDate(event)" name="DateHijri"
+                          [(ngModel)]='DateHijri' class="form-control"
+                          placeholder="{{ 'ResultOfPortPage.lblHijri' | translate }}">
+                      </div>
+                    </div>
+                    <div class="form-group date_melady w-100">
+                      <div class="input-group">
+                        <input readonly name="sDate" [(ngModel)]="sDate" id="gregDate" onclick="pickDate(event)"
+                          type="text" class="form-control w-100 ad_Input">
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="col-12 col-lg-6">
-            <div class="row w-100 mb-3">
-              <div class="col-lg-4 col-12">
-                <label for="DatabaseName" class="mb-lg-0 mt-lg-0 mb-2 mt-3">
-                  {{'SideBar.lblChoice' | translate}}:
-                </label>
+            <div class="col-lg-6 col-12">
+              <div class="row w-100 mb-3">
+                <div class="col-lg-4 col-12">
+                  <label class="mb-lg-0 mt-lg-0 mb-2 mt-3">
+                    {{'SideBar.lblToDate' | translate}}:
+                  </label>
+                </div>
+                <div class="col-lg-8 col-12">
+                  <div class="d-flex align-items-center w-100 position-relative">
+                    <div class="form-group date_hijiri w-100" style="display: none;">
+                      <div class="input-group">
+                        <input readonly type="text" id="hijrDate" onclick="pickDate(event)" name="DateHijri"
+                          [(ngModel)]='DateHijri' class="form-control"
+                          placeholder="{{ 'ResultOfPortPage.lblHijri' | translate }}">
+                      </div>
+                    </div>
+                    <div class="form-group date_melady w-100">
+                      <div class="input-group">
+                        <input readonly name="eDate" [(ngModel)]="eDate" id="gregDate2" onclick="pickDate(event)"
+                          type="text" class="form-control w-100 ad_Input">
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="col-lg-8 col-12">
-                <div class="d-flex align-items-center w-100">
-                  <select name="type" id="type" [(ngModel)]="type" class="form-control w-100">
-                    <option value="1"> {{ 'SideBar.slcttype1' | translate }} </option>
-                    <option value="2"> {{ 'SideBar.slcttype2' | translate }} </option>
-                  </select>
+            </div>
+            <div class="col-12 col-lg-6">
+              <div class="row w-100 mb-3">
+                <div class="col-lg-4 col-12">
+                  <label for="DatabaseName" class="mb-lg-0 mt-lg-0 mb-2 mt-3">
+                    {{'SideBar.lblChoice' | translate}}:
+                  </label>
+                </div>
+                <div class="col-lg-8 col-12">
+                  <div class="d-flex align-items-center w-100">
+                    <select name="type" id="type" [(ngModel)]="type" class="form-control w-100">
+                      <option value="1"> {{ 'SideBar.slcttype1' | translate }} </option>
+                      <option value="2"> {{ 'SideBar.slcttype2' | translate }} </option>
+                    </select>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-12 view-report">
-            <div class="col-lg-4 col-md-6 view-report">
-              <button class="nav-link text-right mr-0" type="submit">
-                <i class="fas fa-eye"></i>
-                <span class="mr-2">{{ 'ResultOfPortPage.lblShowReport' | translate }}</span>
-              </button>
-            </div>
-            <div class="col-lg-3 col-md-6 view-report text-primary">
-              <a (click)="ViewReportDesign()" class="nav-link text-right mr-0">
-                <i class="fas fa-paint-brush"></i>
-                <span class="mr-2">{{ 'ResultOfPortPage.lblReportDesign' | translate }}</span>
-              </a>
+          <div class="row">
+            <div class="col-12 view-report">
+              <div class="col-lg-4 col-md-6 view-report">
+                <button class="nav-link text-right mr-0" type="submit">
+                  <i class="fas fa-eye"></i>
+                  <span class="mr-2">{{ 'ResultOfPortPage.lblShowReport' | translate }}</span>
+                </button>
+              </div>
+              <div class="col-lg-3 col-md-6 view-report text-primary">
+                <a (click)="ViewReportDesign()" class="nav-link text-right mr-0">
+                  <i class="fas fa-paint-brush"></i>
+                  <span class="mr-2">{{ 'ResultOfPortPage.lblReportDesign' | translate }}</span>
+                </a>
+              </div>
             </div>
           </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   </div>
 </div>
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-10">
       <div class="form__page mt-4 py-5">
         <div id="designer" dir="ltr">
         </div>
