@@ -68,7 +68,10 @@ html, body {
   -webkit-box-shadow: 0 0 10px 0 #a7a7a7;
           box-shadow: 0 0 10px 0 #a7a7a7;
 }
-
+/* doaa */
+.app-container.app-theme-white.body-tabs-shadow.fixed-sidebar.fixed-header .app-main .app-main__outer{
+  margin: 0 0 0 300px;
+}
 @media (max-width: 991px) {
   .body-login .row {
     width: 70%;
