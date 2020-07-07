@@ -41,10 +41,6 @@ export class AccountTotalBalanceComponent implements OnInit {
   PortfolioNameARtxt: string = '';
   PageName: string;
   ToastrMsg: string;
-  // options: any = new Stimulsoft.Designer.StiDesignerOptions();
-  // viewer: any = new Stimulsoft.Viewer.StiViewer(this.options, 'StiViewer', false);
-  // report: any = new Stimulsoft.Report.StiReport.createNewReport();
-  // designer: any = new Stimulsoft.Designer.StiDesigner(this.options, 'StiDesigner', false);
 
   public iconFieldsPort: Object = {};
   public iconWaterMarkPort: string = "";
@@ -68,15 +64,7 @@ export class AccountTotalBalanceComponent implements OnInit {
     }
 
   }
-  // PickAcc(event){
-  //   debugger;
-  //   this.AccIDs = event[0].ACC_ID;
-  //   for(var i = 1; i< event.length ; i++)
-  //   {
-  //     var id= event[i].ACC_ID;
-  //     this.AccIDs += ','+ id;
-  //   }
-  // }
+  // Pick DataBase //
   pick(event) {
     debugger;
     this.dbIds = event[0].DatabaseNameId;
@@ -89,18 +77,8 @@ export class AccountTotalBalanceComponent implements OnInit {
     this.SelectBranches();
     this.SelectAccounts();
   }
-  // pick1(event){
-  //   debugger;
-  //   this.dbIds = event[0].DatabaseNameId;
-  //   for(var i = 1; i< event.length ; i++)
-  //   {
-  //     var id= event[i].DatabaseNameId;
-  //     this.dbIds += ','+ id;
-  //   }
+  //End Pick DataBase//
 
-  //   this.SelectBranches();
-  //   this.SelectEntries();
-  // }
   BreadCrumTranslate() {
     debugger;
     this.translate.get(["ResultOfPortPage.breadcrumb"])
@@ -137,13 +115,6 @@ export class AccountTotalBalanceComponent implements OnInit {
         this.toastr.error(this.ToastrMsgTranslate("ToastrMsg.UnExpError"), this.PageName);
       }
     );
-  }
- 
-
-  onSelectPortfolio(selectedItem: any, modalId: any) {
-    debugger;
-    this.PortfolioID = selectedItem.PortfolioID ? selectedItem.PortfolioID : 0;
-    this.PortfolioNameARtxt = selectedItem.NameAR ? selectedItem.NameAR : '';
   }
 
   SelectDatabase() {

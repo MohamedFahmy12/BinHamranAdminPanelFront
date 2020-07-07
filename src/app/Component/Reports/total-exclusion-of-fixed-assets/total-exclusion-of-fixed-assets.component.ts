@@ -176,16 +176,16 @@ export class TotalExclusionOfFixedAssetsComponent implements OnInit {
 
    StiOptions.WebServer.url = "http://localhost:63103/api/ReportData/GetDataSource"
     this.report = Stimulsoft.Report.StiReport.createNewReport();
-    this.report.loadFile("/reports/TotalExclusionOfFixedAssets.mrt");
-    // let datafile:any;
-    // this.ReportSer.getReportForDesigner(this.reportName).subscribe(dres => {
-    //   datafile = dres;
-    // }, err => { }, () => {
-    //   this.report.load(datafile);
-    //   this.designer.report = this.report;
-    //   this.designer.renderHtml("designer");
+    
+    let datafile:any;
+    this.ReportSer.getReportForDesigner(this.reportName).subscribe(dres => {
+      datafile = dres;
+    }, err => { }, () => {
+      this.report.load(datafile);
+      this.designer.report = this.report;
+      this.designer.renderHtml("designer");
 
-    // })
+    })
     let jsonReport:string;
     this.designer.onSaveReport = function (args) {
     this.reportName= "TotalExclusionOfFixedAssets";
