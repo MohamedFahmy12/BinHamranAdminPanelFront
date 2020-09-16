@@ -10,6 +10,8 @@ import { AccountModule } from 'src/app/Models/DataModels/account/account.module'
 import { EntryModule } from 'src/app/Models/DataModels/entry/entry.module';
 import { BranchModule } from 'src/app/Models/DataModels/branch/branch.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ReportModalComponent } from '../../Common/report-modal/report-modal.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 declare var Stimulsoft: any;
@@ -52,7 +54,7 @@ export class MonthlyAnalisisForAccountsComponent implements OnInit {
   public iconFieldsPort: Object = {};
   public iconWaterMarkPort: string = "";
   constructor(private ReportSer: ReportsServiceService, private toastr: ToastrService,
-    private router: Router, private datehelp: DateHelperService, private translate: TranslateService, private http: HttpClientModule) { }
+    private router: Router, private datehelp: DateHelperService, private translate: TranslateService,private modalService:NgbModal, private http: HttpClientModule) { }
 
   ngOnInit() {
     this.ReportSer.GetPath().subscribe(res => {
@@ -76,15 +78,7 @@ export class MonthlyAnalisisForAccountsComponent implements OnInit {
     }
 
   }
-  // PickAcc(event){
-  //   debugger;
-  //   this.AccIDs = event[0].ACC_ID;
-  //   for(var i = 1; i< event.length ; i++)
-  //   {
-  //     var id= event[i].ACC_ID;
-  //     this.AccIDs += ','+ id;
-  //   }
-  // }
+
   pick(event) {
     debugger;
     this.dbIds = event[0].DatabaseNameId;
@@ -97,18 +91,7 @@ export class MonthlyAnalisisForAccountsComponent implements OnInit {
     this.SelectBranches();
     this.SelectAccounts();
   }
-  // pick1(event){
-  //   debugger;
-  //   this.dbIds = event[0].DatabaseNameId;
-  //   for(var i = 1; i< event.length ; i++)
-  //   {
-  //     var id= event[i].DatabaseNameId;
-  //     this.dbIds += ','+ id;
-  //   }
 
-  //   this.SelectBranches();
-  //   this.SelectEntries();
-  // }
   BreadCrumTranslate() {
     debugger;
     this.translate.get(["ResultOfPortPage.breadcrumb"])
@@ -133,46 +116,23 @@ export class MonthlyAnalisisForAccountsComponent implements OnInit {
   ViewReport() {
     debugger;
     this.currentLocation = window.location;
-    console.log("ress=", this.currentLocation)
     this.ToDate = (<HTMLInputElement>document.getElementById("gregDate"))
       .value ? (<HTMLInputElement>document.getElementById("gregDate")).value : null;
-    this.ReportSer.MonthlyAnalisisForAccounts(this.ToDate, this.ComIDS, this.AccIDs, this.dbIds, this.currentLocation).subscribe(
-      (data: Response) => {
-        debugger;
-        this.result = data;
-        this.router.navigate(['/ViewReport', { 'Reportview': this.result }]);
-      },
-      err => {
-        this.toastr.error(this.ToastrMsgTranslate("ToastrMsg.UnExpError"), this.PageName);
-      }
-    );
-  }
-  EditReport() {
 
-    this.router.navigate(['/editreports', { 'ReportEdit': 'RPTResultOfPortofolioWork.mrt' }]);
     debugger;
-    // this.ToDate = (<HTMLInputElement>document.getElementById("gregDate")).value?(<HTMLInputElement>document.getElementById("gregDate")).value:null;
-    // this.ReportSer.EditResultOfPortofolioWork(this.ToDate,this.PortfolioID).subscribe(
-    //   (data: Response)=>{
-    //     debugger;
-    //   this.result=data;
-    // this.report.loadFile("http://localhost:56296/UploadFiles/RPTResultOfPortofolioWork.mrt");
-
-    //   this.designer.onSaveReport = function (args) {
-    //     var report = args.report;
-    //     report.saveFile("http://localhost:56296/UploadFiles/RPTResultOfPortofolioWork.mrt");
-    //   }
-    //    this.options.appearance.fullScreenMode = true;
-
-    //    this.designer.report = this.report;
-    //    this.designer.renderHtml("designer");
-
-    //   },
-    //   err=>{
-    //     this.toastr.error(this.ToastrMsgTranslate("ToastrMsg.UnExpError"),this.PageName);
-    //   }
-    // );
+      let reportParams: string =
+          "reportParameter=STARTDATE!" + this.ToDate + 
+          "&reportParameter=CompanyBranchID!" + this.ComIDS + 
+          "&reportParameter=ACCOUNTID!" + this.AccIDs +
+          "&reportParameter=DatabaseID!" + this.dbIds ;
+          const modalRef = this.modalService.open(ReportModalComponent);
+        //modalRef.componentInstance.name = 'World';
+        modalRef.componentInstance.reportParams = reportParams;
+        modalRef.componentInstance.reportType = 1;
+        modalRef.componentInstance.reportTypeID = 2;
+        modalRef.componentInstance.oldUrl = "MonthlyAnalisisForAccounts";
   }
+  
 
   onSelectPortfolio(selectedItem: any, modalId: any) {
     debugger;
@@ -228,50 +188,6 @@ export class MonthlyAnalisisForAccountsComponent implements OnInit {
       }
     );
   }
-  ViewReportDesign() {
-    debugger;
-    this.reportName = "MonthlyAnalisisForAccounts";
-
-    StiOptions.WebServer.url = "http://localhost:63103/api/ReportData/GetDataSource"
-    this.report = Stimulsoft.Report.StiReport.createNewReport();
-    let datafile: string;
-    let jsonReport: string;
-    this.ReportSer.getReportForDesigner(this.reportName).subscribe(dres => {
-      datafile = dres;
-    }, err => { }, () => {
-      this.report.load(datafile);
-      this.designer.report = this.report;
-      this.designer.renderHtml("designer");
-
-    })
-
-    this.designer.onSaveReport = function (args) {
-      debugger;
-
-      this.reportName = "MonthlyAnalisisForAccounts";
-
-      jsonReport = args.report.saveToJsonString();
-
-      var newData = {
-        "data": jsonReport,
-        "fileName": this.reportName
-      };
-      var dataJson = JSON.stringify(newData);
-      $.ajax({
-        url: 'http://localhost:63103/api/ReportData/SaveFile',
-        type: 'Post',
-        data: dataJson,
-        success: function () {
-          location.reload(true);
-        },
-        error: function (err) {
-          console.log("err: ", JSON.stringify(err));
-        },
-        dataType: "json",
-        contentType: "application/json"
-      });
-    }
-
-  }
+  
 
 }

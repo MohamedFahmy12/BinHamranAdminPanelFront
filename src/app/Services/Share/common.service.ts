@@ -5,10 +5,10 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class CommonService {
-readonly rooturl='http://localhost:63103/api';
-//readonly rooturl='http://benhamranadminpanelapi.gmtcc.co/';
+//readonly rooturl='http://localhost:63103/api';
+readonly rooturl='http://benhamranadminpanelapi.gmtcc.co/api';
 
-
+readonly pathUrl = "https://adminpanelreport.gmtcc.co/";
 
   private messageSource = new BehaviorSubject('default message');
   currentMessage = this.messageSource.asObservable();

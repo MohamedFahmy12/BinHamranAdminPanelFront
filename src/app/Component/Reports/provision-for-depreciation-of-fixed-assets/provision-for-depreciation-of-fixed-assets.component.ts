@@ -9,6 +9,8 @@ import { DateHelperService } from 'src/app/Helper/date-helper.service';
 import { ReportsServiceService } from 'src/app/Services/Reports/reports-service.service';
 import { Router } from '@angular/router';
 import { EntryModule } from 'src/app/Models/DataModels/entry/entry.module';
+import { ReportModalComponent } from '../../Common/report-modal/report-modal.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 declare var Stimulsoft:any;
 declare var StiOptions:any;
@@ -45,7 +47,7 @@ export class ProvisionForDepreciationOfFixedAssetsComponent implements OnInit {
   public iconFieldsPort: Object = {};
   public iconWaterMarkPort: string = "";
   constructor(private ReportSer: ReportsServiceService, private toastr: ToastrService,
-  private router: Router, private datehelp: DateHelperService, private translate: TranslateService) { }
+  private router: Router, private datehelp: DateHelperService, private translate: TranslateService,private modalService:NgbModal) { }
     ngOnInit() {
       this.toastr.warning(this.ToastrMsgTranslate("ToastrMsg.Reporttoster"), this.PageName);
       this.sDate = this.datehelp.GetCurrentDate();
@@ -104,27 +106,34 @@ export class ProvisionForDepreciationOfFixedAssetsComponent implements OnInit {
       this.ViewReport();
     }
   
+    convertDate(date:any){
+      var arr = date.split("/");
+      return arr[2]+"/"+arr[1]+"/"+arr[0]
+    }
     ViewReport() {
       debugger;
       this.currentLocation = window.location;
       this.sDate = (<HTMLInputElement>document.getElementById("gregDate"))
         .value ? (<HTMLInputElement>document.getElementById("gregDate")).value : null;
-      this.ReportSer.ProvisionForDepreciationOfFixedAssets(this.sDate,this.eDate,this.ComIDS,this.AccIDs, this.dbIds,this.currentLocation).subscribe(
-        (data: Response) => {
-          debugger;
-          this.result = data;
-          this.router.navigate(['/ViewReport', { 'Reportview': this.result }]);
-        },
-        err => {
-          this.toastr.error(this.ToastrMsgTranslate("ToastrMsg.UnExpError"), this.PageName);
-        }
-      );
+        this.eDate = (<HTMLInputElement>document.getElementById("gregDate2"))
+        .value ? (<HTMLInputElement>document.getElementById("gregDate2")).value : null;
+        let SDateParam = this.convertDate(this.sDate);
+        let EDateParam = this.convertDate(this.eDate);
+        debugger;
+        let reportParams: string =
+            "reportParameter=STARTDATE!" + SDateParam + 
+            "&reportParameter=ENDDATE!" + EDateParam + 
+            "&reportParameter=CompanyBranchID!" + this.ComIDS +
+            "&reportParameter=ACCOUNTID!" + this.AccIDs + 
+            "&reportParameter=DatabaseID!" + this.dbIds ;
+            const modalRef = this.modalService.open(ReportModalComponent);
+          //modalRef.componentInstance.name = 'World';
+          modalRef.componentInstance.reportParams = reportParams;
+          modalRef.componentInstance.reportType = 1;
+          modalRef.componentInstance.reportTypeID = 14;
+          modalRef.componentInstance.oldUrl = "ProvisionForDepreciationOfFixedAssets";
     }
-    EditReport() {
-  
-      this.router.navigate(['/editreports', { 'ReportEdit': 'RPTResultOfPortofolioWork.mrt' }]);
-      debugger;
-    }
+    
   
     onSelectPortfolio(selectedItem: any, modalId: any) {
       debugger;
@@ -173,47 +182,5 @@ export class ProvisionForDepreciationOfFixedAssetsComponent implements OnInit {
       );
     }
 
-    ViewReportDesign() {
-      debugger;
-      this.reportName= "ProvisionForDepreciationOfFixedAssets";
-
-     StiOptions.WebServer.url = "http://localhost:63103/api/ReportData/GetDataSource"
-      this.report = Stimulsoft.Report.StiReport.createNewReport();
-      let datafile:any;
-      this.ReportSer.getReportForDesigner(this.reportName).subscribe(dres => {
-        datafile = dres;
-      }, err => { }, () => {
-        this.report.load(datafile);
-        this.designer.report = this.report;
-        this.designer.renderHtml("designer");
-  
-      })
-      let jsonReport:string;
-      this.designer.onSaveReport = function (args) {
-      this.reportName= "ProvisionForDepreciationOfFixedAssets";
-
-        jsonReport = args.report.saveToJsonString();
-        var newData =   {
-          "data":jsonReport,
-          "fileName":this.reportName,
-          "currentlocation": window.location
-          };
-          var dataJson = JSON.stringify(newData);
-        $.ajax({
-          url:'http://localhost:63103/api/ReportData/SaveFile',
-          type:'Post',
-          data: dataJson,
-          success: function(res){
-            alert(res);
-          },
-          error:function(err){
-            console.log("err: ",JSON.stringify(err));
-          },
-          dataType: "json",
-          contentType: "application/json"
-        });
-      }
-
-    }
-
+   
 }

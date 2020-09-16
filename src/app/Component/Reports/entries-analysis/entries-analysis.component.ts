@@ -9,6 +9,8 @@ import { DateHelperService } from 'src/app/Helper/date-helper.service';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { NgForm } from '@angular/forms';
+import { ReportModalComponent } from '../../Common/report-modal/report-modal.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 declare var Stimulsoft:any;
 declare var StiOptions:any;
@@ -39,6 +41,7 @@ export class EntriesAnalysisComponent implements OnInit {
   DbNames: DatabaseModule[];
   Accounts: AccountModule[];
   Entries: EntryModule[];
+  EntIDS: string;
   Branches: BranchModule[];
   PortfolioNameARtxt: string = '';
   PageName: string;
@@ -46,7 +49,7 @@ export class EntriesAnalysisComponent implements OnInit {
   public iconFieldsPort: Object = {};
   public iconWaterMarkPort: string = "";
   constructor(private ReportSer: ReportsServiceService, private toastr: ToastrService,
-  private router: Router, private datehelp: DateHelperService, private translate: TranslateService) { }
+  private router: Router, private datehelp: DateHelperService, private translate: TranslateService,private modalService:NgbModal) { }
     ngOnInit() {
       this.toastr.warning(this.ToastrMsgTranslate("ToastrMsg.Reporttoster"), this.PageName);
       this.sDate = this.datehelp.GetCurrentDate();
@@ -73,6 +76,15 @@ export class EntriesAnalysisComponent implements OnInit {
         this.AccIDs += ','+ id;
       }
     }
+    PickEnt(event){
+      debugger;
+      this.EntIDS = event[0].Setting_ID;
+      for(var i = 1; i< event.length ; i++)
+      {
+        var id= event[i].Setting_ID;
+        this.EntIDS += ','+ id;
+      }
+    }
     pick(event){
       debugger;
       this.dbIds = event[0].DatabaseNameId;
@@ -83,7 +95,7 @@ export class EntriesAnalysisComponent implements OnInit {
         this.dbIds += ','+ id;
       }
       this.SelectBranches();
-      this.SelectAccounts();
+      this.SelectEntries();
     }
     BreadCrumTranslate() {
       debugger;
@@ -105,6 +117,10 @@ export class EntriesAnalysisComponent implements OnInit {
       this.ViewReport();
     }
   
+    convertDate(date:any){
+      var arr = date.split("/");
+      return arr[2]+"/"+arr[1]+"/"+arr[0]
+    }
     ViewReport() {
       debugger;
       this.currentLocation = window.location;
@@ -112,21 +128,21 @@ export class EntriesAnalysisComponent implements OnInit {
         .value ? (<HTMLInputElement>document.getElementById("gregDate")).value : null;
         this.eDate = (<HTMLInputElement>document.getElementById("gregDate2"))
         .value ? (<HTMLInputElement>document.getElementById("gregDate2")).value : null;
-      this.ReportSer.Institutionfees(this.sDate,this.eDate, this.ComIDS, this.dbIds,this.type,this.currentLocation).subscribe(
-        (data: Response) => {
-          debugger;
-          this.result = data;
-          this.router.navigate(['/ViewReport', { 'Reportview': this.result }]);
-        },
-        err => {
-          this.toastr.error(this.ToastrMsgTranslate("ToastrMsg.UnExpError"), this.PageName);
-        }
-      );
-    }
-    EditReport() {
-  
-      this.router.navigate(['/editreports', { 'ReportEdit': 'RPTResultOfPortofolioWork.mrt' }]);
-      debugger;
+        let SDateParam = this.convertDate(this.sDate);
+        let EDateParam = this.convertDate(this.eDate);
+        debugger;
+        let reportParams: string =
+            "reportParameter=STARTDATE!" + SDateParam + 
+            "&reportParameter=ENDDATE!" + EDateParam + 
+            "&reportParameter=CompanyBranchID!" + this.ComIDS +
+            "&reportParameter=EntryID!" + this.EntIDS + 
+            "&reportParameter=DatabaseID!" + this.dbIds ;
+            const modalRef = this.modalService.open(ReportModalComponent);
+          //modalRef.componentInstance.name = 'World';
+          modalRef.componentInstance.reportParams = reportParams;
+          modalRef.componentInstance.reportType = 1;
+          modalRef.componentInstance.reportTypeID = 16;
+          modalRef.componentInstance.oldUrl = "EntriesAnalysis";
     }
   
     onSelectPortfolio(selectedItem: any, modalId: any) {
@@ -175,48 +191,22 @@ export class EntriesAnalysisComponent implements OnInit {
         }
       );
     }
-    ViewReportDesign() {
+    SelectEntries() {
       debugger;
-      this.reportName= "BranchesTrialBalance";
-
-     StiOptions.WebServer.url = "http://localhost:63103/api/ReportData/GetDataSource"
-      this.report = Stimulsoft.Report.StiReport.createNewReport();
-      let datafile:any;
-      this.ReportSer.getReportForDesigner(this.reportName).subscribe(dres => {
-        datafile = dres;
-      }, err => { }, () => {
-        this.report.load(datafile);
-        this.designer.report = this.report;
-        this.designer.renderHtml("designer");
   
-      })
-      let jsonReport:string;
-      this.designer.onSaveReport = function (args) {
-      this.reportName= "BranchesTrialBalance";
-
-        jsonReport = args.report.saveToJsonString();
-        var newData =   {
-          "data":jsonReport,
-          "fileName":this.reportName,
-          "currentlocation": window.location
-          };
-          var dataJson = JSON.stringify(newData);
-        $.ajax({
-          url:'http://localhost:63103/api/ReportData/SaveFile',
-          type:'Post',
-          data: dataJson,
-          success: function(res){
-            alert(res);
-          },
-          error:function(err){
-            console.log("err: ",JSON.stringify(err));
-          },
-          dataType: "json",
-          contentType: "application/json"
-        });
-      }
-      
-
+      this.ReportSer.GetEntries(this.dbIds).subscribe(
+        res => {
+          // this.portfolios=res as Portfolio[] ;
+  
+          this.Entries = res as EntryModule[];
+  
+  
+        },
+        err => {
+          this.toastr.error(this.ToastrMsgTranslate("ToastrMsg.UnExpError"), this.PageName);
+  
+        }
+      );
     }
 
 }

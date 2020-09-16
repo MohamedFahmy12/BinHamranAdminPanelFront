@@ -1,0 +1,39 @@
+<div class="modal-header">
+    <h4 class="modal-title">اختر النموذج</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+
+    <hr>
+    <table>
+        <thead>
+            <th>اسم النموذج عربي</th>
+            
+            <th></th>
+            <th></th>
+            <th></th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of reportList">
+                <td>{{item.ReportNameAr}}</td>
+                <td>
+                    <button class="btn btn-primary"(click)="viewRpt(item)">عرض</button>
+                </td>
+                <td>
+                    <button class="btn btn-primary"(click)="designRpt(item)" hidden>تصميم</button>
+                </td>
+                <td>
+                    <button class="btn btn-secondary" (click)="setAsDefaultRpt(item)">الإفتراضي</button>
+                </td>
+                <td>
+                    <button class="btn btn-danger" (click)="deleteRpt(item)">حذف</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="close()">اغلاق</button>
+</div>

@@ -9,6 +9,8 @@ import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router';
 import { EntryModule } from 'src/app/Models/DataModels/entry/entry.module';
+import { ReportModalComponent } from '../../Common/report-modal/report-modal.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 declare var Stimulsoft:any;
 declare var StiOptions:any;
@@ -55,7 +57,7 @@ export class MonthlyAnalisisForEntriesModelComponent implements OnInit {
   public iconFieldsPort: Object = {};
   public iconWaterMarkPort: string = "";
   constructor(private ReportSer: ReportsServiceService, private toastr: ToastrService,
-    private router: Router, private datehelp: DateHelperService, private translate: TranslateService) { }
+    private router: Router, private datehelp: DateHelperService, private translate: TranslateService,private modalService:NgbModal) { }
 
   ngOnInit() {
     this.toastr.warning(this.ToastrMsgTranslate("ToastrMsg.Reporttoster"), this.PageName);
@@ -115,50 +117,27 @@ export class MonthlyAnalisisForEntriesModelComponent implements OnInit {
     this.ViewReport();
   }
   
-
+  
   ViewReport() {
     debugger;
     this.currentLocation = window.location;
     this.ToDate = (<HTMLInputElement>document.getElementById("gregDate"))
       .value ? (<HTMLInputElement>document.getElementById("gregDate")).value : null;
 
-    this.ReportSer.MonthlyAnalisisForEntriesModel(this.ToDate, this.ComIDS,this.EntIDS, this.dbIds,this.currentLocation).subscribe(
-      (data: Response) => {
-        debugger;
-        this.result = data;
-        this.router.navigate(['/ViewReport', { 'Reportview': this.result }]);
-      },
-      err => {
-        this.toastr.error(this.ToastrMsgTranslate("ToastrMsg.UnExpError"), this.PageName);
-      }
-    );
-  }
-  EditReport() {
-
-    this.router.navigate(['/editreports', { 'ReportEdit': 'MonthlyAnalisisForEntriesModel.mrt' }]);
     debugger;
-    // this.ToDate = (<HTMLInputElement>document.getElementById("gregDate")).value?(<HTMLInputElement>document.getElementById("gregDate")).value:null;
-    // this.ReportSer.EditResultOfPortofolioWork(this.ToDate,this.PortfolioID).subscribe(
-    //   (data: Response)=>{
-    //     debugger;
-    //   this.result=data;
-    // this.report.loadFile("http://localhost:56296/UploadFiles/RPTResultOfPortofolioWork.mrt");
-
-    //   this.designer.onSaveReport = function (args) {
-    //     var report = args.report;
-    //     report.saveFile("http://localhost:56296/UploadFiles/RPTResultOfPortofolioWork.mrt");
-    //   }
-    //    this.options.appearance.fullScreenMode = true;
-
-    //    this.designer.report = this.report;
-    //    this.designer.renderHtml("designer");
-
-    //   },
-    //   err=>{
-    //     this.toastr.error(this.ToastrMsgTranslate("ToastrMsg.UnExpError"),this.PageName);
-    //   }
-    // );
+      let reportParams: string =
+          "reportParameter=STARTDATE!" + this.ToDate + "!NVarChar" + 
+          "&reportParameter=CompanyBranchID!" + this.ComIDS + "!NVarChar" +
+          "&reportParameter=EntryID!" + this.EntIDS + "!NVarChar" +
+          "&reportParameter=DatabaseID!" + this.dbIds + "!NVarChar" ;
+          const modalRef = this.modalService.open(ReportModalComponent);
+        //modalRef.componentInstance.name = 'World';
+        modalRef.componentInstance.reportParams = reportParams;
+        modalRef.componentInstance.reportType = 1;
+        modalRef.componentInstance.reportTypeID = 1;
+        modalRef.componentInstance.oldUrl = "MonthlyAnalisisForEntriesModel";
   }
+  
 
   onSelectPortfolio(selectedItem: any, modalId: any) {
     debugger;
@@ -234,46 +213,5 @@ export class MonthlyAnalisisForEntriesModelComponent implements OnInit {
       }
     );
   }
-  ViewReportDesign() {
-    debugger;
-    this.reportName= "MonthlyAnalisisForEntriesModel";
-
-   StiOptions.WebServer.url = "http://localhost:63103/api/ReportData/GetDataSource"
-    this.report = Stimulsoft.Report.StiReport.createNewReport();
-    let datafile:any;
-      this.ReportSer.getReportForDesigner(this.reportName).subscribe(dres => {
-        datafile = dres;
-      }, err => { }, () => {
-        this.report.load(datafile);
-        this.designer.report = this.report;
-        this.designer.renderHtml("designer");
-  
-      })
-    let jsonReport:string;
-    this.designer.onSaveReport = function (args) {
-    this.reportName= "MonthlyAnalisisForEntriesModel";
-
-      jsonReport = args.report.saveToJsonString();
-      var newData =   {
-        "data":jsonReport,
-        "fileName":this.reportName,
-        "currentlocation": window.location
-        };
-        var dataJson = JSON.stringify(newData);
-      $.ajax({
-        url:'http://localhost:63103/api/ReportData/SaveFile',
-        type:'Post',
-        data: dataJson,
-        success: function(res){
-          alert(res);
-        },
-        error:function(err){
-          console.log("err: ",JSON.stringify(err));
-        },
-        dataType: "json",
-        contentType: "application/json"
-      });
-    }
-
-  }
+ 
 }

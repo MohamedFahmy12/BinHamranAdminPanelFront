@@ -44,6 +44,8 @@ import { LastDurationGoodsComponent } from './Component/Reports/last-duration-go
 import { EntriesAnalysisComponent } from './Component/Reports/entries-analysis/entries-analysis.component';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { ReactiveFormsModule } from '@angular/forms';
+import { ReportModalComponent } from './Component/Common/report-modal/report-modal.component';
+import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -85,8 +87,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     ConsumptionOfDepreciationComponent,
     ProvisionForDepreciationOfFixedAssetsComponent,
     LastDurationGoodsComponent,
-    EntriesAnalysisComponent
+    EntriesAnalysisComponent,
+    ReportModalComponent
   ],
+  entryComponents:[ReportModalComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -97,7 +101,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
     ]) ,
     MultiSelectModule,
-
+    NgbModule,
     AccordionModule,
     NgMultiSelectDropDownModule,
     NgSelectModule,

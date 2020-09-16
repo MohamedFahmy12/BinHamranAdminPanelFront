@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 import { DateHelperService } from 'src/app/Helper/date-helper.service';
 import { TranslateService } from '@ngx-translate/core';
 import { NgForm } from '@angular/forms';
+import { ReportModalComponent } from '../../Common/report-modal/report-modal.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 declare var Stimulsoft: any;
 declare var StiOptions: any;
@@ -45,7 +47,7 @@ export class AccountTotalBalanceComponent implements OnInit {
   public iconFieldsPort: Object = {};
   public iconWaterMarkPort: string = "";
   constructor(private ReportSer: ReportsServiceService, private toastr: ToastrService,
-    private router: Router, private datehelp: DateHelperService, private translate: TranslateService) { }
+    private router: Router, private datehelp: DateHelperService, private translate: TranslateService,private modalService:NgbModal) { }
 
 
   ngOnInit() {
@@ -99,22 +101,30 @@ export class AccountTotalBalanceComponent implements OnInit {
     debugger;
     this.ViewReport();
   }
-
+  convertDate(date:any){
+    var arr = date.split("/");
+    return arr[2]+"/"+arr[1]+"/"+arr[0]
+  }
   ViewReport() {
     debugger;
     this.currentLocation = window.location;
     this.ToDate = (<HTMLInputElement>document.getElementById("gregDate"))
       .value ? (<HTMLInputElement>document.getElementById("gregDate")).value : null;
-    this.ReportSer.AccountTotalBalance(this.ToDate, this.ComIDS, this.AccIDs, this.dbIds, this.currentLocation).subscribe(
-      (data: Response) => {
-        debugger;
-        this.result = data;
-        this.router.navigate(['/ViewReport', { 'Reportview': this.result }]);
-      },
-      err => {
-        this.toastr.error(this.ToastrMsgTranslate("ToastrMsg.UnExpError"), this.PageName);
-      }
-    );
+      let ToDateParam = this.convertDate(this.ToDate);
+      let ACC_NAME = this.Accounts.find(x=>x.ACC_ID == parseInt(this.AccIDs)).ACC_AR_NAME;
+      debugger;
+      let reportParams: string =
+          "reportParameter=ACC_NAME!" + ACC_NAME +
+          "&reportParameter=STARTDATE!" + ToDateParam + 
+          "&reportParameter=CompanyBranchID!" + this.ComIDS + 
+          "&reportParameter=ACCOUNTID!" + this.AccIDs +
+          "&reportParameter=DatabaseID!" + this.dbIds ;
+          const modalRef = this.modalService.open(ReportModalComponent);
+        //modalRef.componentInstance.name = 'World';
+        modalRef.componentInstance.reportParams = reportParams;
+        modalRef.componentInstance.reportType = 1;
+        modalRef.componentInstance.reportTypeID = 4;
+        modalRef.componentInstance.oldUrl = "AccountTotalBalance";
   }
 
   SelectDatabase() {
@@ -165,43 +175,5 @@ export class AccountTotalBalanceComponent implements OnInit {
       }
     );
   }
-  ViewReportDesign() {
-    debugger;
-    this.reportName = "AccountTotalBalance";
-    StiOptions.WebServer.url = "http://localhost:63103/api/ReportData/GetDataSource"
-    this.report = Stimulsoft.Report.StiReport.createNewReport();
-    let datafile: string;
-    this.ReportSer.getReportForDesigner(this.reportName).subscribe(dres => {
-      datafile = dres;
-    }, err => { }, () => {
-      debugger;
-      this.report.load(datafile);
-      this.designer.report = this.report;
-      this.designer.renderHtml("designer");
-    });
-    let jsonReport: string;
-    this.designer.onSaveReport = function (args) {
-      debugger;
-      jsonReport = args.report.saveToJsonString();
-      this.reportName = "AccountTotalBalance";
-      var newData = {
-        "data": jsonReport,
-        "fileName": this.reportName
-      };
-      var dataJson = JSON.stringify(newData);
-      $.ajax({
-        url: 'http://localhost:63103/api/ReportData/SaveFile',
-        type: 'Post',
-        data: dataJson,
-        success: function (res) {
-          location.reload(true);
-        },
-        error: function (err) {
-          console.log("err: ", JSON.stringify(err));
-        },
-        dataType: "json",
-        contentType: "application/json"
-      });
-    }
-  }
+
 }

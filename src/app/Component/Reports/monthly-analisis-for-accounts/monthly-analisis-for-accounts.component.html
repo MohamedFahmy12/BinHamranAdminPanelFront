@@ -14,7 +14,7 @@
       </ol>
     </nav>
     <div class="row">
-      <div class="col-md-10">
+      <div class="col-md-12">
         <div class="form__page mt-4 py-5 ">
           <form class="" #frmRef="ngForm" (ngSubmit)="frmRef.form.valid && Submit(frmRef);">
             <div class="row">
@@ -100,12 +100,6 @@
                     <span class="mr-2">{{ 'ResultOfPortPage.lblShowReport' | translate }}</span>
                   </button>
                 </div>
-                <div class="col-lg-3 col-md-6 view-report text-primary">
-                  <a (click)="ViewReportDesign()" class="nav-link text-right mr-0">
-                    <i class="fas fa-paint-brush"></i>
-                    <span class="mr-2">{{ 'ResultOfPortPage.lblReportDesign' | translate }}</span>
-                  </a>
-                </div>
               </div>
             </div>
           </form>
@@ -114,13 +108,4 @@
     </div>
   </div>
 </div>
-<div class="container">
-  <div class="row">
-    <div class="col-md-10">
-      <div class="form__page mt-4 py-5 ">
-        <div id="designer" dir="ltr">
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+
